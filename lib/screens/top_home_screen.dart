@@ -1,23 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:myapp1/models/flight_details.dart';
 
-class TopHomeScreen extends StatefulWidget {
-  @override
-  _TopHomeScreenState createState() => _TopHomeScreenState();
-}
+class TopHomeScreen extends StatelessWidget {
 
+  final SheduledOnewayFlight flight;
 
+  const TopHomeScreen({Key key, this.flight}) : super(key: key);
 
-class _TopHomeScreenState extends State<TopHomeScreen> {
-
-  
   @override
   Widget build(BuildContext context) {
     return Column(
-      
+      crossAxisAlignment:CrossAxisAlignment.stretch,
       children: <Widget>[
         SizedBox(height:20.0),
         Padding(
-          padding:EdgeInsets.symmetric(horizontal: 20),
+          padding:EdgeInsets.symmetric(horizontal: 0),
           child: Container(
             alignment: Alignment.center,
             width:MediaQuery.of(context).size.width * 0.95,
@@ -57,16 +54,14 @@ class _TopHomeScreenState extends State<TopHomeScreen> {
       ],
     );
   }
-}
-
 Widget _originAndDestinationIcon(){
   return Column(
-    crossAxisAlignment:CrossAxisAlignment.start,
+    crossAxisAlignment:CrossAxisAlignment.center,
     mainAxisAlignment:MainAxisAlignment.spaceBetween,
     children: <Widget>[
 
      _flightOntimeArrivedStatus(),
-      Text("SFO",
+      Text(flight.destinationShort,
       textAlign:TextAlign.center,
         style:TextStyle(fontSize:25)
       ),
@@ -79,7 +74,7 @@ Widget _originAndDestinationIcon(){
       ),
 
 
-      Text("NYC",
+      Text(flight.originShort,
         textAlign:TextAlign.center,
         style:TextStyle(
           fontSize:25,
@@ -113,7 +108,7 @@ Widget _originAndDestination(){
             ),
 
             TextSpan(
-              text:"San Fransisco",
+              text:flight.destinationLong,
               style:TextStyle(
                 fontSize:17,
                 color:Colors.black
@@ -167,7 +162,7 @@ Widget _originAndDestination(){
             
 
             TextSpan(
-              text:"New York City",
+              text:flight.originLong,
               style:TextStyle(
                 fontSize:17,
                 color:Colors.black
@@ -316,3 +311,8 @@ Widget _flighDelayedTimeStatus(){
     )
   );
 }
+
+
+
+}
+

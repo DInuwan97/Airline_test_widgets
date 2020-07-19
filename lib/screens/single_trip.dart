@@ -1,23 +1,53 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:myapp1/models/flight_details.dart';
+import 'package:myapp1/screens/side_screen_drawer.dart';
 import 'package:myapp1/shapes/custome_shape_clipper.dart';
+import 'package:provider/provider.dart';
 
-class SingleTrip extends StatefulWidget {
+  Color firstColor = Colors.blue[900];
+  Color secondColor = Color(0xFF0D47A9);
+  Color thirdColor = Color(0xFF0D47B9);
+  Color fourthColor = Color(0xFF0D47C9);
+
+
+class SingleTrip extends StatelessWidget {
+   final SheduledOnewayFlight flight;
+
+  const SingleTrip({Key key, this.flight}) : super(key: key);
+
+
+
+  
+ 
+
+
   @override
-  _SingleTripState createState() => _SingleTripState();
-}
+  Widget build(BuildContext context) {
 
-class _SingleTripState extends State<SingleTrip> {
+      return Scaffold(
 
-Color firstColor = Colors.blue[900];
-Color secondColor = Color(0xFF0D47A9);
-Color thirdColor = Color(0xFF0D47B9);
-Color fourthColor = Color(0xFF0D47C9);
+        
+      appBar: AppBar(
+        title:Text(flight.originShort +" to " +flight.destinationShort,
+          style:TextStyle(
+            fontSize:15.0
+          )
+        ),
 
-  @override
-Widget build(BuildContext context) {
-  return Column(
+      ),
+      drawer: SideNavigationDrawer(),
+
+        body:Provider<SheduledOnewayFlight>.value(
+          value:flight,
+          child:Stack(
+            fit:StackFit.expand,
+
+              children: <Widget>[
+                SafeArea(
+                  child:ListView(
+      
     children: <Widget>[
       SizedBox(height:20.0),
 
@@ -101,12 +131,6 @@ Widget build(BuildContext context) {
                 ),
 
 
-                // Column(
-                //   children: <Widget>[
-                //       _flightRouteConection()
-                //   ],
-                // )
-
 
                  
               Padding(
@@ -143,7 +167,6 @@ Widget build(BuildContext context) {
 
                         SizedBox(height:10.0),
 
-
                         Container(
                           child:Column(
                             children: <Widget>[
@@ -168,7 +191,6 @@ Widget build(BuildContext context) {
                                             _origin(),
                                             Spacer(),
                                           
-
                                            _flightRouteConection(),
 
                                             Spacer(),
@@ -176,14 +198,13 @@ Widget build(BuildContext context) {
                                       ],
                                       ),
 
-
                                       SizedBox(height:10.0),
 
                                       Row(
                                         children: <Widget>[
-                                         _sheduledTimeDate("08:30","20 July MON",Icons.flight_takeoff),
+                                         _sheduledTimeDate(flight.depatureTime,flight.departureDate,Icons.flight_takeoff),
                                           Spacer(),
-                                          _sheduledTimeDate("23:30","20 July MON",Icons.flight_land)
+                                          _sheduledTimeDate(flight.arrivalTime,flight.arrivalDate,Icons.flight_land)
                                         ],
                                       ),
 
@@ -195,13 +216,11 @@ Widget build(BuildContext context) {
                                           //indent: 200,
                                       ),
 
-
-
                                       Row(
                                         children: <Widget>[
-                                            _renderIcons("09","09-C/B"),
+                                            _renderIcons(flight.depatureTerminal,flight.depatureGate),
                                             Spacer(),
-                                            _renderIcons("06","06-A/W")
+                                            _renderIcons(flight.arrivalTerminal,flight.arrivalGate)
                                         ],
                                       ),
 
@@ -210,23 +229,17 @@ Widget build(BuildContext context) {
                                          thickness: 3,
                                         // endIndent: 200,
                                       ),
-
-
                                     ],
                                   ),
                                 ),
-                                  
-                                
+   
                               )
                             ],
                           )
                         ),
-
-                           
-
+                      
                                 SizedBox(height:10.0),
 
-                                
                                   Text(
                                     'Book Flight Now',
                                     style:TextStyle(
@@ -262,44 +275,30 @@ Widget build(BuildContext context) {
                                 side: BorderSide(color: Colors.deepPurple[900]),
                               )
 
-
                              ),
-
-                          
-
-
-                        
-                    ],
-             
+                                           
+                    ],       
                 ),
               )
 
-
-
-
-
-
-
               ],
              )
-
-            ),
-
-
-         
-         
+            ),       
         ],
       ),
-
-
-  
-
     ],
-  );
-}
+  
+                  )
+                )
+              ],
+          )
+        )
+
+      );
+
+  }
 
 
-}
 
 
 Widget _airlineDetails(){
@@ -329,7 +328,7 @@ Widget _airlineDetails(){
 
                 TextSpan(
 
-                  text:"UL - 306 \n",  
+                  text:flight.flightNum,  
                   style:TextStyle(
                     color:Colors.white,
                     fontSize: 12,
@@ -439,7 +438,7 @@ Widget _origin(){
     //mainAxisAlignment:MainAxisAlignment.spaceBetween,
     children: <Widget>[
 
-      Text("CMB",
+      Text(flight.originShort,
       textAlign:TextAlign.center,
           style:TextStyle(
           fontSize:25,
@@ -449,7 +448,7 @@ Widget _origin(){
       ),
 
       Text(
-        "Colombo,Sri Lanka",
+        flight.originLong,
         style:TextStyle(
           color:Colors.blue[900],
           fontFamily:'Oxygen',
@@ -469,7 +468,7 @@ Widget _destination(){
    // mainAxisAlignment:MainAxisAlignment.spaceBetween,
     children: <Widget>[
 
-      Text("SFO",
+      Text(flight.destinationShort,
       textAlign:TextAlign.center,
         style:TextStyle(
           fontSize:25,
@@ -479,7 +478,7 @@ Widget _destination(){
       ),
 
           Text(
-        "San Fran Sisco,USA",
+        flight.destinationLong,
          textAlign:TextAlign.center,
         style:TextStyle(
            color:Colors.blue[900],
@@ -605,4 +604,14 @@ Widget _renderIcons(String terminal,String gate){
 
     ],
   );
+  }
+
+
+
+
+
+
+
 }
+
+
