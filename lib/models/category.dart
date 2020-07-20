@@ -7,6 +7,8 @@ class Category {
   final IconData icon;
 
   Category({this.categoryId, this.name, this.icon});
+
+
 }
 
 final sheduledFlights = Category(

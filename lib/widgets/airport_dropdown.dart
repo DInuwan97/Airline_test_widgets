@@ -80,6 +80,7 @@ class _AirportDropdownState extends State<AirportDropdown> {
                       hint: new Text("Select Bank"),
                       value: _selected,
                       onChanged: (String newValue) {
+                        
                         setState(() {
                           _selected = newValue;
                         });

@@ -42,7 +42,7 @@ class SingleTrip extends StatelessWidget {
         body:Provider<SheduledOnewayFlight>.value(
           value:flight,
           child:Stack(
-            fit:StackFit.expand,
+            //fit:StackFit.expand,
 
               children: <Widget>[
                 SafeArea(
