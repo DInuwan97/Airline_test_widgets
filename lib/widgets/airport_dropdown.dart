@@ -51,18 +51,7 @@ class _AirportDropdownState extends State<AirportDropdown> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-        title:Text('Airports',
-          style:TextStyle(
-            fontSize:15.0
-          )
-        ),
-
-      ),
-      drawer: SideNavigationDrawer(),
-
-      body:Center(
+    return Center(
             child: Container(
           padding: EdgeInsets.all(15),
           decoration: BoxDecoration(
@@ -76,11 +65,11 @@ class _AirportDropdownState extends State<AirportDropdown> {
                   child: ButtonTheme(
                     alignedDropdown: true,
                     child: DropdownButton<String>(
-                      isDense: true,
-                      hint: new Text("Select Bank"),
+                      //isDense: true,
+                      //hint: new Text("Select Bank"),
                       value: _selected,
                       onChanged: (String newValue) {
-                        
+
                         setState(() {
                           _selected = newValue;
                         });
@@ -111,7 +100,7 @@ class _AirportDropdownState extends State<AirportDropdown> {
             ],
           ),
         )
-      )
-    );
+      );
+    
   }
 }
