@@ -23,6 +23,7 @@ environment:
 dependencies:
   gradient_app_bar: ^0.0.1
   flip_card: ^0.4.4
+  fancy_alert_dialog: ^0.0.1
   flutter:
     sdk: flutter
 
