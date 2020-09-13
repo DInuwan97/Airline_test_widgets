@@ -24,40 +24,37 @@
          
 //           child: RaisedButton(
 //             color:Colors.grey[200].withOpacity(0.1),
-//            // padding: EdgeInsets.symmetric(vertical:5),
+//             padding: EdgeInsets.symmetric(vertical:5),
 //               elevation: 0,
 //               shape: RoundedRectangleBorder(
 //                                 borderRadius: new BorderRadius.circular(8.0),
-//                                 //side: BorderSide(color: Colors.deepPurple[900]),
+//                                 side: BorderSide(color: Colors.deepPurple[900]),
 //                               ),
-//             //splashColor: Colors.blue[200],
-//             //animationDuration: Duration(seconds: 2),
-//             //colorBrightness: Brightness.dark,
+//             splashColor: Colors.blue[200],
+//             animationDuration: Duration(seconds: 2),
+//             colorBrightness: Brightness.dark,
 //             child: _origin(placeWhere,airportShort,airportLong),
 //             onPressed: () {
-//               // FancyAlertDialog.showFancyAlertDialog(
-//               //   context,
-//               //   'Info Fancy Alert Dialog Box',
-//               //   'This is a info alert dialog box. This plugin is used to help you easily create fancy dialog',
-//               //   Colors.blue,
-//               //   icon: Icon(
-//               //     Icons.flight,
-//               //     color: Colors.white,
-//               //   ),
-//               //   labelPositiveButton: 'OK',
-//               //   onTapPositiveButton: () {
-//               //     Navigator.pop(context);
-//               //     print('tap positive button');
-//               //   },
-//               //   labelNegativeButton: 'Cancel',
-//               //   onTapNegativeButton: () {
-//               //     Navigator.pop(context);
-//               //     print('tap negative button');
-//               //   },
-//               // );
-
-
-
+//               FancyAlertDialog.showFancyAlertDialog(
+//                 context,
+//                 'Info Fancy Alert Dialog Box',
+//                 'This is a info alert dialog box. This plugin is used to help you easily create fancy dialog',
+//                 Colors.blue,
+//                 icon: Icon(
+//                   Icons.flight,
+//                   color: Colors.white,
+//                 ),
+//                 labelPositiveButton: 'OK',
+//                 onTapPositiveButton: () {
+//                   Navigator.pop(context);
+//                   print('tap positive button');
+//                 },
+//                 labelNegativeButton: 'Cancel',
+//                 onTapNegativeButton: () {
+//                   Navigator.pop(context);
+//                   print('tap negative button');
+//                 },
+//               );
 
 //             }
 //           )

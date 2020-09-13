@@ -18,5 +18,15 @@ final List<AirportList> airportListDetails =[
     airportId:2,
     shortName:"JKF",
     longName:"New York City,USA"
+  ),
+  AirportList(
+    airportId:2,
+    shortName:"CHN",
+    longName:"Chennai,India"
+  ),
+  AirportList(
+    airportId:2,
+    shortName:"MTL",
+    longName:"Mattala,Sri Lanka"
   )
 ];

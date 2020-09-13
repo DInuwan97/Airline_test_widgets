@@ -77,7 +77,7 @@ final sheduledOnwayFlight3 = SheduledOnewayFlight(
 final sheduledFlights = [
   sheduledOnwayFlight1,
   sheduledOnwayFlight2,
- // sheduledOnwayFlight3
+  sheduledOnwayFlight3
 
 ];
 

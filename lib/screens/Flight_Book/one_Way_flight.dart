@@ -53,6 +53,13 @@ class BookOneWayFlight extends StatelessWidget {
                       alignment: Alignment.center,
                       width:MediaQuery.of(context).size.width * 0.94,
                       height:100.0,
+                      child:Column(
+                        children: <Widget>[
+                        Text(
+                          'Select Date'
+                        )
+                      ],
+                      ),
                       decoration: BoxDecoration(
                         color:Colors.orange,
                         borderRadius: BorderRadius.all(

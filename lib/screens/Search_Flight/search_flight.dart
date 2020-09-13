@@ -7,7 +7,9 @@ import 'package:myapp1/screens/Search_Flight/search_flight_model/one_Way_search.
 import 'package:myapp1/screens/Search_Flight/search_flight_model/search_category.dart';
 import 'package:myapp1/screens/Search_Flight/search_flight_model/search_flight_container_data.dart';
 import 'package:myapp1/screens/Search_Flight/search_flight_model/two_way_selector_date.dart';
+import 'package:myapp1/screens/Search_Flight/widgets/CalenderPopup/calender_pop_up.dart';
 import 'package:myapp1/screens/Search_Flight/widgets/OneWay/ariport_selectore_dropdown.dart';
+import 'package:myapp1/screens/Search_Flight/widgets/PassengerClassSelection/PassengersClassSelection.dart';
 import 'package:myapp1/screens/Search_Flight/widgets/search_flight_categories.dart';
 import 'package:provider/provider.dart';
 
@@ -15,17 +17,24 @@ import '../../app_state.dart';
 import '../side_screen_drawer.dart';
 import 'background_ui/search_flight_background.dart';
 
-  
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_rounded_date_picker/rounded_picker.dart';
+
+import 'package:myapp1/screens/Search_Flight/search_flight_model/search_category.dart';
 
 class FlightSearch extends StatelessWidget {
-const FlightSearch({Key key}) : super(key: key);
+    
+
+
+final Category category;   
+const FlightSearch({Key key, this.category}) : super(key: key);
 
 
   @override
   Widget build(BuildContext context) {
 
 
-print("The key is $key");
+
 final TextStyle fadedTextStyle = TextStyle(
   fontSize: 16.0,
   fontWeight: FontWeight.bold,
@@ -126,17 +135,25 @@ final TextStyle whiteHeadingTextStyle = TextStyle(
                              
                               children: <Widget>[
                                 
-                                      for(final aiports in airportDetail.where((e) =>  e.containerIds.contains(appState.selectedCategoryId))) 
+                                      //for(final aiports in airportDetail.where((e) =>  e.containerIds.contains(appState.selectedCategoryId))) 
                                        GestureDetector(
-                                          onTap:(){},
+                                          onTap:(){
+                                            print(appState.selectedCategoryId);
+                                          },
                                           child:_airpotDetailsContainer(context)
                                        ),
 
+                                       
+                                      
                                        GestureDetector(
-                                        child: _dateResevation(context,appState)
+                                       // child: (category.categoryId == 0)  ? _dateResevation(context,appState) : _dateResevation(context,appState)
+                                       child: (appState.selectedCategoryId == 0) ? _oneDateResevation(context,appState) : _twoDateResevation(context,appState)
                                        ),
 
-                                      for(final bookingclasses in bookingDetail.where((e) =>  e.containerIds.contains(appState.selectedCategoryId))) 
+
+
+
+                                     // for(final bookingclasses in bookingDetail.where((e) =>  e.containerIds.contains(appState.selectedCategoryId))) 
                                        GestureDetector(   
                                           onTap:(){},                                
                                           child:_bookingClassReservation(context)                                        
@@ -173,7 +190,7 @@ Widget _airpotDetailsContainer(BuildContext context){
                         
         alignment: Alignment.center,
         width:MediaQuery.of(context).size.width * 0.9,
-        height:130.0,
+        height:125.0,
         decoration: BoxDecoration(
           color:Colors.grey[200].withOpacity(0.85),
           borderRadius: BorderRadius.all(
@@ -188,7 +205,7 @@ Widget _airpotDetailsContainer(BuildContext context){
               Row(
                 children: <Widget>[
            
-                    OneWayAirportSelector(placeWhere:"From",airportShort:airportListDetails[1].shortName,airportLong:"Colombo,Sri Lanka"),
+                    OneWayAirportSelector(placeWhere:"From",airportShort:"CMB",airportLong:"Colombo,Sri Lanka"),
                     Spacer(),
                     _flightRouteConection(),
                     Spacer(),
@@ -223,7 +240,7 @@ Widget _bookingClassReservation(BuildContext context){
         width:MediaQuery.of(context).size.width * 0.9,
         height:80.0,
         decoration: BoxDecoration(
-          color:Colors.green[200].withOpacity(0.85),
+           color:Colors.grey[200],
           borderRadius: BorderRadius.all(
           Radius.circular(8)
         ),
@@ -235,6 +252,7 @@ Widget _bookingClassReservation(BuildContext context){
             Container(
               alignment: Alignment.topLeft,
              // child:OneWayAirportSelector()
+             child:PassengersClassSelection()
             )
             
           ],
@@ -247,56 +265,66 @@ Widget _bookingClassReservation(BuildContext context){
 }
 
 
-Widget _dateResevation(context,appState){
+Widget _oneDateResevation(context,appState){
  return Padding(
     padding: const EdgeInsets.symmetric(horizontal:8.0),
     child: Column(
       children: <Widget>[
       SizedBox(height:10),
       Container(
-                        
+
+
+        child:_onewaydate(context,appState),
+
+                   
         alignment: Alignment.center,
         width:MediaQuery.of(context).size.width * 0.9,
-        height:90.0,
+        height:100.0,
+
+
         decoration: BoxDecoration(
-          color:Colors.orange.withOpacity(0.85),
+          color:Colors.white.withOpacity(0.5),
           borderRadius: BorderRadius.all(
-          Radius.circular(8)
+            Radius.circular(8)  
+          ),
         ),
 
+
+              
+      )
+    ],
+    ),
+  );
+}
+
+
+
+
+Widget _twoDateResevation(context,appState){
+ return Padding(
+    padding: const EdgeInsets.symmetric(horizontal:8.0),
+    child: Column(
+      children: <Widget>[
+      SizedBox(height:10),
+      Container(
+
+
+        child:_twowaydate(context,appState),
+
+                   
+        alignment: Alignment.center,
+        width:MediaQuery.of(context).size.width * 0.9,
+        height:100.0,
+
+
+        decoration: BoxDecoration(
+          color:Colors.white.withOpacity(0.5),
+          borderRadius: BorderRadius.all(
+            Radius.circular(8)  
+          ),
         ),
 
-        child:Column(
-          children: <Widget>[
-            
-            Row(
-              children: <Widget>[
 
-
-                for(final oneWayDate in oneWayDepartureDetail.where((e) =>  e.containerIds.contains(appState.selectedCategoryId))) 
-                Column(
-                  children: <Widget>[
-                    // OneWayAirportSelector()
-                  ],
-                ),
-
-
-                for(final oneWayDate in twoWayDepartureDetail.where((e) =>  e.containerIds.contains(appState.selectedCategoryId))) 
-                Column(
-                  children: <Widget>[
-                    // OneWayAirportSelector()
-                  ],
-                )
-
-
-              ],
-            )
-
-             
-            
-            
-          ],
-        )
               
       )
     ],
@@ -321,7 +349,7 @@ Transform.rotate(
     icon: Icon(
       Icons.flight,
        color:Colors.blue[900],
-      size:35
+      size:40
     ),
     onPressed: null,
   ),
@@ -330,5 +358,90 @@ Transform.rotate(
 
     ]
 
+  );
+
+}
+
+
+Widget _onewaydate(context,appState){
+  return Row(
+    mainAxisAlignment:MainAxisAlignment.center,
+    children: <Widget>[
+      Container(
+        padding:EdgeInsets.symmetric(horizontal:0, vertical:MediaQuery.of(context).size.height * 0.009),
+        child:Column(
+          children: <Widget>[
+          
+          
+         Text(
+              'Departure Date',
+              style:TextStyle(
+                fontSize:13.5,
+                fontWeight:FontWeight.bold,
+                fontFamily:'Arial'
+              )
+            ),
+
+            CalenderPopUp()
+
+          ],
+        )
+      )
+    ]
+  );
+}
+
+
+
+
+Widget _twowaydate(context,appState){
+  return Row(
+    mainAxisAlignment:MainAxisAlignment.center,
+    children: <Widget>[
+      Container(
+        padding:EdgeInsets.symmetric(vertical:MediaQuery.of(context).size.height * 0.009),
+        child:Column(
+          children: <Widget>[
+           
+         Text(
+              'Departure Date',
+              style:TextStyle(
+                fontSize:13.5,
+                fontWeight:FontWeight.bold,
+                fontFamily:'Arial'
+              )
+            ),
+
+            CalenderPopUp()
+
+          ],
+        )
+      ),
+
+
+      SizedBox(width:MediaQuery.of(context).size.width * 0.25),
+
+      Container(
+        padding:EdgeInsets.symmetric(vertical:MediaQuery.of(context).size.height * 0.009),
+        child:Column(
+          children: <Widget>[
+            
+         Text(
+              'Arrival Date',
+              style:TextStyle(
+                fontSize:13.5,
+                fontWeight:FontWeight.bold,
+                fontFamily:'Arial'
+              )
+            ),
+
+             CalenderPopUp()
+
+          ],
+        )
+      )
+
+
+    ]
   );
 }
