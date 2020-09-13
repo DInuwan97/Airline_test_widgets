@@ -12,25 +12,55 @@ class _PassengersClassSelectionState extends State<PassengersClassSelection> {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        SizedBox(height:10),
-           RaisedButton(
-             color:Colors.grey[200],
-             elevation: 0,
-                child: Container(
-                width:MediaQuery.of(context).size.width,
-                height:MediaQuery.of(context).size.height * 0.09,
-                color:Colors.grey[200],
-                  
-              //padding: const EdgeInsets.all(10.0),
-              child:
-                  const Text('Gradient Button', style: TextStyle(fontSize: 20)),
-            ),
-              onPressed:(){
-                SelectDialog.showModal<String>(
-                  context
-                );
-              }
+        SizedBox(height:10,width:10),
+           Padding(
+             padding: const EdgeInsets.symmetric(horizontal:8),
+             child: RaisedButton(
+               color:Colors.grey[200],
+               elevation: 0,
+                  child: Container(
+                  margin: EdgeInsets.symmetric(horizontal:8),
+                  width:MediaQuery.of(context).size.width,
+                  height:MediaQuery.of(context).size.height * 0.09,
+                  color:Colors.grey[200],
+                    
+                //padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  children: <Widget>[
+                    SizedBox(height:1.0),
+                    Text( 
+                      '01 Adult in', 
+                      textAlign:TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 17,
+                        fontWeight:FontWeight.bold,
+                    ),
+                ),
 
+                SizedBox(height:7.0),
+
+                Text( 
+                      'BUSINESS CLASS', 
+                      textAlign:TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight:FontWeight.bold,
+                        fontFamily:'Arial'
+                    ),
+
+                )
+                ]
+                )
+
+        
+              ),
+                onPressed:(){
+                  SelectDialog.showModal<String>(
+                    context
+                  );
+                }
+
+             ),
            )
 
       ]

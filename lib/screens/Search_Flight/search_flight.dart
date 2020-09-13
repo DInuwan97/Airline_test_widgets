@@ -157,11 +157,36 @@ final TextStyle whiteHeadingTextStyle = TextStyle(
                                        GestureDetector(   
                                           onTap:(){},                                
                                           child:_bookingClassReservation(context)                                        
-                                       )
+                                       ),
+
+
+
+                                    Padding(
+                                      padding:EdgeInsets.symmetric(vertical:MediaQuery.of(context).size.height * 0.04,horizontal:MediaQuery.of(context).size.width * 0.025),
+                                      child: Row(
+                                        
+                                        children: <Widget>[
+                                        
+                                               Column(
+                                                
+                                                 children: <Widget>[
+                                                   
+                                                   _resetButton(Icons.restore,context,"RESET")
+                                                 ],
+                                               ),
+                                                Spacer(),
+                                                //SizedBox(width:MediaQuery.of(context).size.width * 0.2),
+                                                Column(
+                                                 children: <Widget>[
+                                                   _resetButton(Icons.search,context,"SEARCH")
+                                                 ],
+                                               )
+                                        ],
+                                      ),
+                                    )
                                    
                                   
                               ],
-
                             ),
                                                 
                           ),
@@ -194,7 +219,7 @@ Widget _airpotDetailsContainer(BuildContext context){
         decoration: BoxDecoration(
           color:Colors.grey[200].withOpacity(0.85),
           borderRadius: BorderRadius.all(
-          Radius.circular(8)
+          Radius.circular(20)
         ),
 
         ),
@@ -237,12 +262,12 @@ Widget _bookingClassReservation(BuildContext context){
       Container(
                         
         alignment: Alignment.center,
-        width:MediaQuery.of(context).size.width * 0.9,
+        width:MediaQuery.of(context).size.width,
         height:80.0,
         decoration: BoxDecoration(
            color:Colors.grey[200],
           borderRadius: BorderRadius.all(
-          Radius.circular(8)
+          Radius.circular(20)
         ),
 
         ),
@@ -250,7 +275,7 @@ Widget _bookingClassReservation(BuildContext context){
         child:Column(
           children: <Widget>[
             Container(
-              alignment: Alignment.topLeft,
+              alignment: Alignment.center,
              // child:OneWayAirportSelector()
              child:PassengersClassSelection()
             )
@@ -285,7 +310,7 @@ Widget _oneDateResevation(context,appState){
         decoration: BoxDecoration(
           color:Colors.white.withOpacity(0.5),
           borderRadius: BorderRadius.all(
-            Radius.circular(8)  
+            Radius.circular(20)  
           ),
         ),
 
@@ -444,4 +469,54 @@ Widget _twowaydate(context,appState){
 
     ]
   );
+}
+
+
+Widget _resetButton(IconData iconName,context,String btnName){
+       return RaisedButton(
+            onPressed: () {
+
+            },
+                padding:EdgeInsets.symmetric(horizontal:MediaQuery.of(context).size.width * 0.0005,vertical:8),
+
+                            child: Padding(
+                              padding:EdgeInsets.symmetric(horizontal:MediaQuery.of(context).size.width * 0.04,vertical:2),
+                              child: Column(
+                                children: <Widget>[
+
+                                  Row(
+                                    children: <Widget>[
+
+                                     Icon(
+                                      iconName,
+                                      size:30
+                                     ),
+
+                                     SizedBox(width:5),
+                                     
+                                     Text(
+                                      btnName, 
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight:FontWeight.bold,
+                                      )
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+
+                              elevation:10.0,
+                              color: Colors.deepPurple[900],
+                              splashColor: Colors.blue[200],
+                              animationDuration: Duration(seconds: 2),
+                              colorBrightness: Brightness.dark,
+
+                              shape: RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(15),
+                                side: BorderSide(color: Colors.deepPurple[900]),
+                              )
+
+                             );
 }
