@@ -345,7 +345,7 @@ Widget _twoDateResevation(context,appState){
         decoration: BoxDecoration(
           color:Colors.white.withOpacity(0.5),
           borderRadius: BorderRadius.all(
-            Radius.circular(8)  
+            Radius.circular(20)  
           ),
         ),
 

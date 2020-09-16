@@ -69,19 +69,27 @@ class _OneWayAirportSelectorState extends State<OneWayAirportSelector> {
                       decoration: !isSelected
                           ? null
                           : BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
+                              borderRadius: BorderRadius.circular(10),
                               color: Colors.blue[100],
-                              border: Border.all(
-                                color: Theme.of(context).primaryColor,
-                              ),
+                             
                             ),
                       child: ListTile(
-                        leading: Icon(
-                         Icons.flight
-                        ),
+                     
                         selected: isSelected,
-                        title: Text(item.shortName),
-                        subtitle: Text(item.longName),
+                        title: Text(
+                          item.shortName,
+                          style:TextStyle (
+                            fontWeight:FontWeight.bold,
+                            fontFamily: 'Arial',
+                            fontSize:20
+                          )
+                        ),
+                        subtitle: Text(
+                          item.longName,
+                          style: TextStyle(
+                            fontWeight:FontWeight.bold
+                          )
+                        ),
                       ),
                     );
                   },

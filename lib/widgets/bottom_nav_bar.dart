@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myapp1/screens/Flight_Book/flight_book.dart';
 import 'package:myapp1/screens/Search_Flight/search_flight.dart';
 import 'package:myapp1/screens/sheduled_flight_list.dart';
-
+import 'package:myapp1/screens/Offers/AirlineOffers.dart';
 
 class BottomNavBar extends StatefulWidget {
   @override
@@ -24,17 +24,18 @@ class _BottomNavBarState extends State<BottomNavBar> {
     ),
 
 
-    SearchFlight( 
-       key: PageStorageKey('Page1'),
+    FlightSearch(
+      key: PageStorageKey('Page1'),
     ),
 
+
     SheduledFlightsList(
-      key: PageStorageKey('Page2'),
+      key: PageStorageKey('Page3'),
     ),
 
  
-    FlightSearch(
-      key: PageStorageKey('Page3'),
+    AirlineOffers( 
+       key: PageStorageKey('Page2'),
     ),
    
     Text(
@@ -98,9 +99,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
             ),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.store_mall_directory),
+            icon: Icon(Icons.local_offer),
             title: Text(
-              'My Trips',
+              'Offers',
                style:TextStyle(
                  fontSize:10.0,
                  fontWeight:FontWeight.bold
