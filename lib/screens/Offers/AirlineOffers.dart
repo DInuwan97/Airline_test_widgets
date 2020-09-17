@@ -61,10 +61,11 @@ int _currentTab = 0;
       appBar: AppBar(
         title: Text('Offers',
           style:TextStyle(
-            fontSize:15.0
+            fontSize:20.0
           )
         )
       ),
+      drawer: SideNavigationDrawer(),
       body:SafeArea(
         child:ListView(
           padding:EdgeInsets.symmetric(vertical:20.0),
@@ -91,20 +92,15 @@ int _currentTab = 0;
             ).toList()
           ),
           SizedBox(height:20.0),
-          // Container(
-          //   height:1000.0,
-          //    decoration: BoxDecoration(
-          //         color:Colors.blue[200].withOpacity(0.85),
-          //         borderRadius: BorderRadius.all(
-          //           Radius.circular(20)
-          //         ),
-          //      ),
-          // ),
           OffersCarousel(),
           SizedBox(height: 20.0,)
 
           ],
         )
+
+
+
+
       )
     );
   }

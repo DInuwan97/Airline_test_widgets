@@ -31,25 +31,25 @@ class OffersCarousel extends StatelessWidget {
               )
             ),
 
-           
+           OfferWidget()
 
 
-            Container(
-              //height:500.0,
+            // Container(
+            //   //height:500.0,
 
-                // decoration: BoxDecoration(
-                //   color:Colors.blue[400].withOpacity(0.85),
-                //   borderRadius: BorderRadius.all(
-                //     Radius.circular(20)
-                //   ),
-                // ),
+            //     // decoration: BoxDecoration(
+            //     //   color:Colors.blue[400].withOpacity(0.85),
+            //     //   borderRadius: BorderRadius.all(
+            //     //     Radius.circular(20)
+            //     //   ),
+            //     // ),
 
-                child:GestureDetector(
-                   onTap:(){},                                
-                   child:OfferWidget()
+            //     child:GestureDetector(
+            //        onTap:(){},                                
+            //        child:OfferWidget()
                 
-                )
-            )
+            //     )
+            // )
 
         ],  
       ),
