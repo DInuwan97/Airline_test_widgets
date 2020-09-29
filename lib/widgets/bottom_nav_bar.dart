@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp1/screens/Flight_Book/flight_book.dart';
+import 'package:myapp1/screens/HomePage.dart';
 import 'package:myapp1/screens/Search_Flight/search_flight.dart';
 import 'package:myapp1/screens/sheduled_flight_list.dart';
 import 'package:myapp1/screens/Offers/AirlineOffers.dart';
@@ -20,9 +21,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
   );
 
   final List<Widget> _widgetOptions = [
-    Text(
-      'Index 0: Home1',
-      style: optionStyle,
+    HomePage(
+      key: PageStorageKey('Homepage'),
     ),
     FlightSearch(
       key: PageStorageKey('Page1'),
@@ -32,10 +32,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
     ),
     AirlineOffers(
       key: PageStorageKey('Page2'),
-    ),
-    Text(
-      'Index 2: Flight Status',
-      style: optionStyle,
     ),
   ];
 
@@ -51,40 +47,45 @@ class _BottomNavBarState extends State<BottomNavBar> {
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text('Home',
-                style: TextStyle(
-                  fontSize: 10.0,
-                  fontWeight: FontWeight.bold,
-                )),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            title: Text('Seach Flights',
-                style: TextStyle(fontSize: 10.0, fontWeight: FontWeight.bold)),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.airplanemode_active),
-            title: Text('Flight Status',
-                style: TextStyle(fontSize: 10.0, fontWeight: FontWeight.bold)),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.local_offer),
-            title: Text('Offers',
-                style: TextStyle(fontSize: 10.0, fontWeight: FontWeight.bold)),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.menu),
-            title: Text('More',
-                style: TextStyle(fontSize: 10.0, fontWeight: FontWeight.bold)),
-          )
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue[900],
-        onTap: _onItemTapped,
+      bottomNavigationBar: new Theme(
+        data: Theme.of(context).copyWith(
+          canvasColor: Color.fromRGBO(240, 245, 248, 1),
+        ),
+        child: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              title: Text('Home',
+                  style: TextStyle(
+                    fontSize: 10.0,
+                    fontWeight: FontWeight.bold,
+                  )),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.search),
+              title: Text('Seach Flights',
+                  style:
+                      TextStyle(fontSize: 10.0, fontWeight: FontWeight.bold)),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.airplanemode_active),
+              title: Text('Flight Status',
+                  style:
+                      TextStyle(fontSize: 10.0, fontWeight: FontWeight.bold)),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.local_offer),
+              title: Text('Offers',
+                  style:
+                      TextStyle(fontSize: 10.0, fontWeight: FontWeight.bold)),
+            ),
+          ],
+          currentIndex: _selectedIndex,
+          backgroundColor: Colors.red,
+          selectedItemColor: Colors.lightBlue[900],
+          onTap: _onItemTapped,
+          unselectedItemColor: Colors.lightBlue[300],
+        ),
       ),
     );
   }
