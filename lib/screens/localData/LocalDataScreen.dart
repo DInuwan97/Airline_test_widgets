@@ -26,6 +26,7 @@ class _LocalDataScreenState extends State<LocalDataScreen> {
                 'Edit Your Local Data',
                 style: TextStyle(
                   fontSize: 15,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
               actions: [
@@ -35,7 +36,7 @@ class _LocalDataScreenState extends State<LocalDataScreen> {
                     'Save',
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 16,
+                      fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -44,16 +45,31 @@ class _LocalDataScreenState extends State<LocalDataScreen> {
               bottom: TabBar(tabs: [
                 Container(
                   padding: EdgeInsets.symmetric(vertical: 10),
-                  child: Text('Personal Data'),
+                  child: Text(
+                    'Personal Data',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
                 Container(
                   padding: EdgeInsets.symmetric(vertical: 10),
-                  child: Text('Document'),
+                  child: Text(
+                    'Document',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
                 Container(
                   padding: EdgeInsets.symmetric(vertical: 10),
                   child: FittedBox(
-                    child: Text('Contact & More'),
+                    child: Text(
+                      'Contact & More',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                 )
               ]),
