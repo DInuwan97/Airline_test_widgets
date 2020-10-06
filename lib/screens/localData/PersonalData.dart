@@ -106,7 +106,7 @@ class _PersonalDataState extends State<PersonalData> {
                     );
                   }).toList(),
                   iconEnabledColor: Colors.black54,
-                  dropdownColor: Colors.white,
+                 // dropdownColor: Colors.white,
                   decoration: InputDecoration(
                     contentPadding:
                         EdgeInsets.only(left: 22, top: 0, right: 10, bottom: 0),

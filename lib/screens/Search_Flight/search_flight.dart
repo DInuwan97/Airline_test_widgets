@@ -52,152 +52,151 @@ final TextStyle whiteHeadingTextStyle = TextStyle(
 
     return Scaffold(
           appBar: AppBar(
-            title: Text('Search Flight',
+            title: Text('Search Flights',
               style:TextStyle(
                 fontSize:18
               )
             ),
             elevation: 0.0,
+            flexibleSpace: Container(
+            decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.blueAccent,Colors.blue[600],Colors.blue[300]],
+            ),
+          ),
+            )
           ),
 
           drawer: SideNavigationDrawer(),
 
-          backgroundColor:Colors.blue[900],
-          body:ChangeNotifierProvider<AppState>(
-              create:(_) => AppState(),
-              child:Stack(
-                children: <Widget>[
-                  SearchFlightBackground(screenHeight:MediaQuery.of(context).size.height * 0.6),
+          body:Container(
+            height:MediaQuery.of(context).size.height * 1,
+            decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.lightBlue, Colors.blue[900],Colors.blue[800],Colors.blueAccent,Colors.blue[500]],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              tileMode: TileMode.clamp,
+            ),
+          ),
 
-                  SafeArea(
-                     child:SingleChildScrollView(
-                        child:Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
+                child: ChangeNotifierProvider<AppState>(
+                create:(_) => AppState(),
+                child:Stack(
+                  children: <Widget>[
+                    SearchFlightBackground(screenHeight:MediaQuery.of(context).size.height * 0.6),
 
-                        //         Padding(
-                        //   padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                        //   child: Row(
-                        //    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //     children: <Widget>[
-                        //         Text(
-                        //           'How are you booking ? ',
-                        //            style:fadedTextStyle
-                        //         ),
-                        //         Spacer(),
+                    SafeArea(
+                       child:SingleChildScrollView(
+                          child:Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[
+
+         
+                          
+                          Padding(
+                            //padding: EdgeInsets.symmetric(vertical:24.0,horizontal:MediaQuery.of(context).size.height * 0.04),
+                             padding: EdgeInsets.symmetric(vertical:0.0,horizontal:10),
+                            child: Consumer<AppState>(
+                              builder:(context,appState,_)=>
+
+                               SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                
+                                child:Row(
+                                 
+                                  children: <Widget>[
+                                      //SizedBox(width:MediaQuery.of(context).size.height * 0.5),
+                                      for(final category in categories) SearchFlightCategory(category:category)
+                                  ],
+                                )
+                               ),
+
+
+                            ),
+                          ),
+
+
+                            // SingleChildScrollView(
+                            //   child:Column(
+                            //     children: <Widget>[
                                   
-                        //         Icon(
-                        //           Icons.radio_button_checked,
-                        //           color:Color(0x99FFFFFF),
-                        //           size:30
-                        //         )
-                        //     ],
-                        //     ),
-                        // ),
+                            //     ],
+                            //   )
+                            // ),
 
-                        
-                        Padding(
-                          //padding: EdgeInsets.symmetric(vertical:24.0,horizontal:MediaQuery.of(context).size.height * 0.04),
-                           padding: EdgeInsets.symmetric(vertical:0.0,horizontal:10),
-                          child: Consumer<AppState>(
-                            builder:(context,appState,_)=>
-
-                             SingleChildScrollView(
-                              scrollDirection: Axis.horizontal,
-                              
-                              child:Row(
+                            Padding(
+                            padding:const EdgeInsets.symmetric(horizontal: 16.0),
+                            child: Consumer<AppState>(
+                              builder:(context, appState,_) =>  Column(
                                
                                 children: <Widget>[
-                                    //SizedBox(width:MediaQuery.of(context).size.height * 0.5),
-                                    for(final category in categories) SearchFlightCategory(category:category)
-                                ],
-                              )
-                             ),
-
-
-                          ),
-                        ),
-
-
-                          // SingleChildScrollView(
-                          //   child:Column(
-                          //     children: <Widget>[
-                                
-                          //     ],
-                          //   )
-                          // ),
-
-                          Padding(
-                          padding:const EdgeInsets.symmetric(horizontal: 16.0),
-                          child: Consumer<AppState>(
-                            builder:(context, appState,_) =>  Column(
-                             
-                              children: <Widget>[
-                                
-                                      //for(final aiports in airportDetail.where((e) =>  e.containerIds.contains(appState.selectedCategoryId))) 
-                                       GestureDetector(
-                                          onTap:(){
-                                            print(appState.selectedCategoryId);
-                                          },
-                                          child:_airpotDetailsContainer(context)
-                                       ),
-
-                                       
-                                      
-                                       GestureDetector(
-                                       // child: (category.categoryId == 0)  ? _dateResevation(context,appState) : _dateResevation(context,appState)
-                                       child: (appState.selectedCategoryId == 0) ? _oneDateResevation(context,appState) : _twoDateResevation(context,appState)
-                                       ),
-
-
-
-
-                                     // for(final bookingclasses in bookingDetail.where((e) =>  e.containerIds.contains(appState.selectedCategoryId))) 
-                                       GestureDetector(   
-                                          onTap:(){},                                
-                                          child:_bookingClassReservation(context)                                        
-                                       ),
-
-
-
-                                    Padding(
-                                      padding:EdgeInsets.symmetric(vertical:MediaQuery.of(context).size.height * 0.04,horizontal:MediaQuery.of(context).size.width * 0.025),
-                                      child: Row(
-                                        
-                                        children: <Widget>[
-                                        
-                                               Column(
-                                                
-                                                 children: <Widget>[
-                                                   
-                                                   _resetButton(Icons.restore,context,"RESET")
-                                                 ],
-                                               ),
-                                                Spacer(),
-                                                //SizedBox(width:MediaQuery.of(context).size.width * 0.2),
-                                                Column(
-                                                 children: <Widget>[
-                                                   _resetButton(Icons.search,context,"SEARCH")
-                                                 ],
-                                               )
-                                        ],
-                                      ),
-                                    )
-                                   
                                   
-                              ],
+                                        //for(final aiports in airportDetail.where((e) =>  e.containerIds.contains(appState.selectedCategoryId))) 
+                                         GestureDetector(
+                                            onTap:(){
+                                              print(appState.selectedCategoryId);
+                                            },
+                                            child:_airpotDetailsContainer(context)
+                                         ),
+
+                                         
+                                        
+                                         GestureDetector(
+                                         // child: (category.categoryId == 0)  ? _dateResevation(context,appState) : _dateResevation(context,appState)
+                                         child: (appState.selectedCategoryId == 0) ? _oneDateResevation(context,appState) : _twoDateResevation(context,appState)
+                                         ),
+
+
+
+
+                                       // for(final bookingclasses in bookingDetail.where((e) =>  e.containerIds.contains(appState.selectedCategoryId))) 
+                                         GestureDetector(   
+                                            onTap:(){},                                
+                                            child:_bookingClassReservation(context)                                        
+                                         ),
+
+
+
+                                      Padding(
+                                        padding:EdgeInsets.symmetric(vertical:MediaQuery.of(context).size.height * 0.04,horizontal:MediaQuery.of(context).size.width * 0.025),
+                                        child: Row(
+                                          
+                                          children: <Widget>[
+                                          
+                                                 Column(
+                                                  
+                                                   children: <Widget>[
+                                                     
+                                                     _resetButton(Icons.restore,context,"Reset")
+                                                   ],
+                                                 ),
+                                                  Spacer(),
+                                                  //SizedBox(width:MediaQuery.of(context).size.width * 0.2),
+                                                  Column(
+                                                   children: <Widget>[
+                                                     _resetButton(Icons.search,context,"Search")
+                                                   ],
+                                                 )
+                                          ],
+                                        ),
+                                      )
+                                     
+                                    
+                                ],
+                              ),
+                                                  
                             ),
-                                                
-                          ),
-                        )
-                        
-                      ]
+                          )
+                          
+                        ]
+                       )
                      )
-                   )
-                  )
-                ]
-              )
+                    )
+                  ]
+                )
+            ),
           )
 
     );
@@ -207,7 +206,7 @@ final TextStyle whiteHeadingTextStyle = TextStyle(
 
 Widget _airpotDetailsContainer(BuildContext context){
   return Padding(
-    padding: const EdgeInsets.symmetric(horizontal:8.0),
+    padding: const EdgeInsets.symmetric(horizontal:5.0),
     child: Column(
       children: <Widget>[
       SizedBox(height:50),
@@ -216,13 +215,18 @@ Widget _airpotDetailsContainer(BuildContext context){
         alignment: Alignment.center,
         width:MediaQuery.of(context).size.width * 0.9,
         height:125.0,
-        decoration: BoxDecoration(
-          color:Colors.grey[200].withOpacity(0.85),
-          borderRadius: BorderRadius.all(
-          Radius.circular(20)
-        ),
 
-        ),
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.white70,Colors.white],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              tileMode: TileMode.clamp,
+            ),
+            borderRadius: BorderRadius.all(
+                Radius.circular(20)
+            ),
+          ),
 
         child:Column(
           children: <Widget>[
@@ -272,6 +276,8 @@ Widget _bookingClassReservation(BuildContext context){
 
         ),
 
+        
+
         child:Column(
           children: <Widget>[
             Container(
@@ -307,12 +313,19 @@ Widget _oneDateResevation(context,appState){
         height:100.0,
 
 
-        decoration: BoxDecoration(
-          color:Colors.white.withOpacity(0.5),
-          borderRadius: BorderRadius.all(
+
+
+            decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.white, Colors.white60,Colors.white70],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+             // tileMode: TileMode.clamp,
+            ),
+               borderRadius: BorderRadius.all(
             Radius.circular(20)  
           ),
-        ),
+          ),
 
 
               
@@ -342,12 +355,18 @@ Widget _twoDateResevation(context,appState){
         height:100.0,
 
 
-        decoration: BoxDecoration(
-          color:Colors.white.withOpacity(0.5),
-          borderRadius: BorderRadius.all(
-            Radius.circular(20)  
+
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.white,Colors.white70,Colors.white60],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              tileMode: TileMode.clamp,
+            ),
+            borderRadius: BorderRadius.all(
+                Radius.circular(20)  
+            ),
           ),
-        ),
 
 
               
@@ -365,20 +384,33 @@ Widget _flightRouteConection(){
   return Column(
 //SizedBox(height:10.0),
     children: <Widget>[
-
+      
       
 
-Transform.rotate(
-  angle: 45,
-  child: IconButton(
-    icon: Icon(
-      Icons.flight,
-       color:Colors.blue[900],
-      size:40
-    ),
-    onPressed: null,
-  ),
+Container(
+  child:   Transform.rotate(
   
+    angle: 45,
+  
+    child: IconButton(
+  
+      icon: Icon(
+  
+        Icons.flight,
+  
+         color:Colors.blue[900],
+  
+        size:40
+  
+      ),
+  
+      onPressed: null,
+  
+    ),
+  
+    
+  
+  ),
 )
 
     ]
@@ -480,7 +512,7 @@ Widget _resetButton(IconData iconName,context,String btnName){
                 padding:EdgeInsets.symmetric(horizontal:MediaQuery.of(context).size.width * 0.0005,vertical:8),
 
                             child: Padding(
-                              padding:EdgeInsets.symmetric(horizontal:MediaQuery.of(context).size.width * 0.04,vertical:2),
+                              padding:EdgeInsets.symmetric(horizontal:MediaQuery.of(context).size.width * 0.05,vertical:2),
                               child: Column(
                                 children: <Widget>[
 
@@ -508,14 +540,14 @@ Widget _resetButton(IconData iconName,context,String btnName){
                             ),
 
                               elevation:10.0,
-                              color: Colors.deepPurple[900],
+                              color: Colors.blue[900],
                               splashColor: Colors.blue[200],
                               animationDuration: Duration(seconds: 2),
                               colorBrightness: Brightness.dark,
 
                               shape: RoundedRectangleBorder(
-                                borderRadius: new BorderRadius.circular(15),
-                                side: BorderSide(color: Colors.deepPurple[900]),
+                                borderRadius: new BorderRadius.circular(25),
+                                side: BorderSide(color: Colors.blue[600]),
                               )
 
                              );

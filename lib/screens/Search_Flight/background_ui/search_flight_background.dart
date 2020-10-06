@@ -17,7 +17,14 @@ class SearchFlightBackground extends StatelessWidget {
        clipper: BottomShapeClipper(),
        child:Container(
           height: screenHeight * 0.5,
-          color:themeData.primaryColor,
+           decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.blueAccent,Colors.blue[600],Colors.blue[300]],
+              //begin: Alignment.topRight,
+              //end: Alignment.bottomRight,
+             // tileMode: TileMode.clamp,
+            ),
+          ),
        )
    
     );

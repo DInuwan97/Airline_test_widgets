@@ -13,7 +13,7 @@ class SheduledFlightsList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('MyApp', style: TextStyle(fontSize: 15.0)),
+          title: Text('Flight List', style: TextStyle(fontSize: 15.0)),
         ),
         drawer: SideNavigationDrawer(),
         body: ChangeNotifierProvider<AppState>(
