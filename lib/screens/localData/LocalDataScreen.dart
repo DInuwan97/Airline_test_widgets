@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import './ContactMore.dart';
-import './Document.dart';
+import './DocumentData.dart';
 import './PersonalData.dart';
 
 class LocalDataScreen extends StatefulWidget {
@@ -29,19 +29,6 @@ class _LocalDataScreenState extends State<LocalDataScreen> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              actions: [
-                FlatButton(
-                  onPressed: () {},
-                  child: Text(
-                    'Save',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                )
-              ],
               bottom: TabBar(tabs: [
                 Container(
                   padding: EdgeInsets.symmetric(vertical: 10),
@@ -76,7 +63,7 @@ class _LocalDataScreenState extends State<LocalDataScreen> {
             ),
             body: TabBarView(children: [
               PersonalData(),
-              Document(),
+              DocumentData(),
               ContactAndMore(),
             ]),
           ),

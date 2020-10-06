@@ -50,6 +50,7 @@ class SideNavigationDrawer extends StatelessWidget {
                     ),
                     Divider(
                       color: Colors.white,
+                      thickness: 0.35,
                       height: 1,
                     ),
                     ListTile(
@@ -65,6 +66,7 @@ class SideNavigationDrawer extends StatelessWidget {
                     ),
                     Divider(
                       color: Colors.white,
+                      thickness: 0.35,
                       height: 1,
                     ),
                     ListTile(
@@ -80,6 +82,7 @@ class SideNavigationDrawer extends StatelessWidget {
                     ),
                     Divider(
                       color: Colors.white,
+                      thickness: 0.35,
                       height: 1,
                     ),
                     ListTile(
@@ -95,6 +98,7 @@ class SideNavigationDrawer extends StatelessWidget {
                     ),
                     Divider(
                       color: Colors.white,
+                      thickness: 0.35,
                       height: 1,
                     ),
                     ListTile(
@@ -110,6 +114,7 @@ class SideNavigationDrawer extends StatelessWidget {
                     ),
                     Divider(
                       color: Colors.white,
+                      thickness: 0.35,
                       height: 1,
                     ),
                     ListTile(
@@ -125,6 +130,7 @@ class SideNavigationDrawer extends StatelessWidget {
                     ),
                     Divider(
                       color: Colors.white,
+                      thickness: 0.35,
                       height: 1,
                     ),
                     ListTile(
@@ -140,6 +146,7 @@ class SideNavigationDrawer extends StatelessWidget {
                     ),
                     Divider(
                       color: Colors.white,
+                      thickness: 0.35,
                       height: 1,
                     ),
                     ListTile(
@@ -155,6 +162,7 @@ class SideNavigationDrawer extends StatelessWidget {
                     ),
                     Divider(
                       color: Colors.white,
+                      thickness: 0.35,
                       height: 1,
                     ),
                     Container(
@@ -181,6 +189,7 @@ class SideNavigationDrawer extends StatelessWidget {
                     ),
                     Divider(
                       color: Colors.white,
+                      thickness: 0.35,
                       height: 1,
                     ),
                     ListTile(
@@ -202,6 +211,7 @@ class SideNavigationDrawer extends StatelessWidget {
                     ),
                     Divider(
                       color: Colors.white,
+                      thickness: 0.35,
                       height: 1,
                     ),
                     ListTile(
@@ -217,6 +227,7 @@ class SideNavigationDrawer extends StatelessWidget {
                     ),
                     Divider(
                       color: Colors.white,
+                      thickness: 0.35,
                       height: 1,
                     ),
                     Container(
