@@ -12,7 +12,7 @@ class MainHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: SideNavigationDrawer(),
+      drawer: SideNavigationDrawer(),     
       body: BottomNavBar(),
     );
   }

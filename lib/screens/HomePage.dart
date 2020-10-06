@@ -10,9 +10,21 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.lightBlue,
-      ),
+            appBar: AppBar(
+            title: Text('Home',
+              style:TextStyle(
+                fontSize:18
+              )
+            ),
+            elevation: 0.0,
+            flexibleSpace: Container(
+            decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.blueAccent,Colors.blue[600],Colors.blue[300]],
+            ),
+          ),
+            )
+          ),
       drawer: SideNavigationDrawer(),
     );
   }
