@@ -195,7 +195,7 @@ class _ContactAndMoreState extends State<ContactAndMore> {
                   );
                 }).toList(),
                 iconEnabledColor: Colors.black54,
-                dropdownColor: Colors.white,
+                //dropdownColor: Colors.white,
                 decoration: InputDecoration(
                   contentPadding:
                       EdgeInsets.only(left: 22, top: 0, right: 10, bottom: 0),
@@ -341,7 +341,7 @@ class _ContactAndMoreState extends State<ContactAndMore> {
                   );
                 }).toList(),
                 iconEnabledColor: Colors.black54,
-                dropdownColor: Colors.white,
+              //  dropdownColor: Colors.white,
                 decoration: InputDecoration(
                   contentPadding:
                       EdgeInsets.only(left: 22, top: 0, right: 10, bottom: 0),
