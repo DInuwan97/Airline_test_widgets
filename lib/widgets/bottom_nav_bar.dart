@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp1/screens/Flight_Book/flight_book.dart';
-import 'package:myapp1/screens/HomePage.dart';
+import 'package:myapp1/screens/HomeScreen/HomePage.dart';
 import 'package:myapp1/screens/Search_Flight/search_flight.dart';
 import 'package:myapp1/screens/sheduled_flight_list.dart';
 import 'package:myapp1/screens/Offers/AirlineOffers.dart';
