@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp1/screens/Search_Flight/widgets/SearchedFlightData/screen/search_flight_lists_screen.dart';
 
 class SearchFlightListCategorySelector extends StatefulWidget {
   @override
@@ -62,6 +63,8 @@ Widget categoryBadge(int index,String name,IconData iconName){
                 setState(() {
                   _selectedIndex = index;
                 });
+                print(selectedIndexId());
+                //SearchFlightList(selectedIndexId);
               },
 
 
@@ -104,5 +107,11 @@ Widget categoryBadge(int index,String name,IconData iconName){
 
   
 }
+
+int selectedIndexId(){
+  return _selectedIndex;
+}
+
+
 
 }
