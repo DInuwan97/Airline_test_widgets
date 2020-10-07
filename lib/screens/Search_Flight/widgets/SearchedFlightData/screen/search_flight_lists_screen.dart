@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:myapp1/models/flight_details.dart';
 import 'package:myapp1/screens/Search_Flight/widgets/SearchedFlightData/widgets/flight_list.dart';
 import 'package:myapp1/screens/Search_Flight/widgets/SearchedFlightData/widgets/search_flight_category_selector.dart';
+import 'package:provider/provider.dart';
 
+import '../../../../../app_state.dart';
 import '../../../../side_screen_drawer.dart';
+import '../../../../single_trip.dart';
 
 class SearchFlightList extends StatefulWidget {
   @override
@@ -70,21 +74,51 @@ class _SearchFlightListState extends State<SearchFlightList> {
                ),
 
                child:Padding(
-                 padding: const EdgeInsets.all(12.0),
-                 child: Column(
-                   children: <Widget>[
-                     Expanded(
-                       child:Container(
-                         child:ListView.builder(
-                           itemCount:2,
-                           itemBuilder:(BuildContext context,int index){
-                             return FlightList();
-                           }
-                         )
-                       )
-                     )
-                   ],
-                 ),
+                 padding: const EdgeInsets.all(1.0),
+                  child: ChangeNotifierProvider<AppState>(
+            create: (_) => AppState(),
+            child: Stack(
+              children: <Widget>[
+                SafeArea(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                          child: Consumer<AppState>(
+                            builder: (context, appState, _) => Column(
+                              children: <Widget>[
+                                for (final flight in sheduledFlights.where(
+                                    (e) => e.fligtItemId
+                                        .contains(appState.selectedCategoryId)))
+                                  GestureDetector(
+                                      onTap: () {
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                SingleTrip(flight: flight),
+                                          ),
+                                        );
+                                      },
+                                      child: FlightList(flight: flight))
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            )
+
+    
+            )
+
+
+
+                 
                )
    
              ),
