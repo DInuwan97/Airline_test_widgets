@@ -42,13 +42,13 @@ int _currentTab = 0;
             height: 60.0,
             width:60.0,
             decoration:BoxDecoration(
-              color:_selectedIndex == index ?  Theme.of(context).accentColor : Color(0xFFE7EBEE),
+              color:_selectedIndex == index ?  Theme.of(context).accentColor : Colors.white,
           borderRadius: BorderRadius.circular(30.0)
         ),
         child:Icon(
           _icons[index],
           size:25.0,
-          color:_selectedIndex == index ? Colors.white : Color(0xFFB4C1C4)
+          color:_selectedIndex == index ? Colors.white : Colors.blue
         )
       ),
     );
@@ -74,41 +74,59 @@ int _currentTab = 0;
             )
           ),
       drawer: SideNavigationDrawer(),
-      body:SafeArea(
-        child:ListView(
-          padding:EdgeInsets.symmetric(vertical:20.0),
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(left:20.0,right:30.0),
-              child: Text('Where would you like to fly with Croatian Airlines?',
-                style:TextStyle(
-                  fontSize:23.0,
-                  fontWeight: FontWeight.bold
-                )
+
+      body:Container(
+        
+               decoration: BoxDecoration(
+
+                    gradient: LinearGradient(
+                      colors: [Colors.blue[200],Colors.blue[100],Colors.white30],
+                      end: Alignment.bottomLeft,
+                      begin: Alignment.topRight,
+                    ),
+    
+                //  borderRadius: BorderRadius.only(
+                //    topLeft: Radius.circular(40.0),
+                //    topRight: Radius.circular(40.0)
+                //  )
+
+               ),
+        child: SafeArea(
+          child:ListView(
+            padding:EdgeInsets.symmetric(vertical:20.0),
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(left:20.0,right:30.0),
+                child: Text('Where would you like to fly with Croatian Airlines?',
+                  style:TextStyle(
+                    fontSize:23.0,
+                    fontWeight: FontWeight.bold,
+                  )
+                ),
               ),
+
+            SizedBox(height: 20.0),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children:_icons
+              .asMap()
+              .entries
+              .map(
+                (MapEntry map) => _buildIcon(map.key),
+              ).toList()
             ),
+            SizedBox(height:20.0),
+            OffersCarousel(),
+            SizedBox(height: 20.0,)
 
-          SizedBox(height: 20.0),
-
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children:_icons
-            .asMap()
-            .entries
-            .map(
-              (MapEntry map) => _buildIcon(map.key),
-            ).toList()
-          ),
-          SizedBox(height:20.0),
-          OffersCarousel(),
-          SizedBox(height: 20.0,)
-
-          ],
-        )
+            ],
+          )
 
 
 
 
+        ),
       )
     );
   }

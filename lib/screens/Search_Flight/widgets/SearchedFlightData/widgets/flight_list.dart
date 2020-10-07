@@ -94,9 +94,9 @@ class FlightList extends StatelessWidget {
               style: TextStyle(fontSize: 17, color: Colors.white,fontWeight: FontWeight.bold))
         ])),
         Text("Seduled : 10:12 AM",
-            style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
+            style: TextStyle(fontSize: 11.5, fontWeight: FontWeight.bold,color: Colors.white)),
         Text("Actual : 10:12 AM",
-            style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
+            style: TextStyle(fontSize: 11.5, fontWeight: FontWeight.bold,color: Colors.white)),
         SizedBox(height: 45.0),
         RichText(
             text: TextSpan(children: <TextSpan>[
@@ -109,12 +109,12 @@ class FlightList extends StatelessWidget {
               )),
           TextSpan(
               text: flight.originLong,
-              style: TextStyle(fontSize: 17, color: Colors.white,fontWeight: FontWeight.bold))
+              style: TextStyle(fontSize: 11.5, color: Colors.white,fontWeight: FontWeight.bold))
         ])),
         Text("Seduled : 10:12 AM",
-            style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
+            style: TextStyle(fontSize: 11.5, fontWeight: FontWeight.bold,color: Colors.white)),
         Text("Actual : 10:12 AM",
-            style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
+            style: TextStyle(fontSize: 11.5, fontWeight: FontWeight.bold,color: Colors.white)),
       ],
     );
   }

@@ -28,7 +28,7 @@ class OfferCard extends StatelessWidget {
                          height:170.0,
                          width:double.infinity,
                          decoration:BoxDecoration(
-                           color:Colors.grey.withOpacity(0.2),
+                           color:Colors.white.withOpacity(0.7),
                            borderRadius: BorderRadius.circular(20.0)
                          ),
 
@@ -59,20 +59,50 @@ class OfferCard extends StatelessWidget {
 
                                   Column(
                                       children: <Widget>[
-                                        Text('\USD ${offer.price}',
-                                          style:TextStyle(
-                                            fontSize: 15.0,
-                                            fontFamily:'Oxygen',
-                                            fontWeight: FontWeight.w600
-                                          )
-                                        ),
+                                        // Text('\USD ${offer.price}',
+                                        //   style:TextStyle(
+                                        //     fontSize: 15.0,
+                                        //     fontFamily:'Oxygen',
+                                        //     fontWeight: FontWeight.w600
+                                        //   )
+                                        // ),
 
-                                         Text('per pax',
-                                          style:TextStyle(
-                                            color:Colors.grey,
-                                            fontFamily:'Oxygen'
-                                          )
-                                        )
+                                        //  Text('per pax',
+                                        //   style:TextStyle(
+                                        //     color:Colors.grey,
+                                        //     fontFamily:'Oxygen'
+                                        //   )
+                                        // )
+                                        Container(
+                    alignment: Alignment.topRight,
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                        vertical: 3,
+                        horizontal: 15,
+                      ),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(20),
+                            bottomLeft: Radius.circular(20),
+                          ),
+                          gradient: LinearGradient(
+                            colors: [
+                              Colors.orange,
+                              Colors.red,
+                            ],
+                            begin: Alignment.centerLeft,
+                            end: Alignment.centerRight,
+                          )),
+                      child: Text(
+                        'FEATURED',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 11,
+                        ),
+                      ),
+                    ),
+                  )
 
                                       ],
                                   ),
@@ -91,30 +121,48 @@ class OfferCard extends StatelessWidget {
                               Row(
                                 children: <Widget>[
                                     Container(
-                                      padding:EdgeInsets.all(5.0),
-                                      width:70.0,
+                                     // padding:EdgeInsets.all(5.0),
+                                      width:90.0,
                                       decoration:BoxDecoration(
                                           color:Theme.of(context).accentColor,
                                           borderRadius: BorderRadius.circular(10.0)
                                       ),
                                       alignment: Alignment.center,
-                                      child:Text(offer.startTimes[0])
+                                      child:Padding(
+                                        padding: const EdgeInsets.symmetric(horizontal:8,vertical:5),
+                                        child: Row( 
+                                          children: <Widget>[
+                                            Icon(
+                                              Icons.credit_card,
+                                              color: Colors.white,
+                                              size:15
+                                            ),
+                                            Text(
+                                              '\ USD ${offer.price}',
+                                              style:TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.white
+                                              )
+                                            ),
+                                          ],
+                                        ),
+                                      )
 
                                     ),
 
                                     SizedBox(width:10.0),
 
-                                    Container(
-                                      width:70.0,
+                                    // Container(
+                                    //   width:70.0,
 
-                                      decoration:BoxDecoration(
-                                          color:Theme.of(context).accentColor,
-                                          borderRadius: BorderRadius.circular(10.0)
-                                      ),
-                                      alignment: Alignment.center,
-                                      child:Text(offer.startTimes[1])
+                                    //   decoration:BoxDecoration(
+                                    //       color:Theme.of(context).accentColor,
+                                    //       borderRadius: BorderRadius.circular(10.0)
+                                    //   ),
+                                    //   alignment: Alignment.center,
+                                    //   child:Text(offer.startTimes[1])
 
-                                    )
+                                    // )
 
 
                                 ],
