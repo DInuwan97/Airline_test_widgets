@@ -26,6 +26,14 @@ class SingleTrip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+      var linearGradient = LinearGradient(
+                        colors:[ 
+                          firstColor,
+                          secondColor,
+                          thirdColor,
+                          fourthColor,
+                        ],
+                      );
       return Scaffold(
 
         
@@ -64,14 +72,7 @@ class SingleTrip extends StatelessWidget {
                 width:MediaQuery.of(context).size.width * 0.95,
                 height:570.0,
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                        colors:[ 
-                          firstColor,
-                          secondColor,
-                          thirdColor,
-                          fourthColor,
-                        ],
-                      ),
+                  gradient: linearGradient,
                   borderRadius: BorderRadius.all(
                     Radius.circular(14)
                   )
