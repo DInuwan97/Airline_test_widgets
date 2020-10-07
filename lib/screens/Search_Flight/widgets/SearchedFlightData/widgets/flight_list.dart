@@ -6,7 +6,7 @@ class FlightList extends StatelessWidget {
 
   const FlightList({Key key, this.flight}) : super(key: key);
 
-  @override
+   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -56,7 +56,7 @@ class FlightList extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        //_flightOntimeArrivedStatus(),
+        _flightOntimeArrivedStatus(),
         Text(flight.destinationShort,
             textAlign: TextAlign.center, 
             style: TextStyle(
@@ -65,9 +65,8 @@ class FlightList extends StatelessWidget {
               fontWeight: FontWeight.bold
               )
             ),
-        SizedBox(height: 25.0),
+        SizedBox(height: 1.0),
         Icon(Icons.swap_vert, color: Colors.white, size: 40),
-         SizedBox(height: 25.0),
         Text(flight.originShort,
             textAlign: TextAlign.center,
             style: TextStyle(
@@ -75,7 +74,7 @@ class FlightList extends StatelessWidget {
               color:Colors.white,
               fontWeight: FontWeight.bold
             )),
-        //_flighDelayedTimeStatus()
+        _flighDelayedTimeStatus()
       ],
     );
   }
@@ -93,17 +92,12 @@ class FlightList extends StatelessWidget {
           TextSpan(
               text: flight.destinationLong,
               style: TextStyle(fontSize: 17, color: Colors.white,fontWeight: FontWeight.bold))
-        ]
-        )
-        ),
-
-        
-      _onSheduledBadge('On Seduled : 10:12 AM'),
-      
-
-        SizedBox(height: 30.0),
-       // _onSheduledBadge(),
-         SizedBox(height: 30.0),
+        ])),
+        Text("Seduled : 10:12 AM",
+            style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
+        Text("Actual : 10:12 AM",
+            style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
+        SizedBox(height: 45.0),
         RichText(
             text: TextSpan(children: <TextSpan>[
           TextSpan(
@@ -117,9 +111,10 @@ class FlightList extends StatelessWidget {
               text: flight.originLong,
               style: TextStyle(fontSize: 17, color: Colors.white,fontWeight: FontWeight.bold))
         ])),
-        _onSheduledBadge('On Seduled : 05:32 PM'),
-        // Text("Actual : 10:12 AM",
-        //     style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
+        Text("Seduled : 10:12 AM",
+            style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
+        Text("Actual : 10:12 AM",
+            style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
       ],
     );
   }
@@ -184,23 +179,5 @@ class FlightList extends StatelessWidget {
   }
 
 
-
-
-    Widget _onSheduledBadge(String day) {
-    return Container(
-        //padding: EdgeInsets.symmetric(horizontal: 5.0, vertical: 5.0),
-        child: Row(
-          children: <Widget>[
-            Icon(Icons.check_circle, color: Colors.greenAccent[400],size:16),
-            Text(day,
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 11.5,
-                    fontWeight: FontWeight.bold))
-          ],
-        )
-    );
-  }
-
-
 }
+
