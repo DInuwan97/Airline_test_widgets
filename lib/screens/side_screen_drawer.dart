@@ -1,93 +1,273 @@
-
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class SideNavigationDrawer extends StatelessWidget{
+import './localData/LocalDataScreen.dart';
 
-  Widget showDrawer(){
-    return Drawer(
-    child: ListView(
-    // Important: Remove any padding from the ListView.
-    padding: EdgeInsets.zero,
-    children: <Widget>[
-       _createHeader(),
-       _createDrawerItem(
-          icon: Icons.people,
-          text: 'Meet People',
-          //onTap: () => Navigator.pushReplacementNamed(context, DrawerRoutes.contacts),
-        ),
-
-       _createDrawerItem(
-          icon: Icons.event, 
-          text: 'Events',
-         // onTap: () => Navigator.pushReplacementNamed(context, DrawerRoutes.events),
-        ),
-
-
-       _createDrawerItem(
-          icon: Icons.insert_photo, 
-          text: 'Gallery',
-         // onTap: () => Navigator.pushReplacementNamed(context, DrawerRoutes.notes),
-        ),
-
-        Divider(),
-       _createDrawerItem(icon: Icons.collections_bookmark, text:'Steps'),
-       _createDrawerItem(icon: Icons.access_alarms, text: 'Time Slots'),
-       _createDrawerItem(icon: Icons.contact_mail, text: 'Contact Us'),
-       _createDrawerItem(icon: Icons.settings, text: 'Settings'),
-       Divider(),
-       _createDrawerItem(icon: Icons.bug_report, text: 'Report an issue'),
-      
-    ],
-  ),
-            );
-  }
-
-
-  Widget _createHeader() {
-  return DrawerHeader(
-
-      margin: EdgeInsets.zero,
-      padding: EdgeInsets.zero,
-      decoration: BoxDecoration(
-    
-          image: DecorationImage(
-              fit: BoxFit.fill,
-              image:  AssetImage('assets/images/athens.png')
-          )
-      ),
-      child: Stack(children: <Widget>[
-        Positioned(
-            bottom: 20.0,
-            left: 16.0,
-            child: Text("Sri Lankan Airlines",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 30.0,
-                    fontWeight: FontWeight.w400))),
-      ]));
-}
-
-
-
-
-Widget _createDrawerItem(
-    {IconData icon, String text, GestureTapCallback onTap}) {
-  return ListTile(
-    title: Row(
-      children: <Widget>[
-        Icon(icon),
-        Padding(
-          padding: EdgeInsets.only(left: 8.0),
-          child: Text(text),
-        )
-      ],
-    ),
-    onTap: onTap,
-  );
-}
-
+class SideNavigationDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return showDrawer();
+    return LayoutBuilder(
+      builder: (ctx, constraints) => Drawer(
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.lightBlue, Colors.blue[900]],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              tileMode: TileMode.clamp,
+            ),
+          ),
+          child: Padding(
+            padding: EdgeInsets.only(top: 50, left: 20, right: 20),
+            child: Scrollbar(
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(top: 5, bottom: 10),
+                      child: Text(
+                        "INFO AND SERVICES",
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    ListTile(
+                      onTap: () {},
+                      leading: Icon(
+                        Icons.airplanemode_active,
+                        color: Colors.white,
+                      ),
+                      title: Text(
+                        "Book a Flight",
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    Divider(
+                      color: Colors.white,
+                      thickness: 0.35,
+                      height: 1,
+                    ),
+                    ListTile(
+                      onTap: () {},
+                      leading: Icon(
+                        Icons.calendar_today,
+                        color: Colors.white,
+                      ),
+                      title: Text(
+                        "Timetable",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                    Divider(
+                      color: Colors.white,
+                      thickness: 0.35,
+                      height: 1,
+                    ),
+                    ListTile(
+                      onTap: () {},
+                      leading: Icon(
+                        Icons.work,
+                        color: Colors.white,
+                      ),
+                      title: Text(
+                        "Baggage",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                    Divider(
+                      color: Colors.white,
+                      thickness: 0.35,
+                      height: 1,
+                    ),
+                    ListTile(
+                      onTap: () {},
+                      leading: Icon(
+                        Icons.airline_seat_recline_extra,
+                        color: Colors.white,
+                      ),
+                      title: Text(
+                        "Passengers",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                    Divider(
+                      color: Colors.white,
+                      thickness: 0.35,
+                      height: 1,
+                    ),
+                    ListTile(
+                      onTap: () {},
+                      leading: Icon(
+                        Icons.flight_takeoff,
+                        color: Colors.white,
+                      ),
+                      title: Text(
+                        "Inflight Services",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                    Divider(
+                      color: Colors.white,
+                      thickness: 0.35,
+                      height: 1,
+                    ),
+                    ListTile(
+                      onTap: () {},
+                      leading: Icon(
+                        Icons.restore,
+                        color: Colors.white,
+                      ),
+                      title: Text(
+                        "Flight Status",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                    Divider(
+                      color: Colors.white,
+                      thickness: 0.35,
+                      height: 1,
+                    ),
+                    ListTile(
+                      onTap: () {},
+                      leading: Icon(
+                        Icons.account_balance,
+                        color: Colors.white,
+                      ),
+                      title: Text(
+                        "Offices",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                    Divider(
+                      color: Colors.white,
+                      thickness: 0.35,
+                      height: 1,
+                    ),
+                    ListTile(
+                      onTap: () {},
+                      leading: Icon(
+                        Icons.phone,
+                        color: Colors.white,
+                      ),
+                      title: Text(
+                        "Contact Center",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                    Divider(
+                      color: Colors.white,
+                      thickness: 0.35,
+                      height: 1,
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(top: 35, bottom: 10),
+                      child: Text(
+                        "GENERAL",
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    ListTile(
+                      onTap: () {},
+                      leading: Icon(
+                        Icons.settings,
+                        color: Colors.white,
+                      ),
+                      title: Text(
+                        "Settings",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                    Divider(
+                      color: Colors.white,
+                      thickness: 0.35,
+                      height: 1,
+                    ),
+                    ListTile(
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => LocalDataScreen(),
+                          ),
+                        );
+                      },
+                      leading: Icon(
+                        Icons.lock,
+                        color: Colors.white,
+                      ),
+                      title: Text(
+                        "Local Data",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                    Divider(
+                      color: Colors.white,
+                      thickness: 0.35,
+                      height: 1,
+                    ),
+                    ListTile(
+                      onTap: () {},
+                      leading: Icon(
+                        Icons.info_outline,
+                        color: Colors.white,
+                      ),
+                      title: Text(
+                        "Legal Information",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                    Divider(
+                      color: Colors.white,
+                      thickness: 0.35,
+                      height: 1,
+                    ),
+                    Container(
+                      margin: EdgeInsets.symmetric(
+                        horizontal: 20,
+                        vertical: 45,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Icon(
+                            FontAwesomeIcons.facebookSquare,
+                            color: Colors.white,
+                          ),
+                          Icon(
+                            FontAwesomeIcons.instagramSquare,
+                            color: Colors.white,
+                          ),
+                          Icon(
+                            FontAwesomeIcons.linkedin,
+                            color: Colors.white,
+                          ),
+                          Icon(
+                            FontAwesomeIcons.twitterSquare,
+                            color: Colors.white,
+                          ),
+                          Icon(
+                            FontAwesomeIcons.youtubeSquare,
+                            color: Colors.white,
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }

@@ -8,22 +8,12 @@ import 'package:myapp1/screens/top_home_screen.dart';
 import 'package:myapp1/widgets/bottom_nav_bar.dart';
 import 'package:provider/provider.dart';
 
-
-
 class MainHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-      // appBar: AppBar(
-      //   title:Text('Home',
-      //     style:TextStyle(
-      //       fontSize:15.0
-      //     )
-      //   ),
-      // ),
-      // drawer: SideNavigationDrawer(),
-      body:BottomNavBar()
+      drawer: SideNavigationDrawer(),     
+      body: BottomNavBar(),
     );
   }
 }

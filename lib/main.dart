@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
         fontFamily: 'Oxygen'
       ),
+      debugShowCheckedModeBanner: false,
       home: MainHomeScreen(),
     );
   }

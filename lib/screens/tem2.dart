@@ -1,165 +1,86 @@
-// import 'dart:math';
+import 'package:select_dialog/select_dialog.dart';
+import 'package:fancy_alert_dialog/fancy_alert_dialog.dart';
+import 'package:flutter/material.dart';
 
-// import 'package:fancy_alert_dialog/fancy_alert_dialog.dart';
-// import 'package:flutter/material.dart';
-// import 'package:myapp1/screens/Search_Flight/search_flight_model/airport_list.dart';
+class PassengersClassSelection extends StatefulWidget {
+  @override
+  _PassengersClassSelectionState createState() => _PassengersClassSelectionState();
+}
 
-// import 'airports.dart';
+class _PassengersClassSelectionState extends State<PassengersClassSelection> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        SizedBox(height:10,width:10),
+           Padding(
+             padding: const EdgeInsets.symmetric(horizontal:1),
+             child: GestureDetector(
+               
+                  child: Container(
+                  //margin: EdgeInsets.symmetric(horizontal:8),
+                  width:MediaQuery.of(context).size.width * 2.5,
+                  height:MediaQuery.of(context).size.height * 0.125,
+                  
+            decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.blue[200],Colors.white],
+              begin: Alignment.topRight,
+              end: Alignment.bottomRight,
+             // tileMode: TileMode.clamp,
+            ),
+               borderRadius: BorderRadius.all(
+            Radius.circular(20)  
+          ),
+              boxShadow: [
+              BoxShadow(
+                color: Colors.black38,
+                blurRadius: 15,
+              ),
+            ],
+          ),
+                  
+                    
+                //padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  children: <Widget>[
+                    SizedBox(height:15.0),
+                    Text( 
+                      '01 Adult in', 
+                      textAlign:TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 17,
+                        fontWeight:FontWeight.bold,
+                    ),
+                ),
 
-// class OneWayAirportSelector extends StatelessWidget {
- 
-// final String placeWhere,airportShort,airportLong;
+                SizedBox(height:7.0),
 
-//   const OneWayAirportSelector({Key key, this.placeWhere, this.airportShort, this.airportLong}) : super(key: key); 
-//  //const OneWayAirportSelector(String placeWhere,String airportShort,String airportLong, this.placeWhere, this.airportShort, this.airportLong);
+                Text( 
+                      'BUSINESS CLASS', 
+                      textAlign:TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight:FontWeight.bold,
+                        fontFamily:'Arial'
+                    ),
 
-//   @override
-//   Widget build(BuildContext context) {
+                )
+                ]
+                )
 
-//       String dropdownValue = 'One';
-//      return  Padding(
-//           padding:EdgeInsets.symmetric(vertical:30.0,horizontal:0.0),
+        
+              ),
+                onTap:(){
+                  SelectDialog.showModal<String>(
+                    context
+                  );
+                }
 
-//        child: Center(
-         
-//           child: RaisedButton(
-//             color:Colors.grey[200].withOpacity(0.1),
-//             padding: EdgeInsets.symmetric(vertical:5),
-//               elevation: 0,
-//               shape: RoundedRectangleBorder(
-//                                 borderRadius: new BorderRadius.circular(8.0),
-//                                 side: BorderSide(color: Colors.deepPurple[900]),
-//                               ),
-//             splashColor: Colors.blue[200],
-//             animationDuration: Duration(seconds: 2),
-//             colorBrightness: Brightness.dark,
-//             child: _origin(placeWhere,airportShort,airportLong),
-//             onPressed: () {
-//               FancyAlertDialog.showFancyAlertDialog(
-//                 context,
-//                 'Info Fancy Alert Dialog Box',
-//                 'This is a info alert dialog box. This plugin is used to help you easily create fancy dialog',
-//                 Colors.blue,
-//                 icon: Icon(
-//                   Icons.flight,
-//                   color: Colors.white,
-//                 ),
-//                 labelPositiveButton: 'OK',
-//                 onTapPositiveButton: () {
-//                   Navigator.pop(context);
-//                   print('tap positive button');
-//                 },
-//                 labelNegativeButton: 'Cancel',
-//                 onTapNegativeButton: () {
-//                   Navigator.pop(context);
-//                   print('tap negative button');
-//                 },
-//               );
+             ),
+           )
 
-//             }
-//           )
-//        ),
-//      );
-//   }
-
-
-// }
-
-
-
-  
-// Widget _origin(String placeWhere,String airportShort,String airportLong){
-//   return Column(
-//     //crossAxisAlignment:CrossAxisAlignment.start,
-//     //mainAxisAlignment:MainAxisAlignment.spaceBetween,
-//     children: <Widget>[
-
-//       Text(
-//         placeWhere,
-//         style:TextStyle(
-//           color:Colors.black,
-//           fontFamily:'Arial',
-//           fontSize:15.0,
-//           fontWeight:FontWeight.bold
-//         )
-//       ),
-
-//       Text(airportShort,
-//       textAlign:TextAlign.center,
-//           style:TextStyle(
-//           fontSize:25,
-//           color:Colors.blue[900],
-//           fontWeight:FontWeight.bold
-//         )
-//       ),
-
-//       Text(
-//         airportLong,
-//         style:TextStyle(
-//           color:Colors.blue[900],
-//           fontFamily:'Oxygen',
-//           fontSize:10.0,
-//           fontWeight:FontWeight.bold
-//         )
-//       )
-//     ],
-//   );
-// }
-
-
-
-// Widget _destination(){
-//   return Column(
-//     //crossAxisAlignment:CrossAxisAlignment.start,
-//    // mainAxisAlignment:MainAxisAlignment.spaceBetween,
-//     children: <Widget>[
-
-//       Text("CMB",
-//       textAlign:TextAlign.center,
-//         style:TextStyle(
-//           fontSize:25,
-//           color:Colors.blue[900],
-//           fontWeight:FontWeight.bold
-//         )
-//       ),
-
-//           Text(
-//         "colombo,Sri Lanka",
-//          textAlign:TextAlign.center,
-//         style:TextStyle(
-//            color:Colors.blue[900],
-//           fontFamily:'Oxygen',
-//           fontSize:10.0,
-//           fontWeight:FontWeight.bold
-//         )
-//       )
-//     ],
-//   );
-// }
-
-
-
-// Widget _flightRouteConection(){
-//   return Column(
-// //SizedBox(height:10.0),
-//     children: <Widget>[
-
-      
-
-// Transform.rotate(
-//   angle: 90 * pi / 180,
-//   child: IconButton(
-//     icon: Icon(
-//       Icons.flight,
-//        color:Colors.blue[900],
-//       size:35
-//     ),
-//     onPressed: null,
-//   ),
-  
-// )
-
-//     ]
-
-//   );
-// }
+      ]
+    );
+  }
+}

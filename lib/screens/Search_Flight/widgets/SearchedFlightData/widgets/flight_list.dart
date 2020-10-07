@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:myapp1/models/flight_details.dart';
 
-class TopHomeScreen extends StatelessWidget {
+class FlightList extends StatelessWidget {
   final SheduledOnewayFlight flight;
 
-  const TopHomeScreen({Key key, this.flight}) : super(key: key);
+  const FlightList({Key key, this.flight}) : super(key: key);
 
-  @override
+   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -177,4 +177,7 @@ class TopHomeScreen extends StatelessWidget {
           ],
         ));
   }
+
+
 }
+
