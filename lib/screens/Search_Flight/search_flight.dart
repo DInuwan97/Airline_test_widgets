@@ -10,6 +10,7 @@ import 'package:myapp1/screens/Search_Flight/search_flight_model/two_way_selecto
 import 'package:myapp1/screens/Search_Flight/widgets/CalenderPopup/calender_pop_up.dart';
 import 'package:myapp1/screens/Search_Flight/widgets/OneWay/ariport_selectore_dropdown.dart';
 import 'package:myapp1/screens/Search_Flight/widgets/PassengerClassSelection/PassengersClassSelection.dart';
+import 'package:myapp1/screens/Search_Flight/widgets/SearchedFlightData/screen/search_flight_lists_screen.dart';
 import 'package:myapp1/screens/Search_Flight/widgets/search_flight_categories.dart';
 import 'package:provider/provider.dart';
 
@@ -118,14 +119,6 @@ final TextStyle whiteHeadingTextStyle = TextStyle(
                           ),
 
 
-                            // SingleChildScrollView(
-                            //   child:Column(
-                            //     children: <Widget>[
-                                  
-                            //     ],
-                            //   )
-                            // ),
-
                             Padding(
                             padding:const EdgeInsets.symmetric(horizontal: 16.0),
                             child: Consumer<AppState>(
@@ -133,7 +126,7 @@ final TextStyle whiteHeadingTextStyle = TextStyle(
                                
                                 children: <Widget>[
                                   
-                                        //for(final aiports in airportDetail.where((e) =>  e.containerIds.contains(appState.selectedCategoryId))) 
+                                       
                                          GestureDetector(
                                             onTap:(){
                                               print(appState.selectedCategoryId);
@@ -141,17 +134,12 @@ final TextStyle whiteHeadingTextStyle = TextStyle(
                                             child:_airpotDetailsContainer(context)
                                          ),
 
-                                         
-                                        
+
                                          GestureDetector(
-                                         // child: (category.categoryId == 0)  ? _dateResevation(context,appState) : _dateResevation(context,appState)
-                                         child: (appState.selectedCategoryId == 0) ? _oneDateResevation(context,appState) : _twoDateResevation(context,appState)
+                                          child: (appState.selectedCategoryId == 0) ? _oneDateResevation(context,appState) : _twoDateResevation(context,appState)
                                          ),
 
 
-
-
-                                       // for(final bookingclasses in bookingDetail.where((e) =>  e.containerIds.contains(appState.selectedCategoryId))) 
                                          GestureDetector(   
                                             onTap:(){},                                
                                             child:_bookingClassReservation(context)                                        
@@ -167,18 +155,21 @@ final TextStyle whiteHeadingTextStyle = TextStyle(
                                           
                                                  Column(
                                                   
-                                                   children: <Widget>[
-                                                     
+                                                  children: <Widget>[ 
                                                      _resetButton(Icons.restore,context,"Reset")
                                                    ],
                                                  ),
+
+                                                 
                                                   Spacer(),
-                                                  //SizedBox(width:MediaQuery.of(context).size.width * 0.2),
-                                                  Column(
+                                                  
+                                                 Column(
                                                    children: <Widget>[
                                                      _resetButton(Icons.search,context,"Search")
                                                    ],
                                                  )
+
+
                                           ],
                                         ),
                                       )
@@ -507,7 +498,14 @@ Widget _twowaydate(context,appState){
 Widget _resetButton(IconData iconName,context,String btnName){
        return RaisedButton(
             onPressed: () {
-
+              if(btnName == 'Search'){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+    	                builder: (context) => SearchFlightList()
+                    )
+                  );                                        
+              }
             },
                 padding:EdgeInsets.symmetric(horizontal:MediaQuery.of(context).size.width * 0.0005,vertical:8),
 

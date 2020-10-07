@@ -2,9 +2,12 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:myapp1/models/flight_details.dart';
+import 'package:myapp1/screens/sheduled_flight_list.dart';
 import 'package:myapp1/screens/side_screen_drawer.dart';
 import 'package:myapp1/shapes/custome_shape_clipper.dart';
 import 'package:provider/provider.dart';
+
+import 'Search_Flight/widgets/SearchedFlightData/screen/search_flight_lists_screen.dart';
 
 Color firstColor = Colors.blue[900];
 Color secondColor = Color(0xFF0D47A9);
@@ -222,7 +225,14 @@ class SingleTrip extends StatelessWidget {
                                               fontWeight: FontWeight.bold)),
                                       SizedBox(height: 10.0),
                                       RaisedButton(
-                                          onPressed: () {},
+                                          onPressed: () {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+    	                                            builder: (context) => SearchFlightList()
+                                                )
+                                              );
+                                          },
                                           padding: EdgeInsets.symmetric(
                                               horizontal: MediaQuery.of(context)
                                                       .size
