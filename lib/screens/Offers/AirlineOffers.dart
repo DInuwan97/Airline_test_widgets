@@ -58,13 +58,21 @@ int _currentTab = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Offers',
-          style:TextStyle(
-            fontSize:20.0
-          )
-        )
-      ),
+                 appBar: AppBar(
+            title: Text('Offers',
+              style:TextStyle(
+                fontSize:18
+              )
+            ),
+            elevation: 0.0,
+            flexibleSpace: Container(
+            decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.blueAccent,Colors.blue[600],Colors.blue[300]],
+            ),
+          ),
+            )
+          ),
       drawer: SideNavigationDrawer(),
       body:SafeArea(
         child:ListView(

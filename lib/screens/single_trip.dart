@@ -2,9 +2,12 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:myapp1/models/flight_details.dart';
+import 'package:myapp1/screens/sheduled_flight_list.dart';
 import 'package:myapp1/screens/side_screen_drawer.dart';
 import 'package:myapp1/shapes/custome_shape_clipper.dart';
 import 'package:provider/provider.dart';
+
+import 'Search_Flight/widgets/SearchedFlightData/screen/search_flight_lists_screen.dart';
 
 Color firstColor = Colors.blue[900];
 Color secondColor = Color(0xFF0D47A9);
@@ -19,10 +22,22 @@ class SingleTrip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(flight.originShort + " to " + flight.destinationShort,
-              style: TextStyle(fontSize: 15.0)),
-        ),
+
+          appBar: AppBar(
+            title: Text(flight.originShort + " to " + flight.destinationShort,
+              style:TextStyle(
+                fontSize:18
+              )
+            ),
+            elevation: 0.0,
+            flexibleSpace: Container(
+            decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.blueAccent,Colors.blue[600],Colors.blue[300]],
+            ),
+          ),
+            )
+          ),
         drawer: SideNavigationDrawer(),
         body: Provider<SheduledOnewayFlight>.value(
             value: flight,
@@ -43,12 +58,10 @@ class SingleTrip extends StatelessWidget {
                             height: 570.0,
                             decoration: BoxDecoration(
                                 gradient: LinearGradient(
-                                  colors: [
-                                    firstColor,
-                                    secondColor,
-                                    thirdColor,
-                                    fourthColor,
-                                  ],
+                                     colors: [Colors.lightBlue, Colors.blue[900],Colors.blue[800],Colors.blueAccent,Colors.blue[500]],
+                                    begin: Alignment.bottomLeft,
+                                    end: Alignment.topLeft,
+                                    tileMode: TileMode.clamp,
                                 ),
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(14))),
@@ -63,7 +76,11 @@ class SingleTrip extends StatelessWidget {
                                                 0.95,
                                         height: 170.0,
                                         decoration: BoxDecoration(
-                                            color: Colors.deepPurple[900],
+                                             image: new DecorationImage(
+                                                    image: new ExactAssetImage(
+                                                        'assets/images/cloud6.jpeg'),
+                                                        fit: BoxFit.cover,
+                                             ),
                                             borderRadius: BorderRadius.all(
                                                 Radius.circular(14))),
                                         child: Container(
@@ -126,15 +143,20 @@ class SingleTrip extends StatelessWidget {
                                         children: <Widget>[
                                           Container(
                                             alignment: Alignment.center,
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.95,
+                                            width: MediaQuery.of(context).size.width *0.95,
                                             height: 170.0,
                                             decoration: BoxDecoration(
-                                                color: Colors.grey[300],
+                                                gradient: LinearGradient(
+                                                  colors: [Colors.white,Colors.white70,Colors.white60],
+                                                  begin: Alignment.bottomCenter,
+                                                  end: Alignment.topCenter,
+                                                  tileMode: TileMode.clamp,
+                                                ),
                                                 borderRadius: BorderRadius.all(
-                                                    Radius.circular(14))),
+                                                    Radius.circular(14)
+                                                ),
+                                                
+                                              ),
                                             child: Padding(
                                               padding:
                                                   const EdgeInsets.symmetric(
@@ -203,7 +225,14 @@ class SingleTrip extends StatelessWidget {
                                               fontWeight: FontWeight.bold)),
                                       SizedBox(height: 10.0),
                                       RaisedButton(
-                                          onPressed: () {},
+                                          onPressed: () {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+    	                                            builder: (context) => SearchFlightList()
+                                                )
+                                              );
+                                          },
                                           padding: EdgeInsets.symmetric(
                                               horizontal: MediaQuery.of(context)
                                                       .size
@@ -215,17 +244,21 @@ class SingleTrip extends StatelessWidget {
                                                 fontSize: 30,
                                               )),
                                           elevation: 10.0,
-                                          color: Colors.deepPurple[900],
+                                          color: Colors.blue[900],
                                           splashColor: Colors.blue[200],
                                           animationDuration:
                                               Duration(seconds: 2),
                                           colorBrightness: Brightness.dark,
                                           shape: RoundedRectangleBorder(
                                             borderRadius:
-                                                new BorderRadius.circular(8.0),
+                                                new BorderRadius.circular(10.0),
                                             side: BorderSide(
-                                                color: Colors.deepPurple[900]),
-                                          )),
+                                                color: Colors.white,
+                                                width:3.0                                               
+                                            ),
+                                           
+                                          )
+                                          ),
                                     ],
                                   ),
                                 )
@@ -250,7 +283,7 @@ class SingleTrip extends StatelessWidget {
             RichText(
                 text: TextSpan(children: <TextSpan>[
               TextSpan(
-                text: "Sri Lankan Airlines \n",
+                text: "Croatian Airlines \n",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 14,

@@ -40,8 +40,9 @@ class SearchFlightCategory extends StatelessWidget {
         height: 50,
 
         decoration:BoxDecoration(
+          
           border:Border.all(color: isSelected ? Colors.white : Color(0x99FFFFFF),width:3),
-          borderRadius:BorderRadius.all(Radius.circular(46.0)),
+          borderRadius:BorderRadius.all(Radius.circular(100.0)),
           color:isSelected ?Colors.white :  Colors.transparent
         ),
 
