@@ -66,14 +66,8 @@ class SheduledFlightsList extends StatelessWidget {
               ],
             )
 
-            // child:ListView.builder(
-            //   itemCount: sheduledFlights.length,
-            //   itemBuilder:(BuildContext cotext,int index){
-            //       return ListTile(
-            //         title:TopHomeScreen()
-            //       );
-            //   }
-            // )
-            ));
+    
+            )
+            );
   }
 }

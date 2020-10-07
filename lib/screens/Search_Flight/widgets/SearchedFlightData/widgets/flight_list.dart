@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:myapp1/models/flight_details.dart';
 
 class FlightList extends StatelessWidget {
+  final SheduledOnewayFlight flight;
+
+  const FlightList({Key key, this.flight}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-        return Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
         SizedBox(height: 20.0),
@@ -45,17 +50,14 @@ class FlightList extends StatelessWidget {
       ],
     );
   }
-}
 
-
-
-Widget _originAndDestinationIcon() {
+  Widget _originAndDestinationIcon() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        _flightOntimeArrivedStatus(),
-        Text("CNB",
+        //_flightOntimeArrivedStatus(),
+        Text(flight.destinationShort,
             textAlign: TextAlign.center, 
             style: TextStyle(
               fontSize: 25,
@@ -63,16 +65,17 @@ Widget _originAndDestinationIcon() {
               fontWeight: FontWeight.bold
               )
             ),
-        SizedBox(height: 1.0),
+        SizedBox(height: 25.0),
         Icon(Icons.swap_vert, color: Colors.white, size: 40),
-        Text("SGN",
+         SizedBox(height: 25.0),
+        Text(flight.originShort,
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 25,
               color:Colors.white,
               fontWeight: FontWeight.bold
             )),
-        _flighDelayedTimeStatus()
+        //_flighDelayedTimeStatus()
       ],
     );
   }
@@ -88,14 +91,19 @@ Widget _originAndDestinationIcon() {
               text: "Destination \n",
               style: TextStyle(color: Colors.white, fontSize: 14,fontWeight: FontWeight.bold)),
           TextSpan(
-              text:'Canbera,Australia',
+              text: flight.destinationLong,
               style: TextStyle(fontSize: 17, color: Colors.white,fontWeight: FontWeight.bold))
-        ])),
-        Text("Seduled : 10:12 AM",
-            style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
-        Text("Actual : 10:12 AM",
-            style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
-        SizedBox(height: 45.0),
+        ]
+        )
+        ),
+
+        
+      _onSheduledBadge('On Seduled : 10:12 AM'),
+      
+
+        SizedBox(height: 30.0),
+       // _onSheduledBadge(),
+         SizedBox(height: 30.0),
         RichText(
             text: TextSpan(children: <TextSpan>[
           TextSpan(
@@ -106,13 +114,12 @@ Widget _originAndDestinationIcon() {
                 fontWeight: FontWeight.bold
               )),
           TextSpan(
-              text: 'Changi,Singapore',
+              text: flight.originLong,
               style: TextStyle(fontSize: 17, color: Colors.white,fontWeight: FontWeight.bold))
         ])),
-        Text("Seduled : 10:12 AM",
-            style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
-        Text("Actual : 10:12 AM",
-            style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
+        _onSheduledBadge('On Seduled : 05:32 PM'),
+        // Text("Actual : 10:12 AM",
+        //     style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
       ],
     );
   }
@@ -173,7 +180,27 @@ Widget _originAndDestinationIcon() {
                     fontSize: 10.0,
                     fontWeight: FontWeight.bold))
           ],
-        )
-        );
-}
+        ));
+  }
 
+
+
+
+    Widget _onSheduledBadge(String day) {
+    return Container(
+        //padding: EdgeInsets.symmetric(horizontal: 5.0, vertical: 5.0),
+        child: Row(
+          children: <Widget>[
+            Icon(Icons.check_circle, color: Colors.greenAccent[400],size:16),
+            Text(day,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 11.5,
+                    fontWeight: FontWeight.bold))
+          ],
+        )
+    );
+  }
+
+
+}
