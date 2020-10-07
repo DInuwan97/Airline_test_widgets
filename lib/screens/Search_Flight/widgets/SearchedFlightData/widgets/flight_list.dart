@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:myapp1/models/flight_details.dart';
 
-class TopHomeScreen extends StatelessWidget {
-  final SheduledOnewayFlight flight;
-
-  const TopHomeScreen({Key key, this.flight}) : super(key: key);
-
+class FlightList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
+        return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
         SizedBox(height: 20.0),
@@ -50,14 +45,17 @@ class TopHomeScreen extends StatelessWidget {
       ],
     );
   }
+}
 
-  Widget _originAndDestinationIcon() {
+
+
+Widget _originAndDestinationIcon() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         _flightOntimeArrivedStatus(),
-        Text(flight.destinationShort,
+        Text("CNB",
             textAlign: TextAlign.center, 
             style: TextStyle(
               fontSize: 25,
@@ -67,7 +65,7 @@ class TopHomeScreen extends StatelessWidget {
             ),
         SizedBox(height: 1.0),
         Icon(Icons.swap_vert, color: Colors.white, size: 40),
-        Text(flight.originShort,
+        Text("SGN",
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 25,
@@ -90,7 +88,7 @@ class TopHomeScreen extends StatelessWidget {
               text: "Destination \n",
               style: TextStyle(color: Colors.white, fontSize: 14,fontWeight: FontWeight.bold)),
           TextSpan(
-              text: flight.destinationLong,
+              text:'Canbera,Australia',
               style: TextStyle(fontSize: 17, color: Colors.white,fontWeight: FontWeight.bold))
         ])),
         Text("Seduled : 10:12 AM",
@@ -108,7 +106,7 @@ class TopHomeScreen extends StatelessWidget {
                 fontWeight: FontWeight.bold
               )),
           TextSpan(
-              text: flight.originLong,
+              text: 'Changi,Singapore',
               style: TextStyle(fontSize: 17, color: Colors.white,fontWeight: FontWeight.bold))
         ])),
         Text("Seduled : 10:12 AM",
@@ -175,6 +173,7 @@ class TopHomeScreen extends StatelessWidget {
                     fontSize: 10.0,
                     fontWeight: FontWeight.bold))
           ],
-        ));
-  }
+        )
+        );
 }
+
