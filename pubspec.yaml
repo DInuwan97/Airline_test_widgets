@@ -33,6 +33,7 @@ dependencies:
   flutter_rounded_date_picker: 1.0.0
   date_format: ^1.0.9
   square_in_app_payments: ^1.5.0
+  flag: ^3.0.5
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -44,9 +45,13 @@ dependencies:
   datetime_picker_formfield: ^1.0.0
   intl: ^0.16.1
 
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+    
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -108,3 +113,4 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  
