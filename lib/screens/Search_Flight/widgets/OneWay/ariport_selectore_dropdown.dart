@@ -40,71 +40,74 @@ class _OneWayAirportSelectorState extends State<OneWayAirportSelector> {
 
      return Column(children: <Widget>[
         
-          RaisedButton(
-              child: _origin(widget.placeWhere,shrtName.toString(),airportLongName.toString()),
-              color:Colors.grey[200].withOpacity(0.1),
-              padding: EdgeInsets.symmetric(vertical:30,horizontal:15),
-              elevation: 0,
+          Padding(
+           padding: EdgeInsets.symmetric(vertical:30,horizontal:15),
+            child: GestureDetector(
+                child: _origin(widget.placeWhere,shrtName.toString(),airportLongName.toString()),
+                // color:Colors.white.withOpacity(0.1),
+                // padding: EdgeInsets.symmetric(vertical:30,horizontal:15),
+                // elevation: 0,
 
-             
+               
 
-              splashColor: Colors.blue[200],
-              animationDuration: Duration(seconds: 2),
-              colorBrightness: Brightness.dark,
+                // splashColor: Colors.blue[200],
+                // animationDuration: Duration(seconds: 2),
+                // colorBrightness: Brightness.dark,
 
 
-              onPressed: () {
-                SelectDialog.showModal<AirportListModel>(
-                  
-                  context,
-              
-                  label: "Select Airport",
-                  items:airportListDetails,
-                  selectedValue:airportShortName,
-                  itemBuilder:
-                  
-                   (BuildContext context, AirportListModel item, bool isSelected) {
-                    return Container(
-                      width:MediaQuery.of(context).size.width * 1.4,
-                      decoration: !isSelected
-                          ? null
-                          : BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors.blue[100],
-                             
-                            ),
-                      child: ListTile(
-                     
-                        selected: isSelected,
-                        title: Text(
-                          item.shortName,
-                          style:TextStyle (
-                            fontWeight:FontWeight.bold,
-                            fontFamily: 'Arial',
-                            fontSize:20
-                          )
+                onTap: () {
+                  SelectDialog.showModal<AirportListModel>(
+                    
+                    context,
+                
+                    label: "Select Airport",
+                    items:airportListDetails,
+                    selectedValue:airportShortName,
+                    itemBuilder:
+                    
+                     (BuildContext context, AirportListModel item, bool isSelected) {
+                      return Container(
+                        width:MediaQuery.of(context).size.width * 1.4,
+                        decoration: !isSelected
+                            ? null
+                            : BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.blue[100],
+                               
+                              ),
+                        child: ListTile(
+                       
+                          selected: isSelected,
+                          title: Text(
+                            item.shortName,
+                            style:TextStyle (
+                              fontWeight:FontWeight.bold,
+                              fontFamily: 'Arial',
+                              fontSize:20
+                            )
+                          ),
+                          subtitle: Text(
+                            item.longName,
+                            style: TextStyle(
+                              fontWeight:FontWeight.bold
+                            )
+                          ),
                         ),
-                        subtitle: Text(
-                          item.longName,
-                          style: TextStyle(
-                            fontWeight:FontWeight.bold
-                          )
-                        ),
-                      ),
-                    );
-                  },
-                  onChange: (selected) {
-                    setState(() {
-                      airportShortName = selected;
-                      airportLongName = selected;
-                      shrtName = selected.shortName;
-                      print(selected.shortName);
-                      print(airportLongName );
-                    });
-                  },
-                );
-              },
-            ),
+                      );
+                    },
+                    onChange: (selected) {
+                      setState(() {
+                        airportShortName = selected;
+                        airportLongName = selected;
+                        shrtName = selected.shortName;
+                        print(selected.shortName);
+                        print(airportLongName );
+                      });
+                    },
+                  );
+                },
+              ),
+          ),
 
 
 

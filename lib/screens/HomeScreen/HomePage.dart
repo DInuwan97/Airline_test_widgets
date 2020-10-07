@@ -78,16 +78,36 @@ class HomePage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
-                            'CROATIA AIRLINES',
-                            style: TextStyle(
+
+
+                          Row(
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  'CROATIA',
+                                  style: TextStyle(
+                                    fontSize: 30,
+                                    fontFamily: 'Oxygen',
+                                    fontWeight: FontWeight.bold,
+                                    letterSpacing: 5,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                                Text(
+                              'AIRLINES',
+                              style: TextStyle(
                               fontSize: 30,
-                              fontFamily: 'Raleway',
+                              fontFamily: 'Oxygen',
                               fontWeight: FontWeight.bold,
                               letterSpacing: 5,
-                              color: Colors.white,
+                              color: Colors.blue[900],
                             ),
                           ),
+                            ],
+                          ),
+                          
                           SizedBox(
                             height: 8,
                           ),
@@ -95,7 +115,7 @@ class HomePage extends StatelessWidget {
                             'Welcome',
                             style: TextStyle(
                               fontSize: 20,
-                              fontFamily: 'OpenSans',
+                              fontFamily: 'Oxygen',
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
                             ),
