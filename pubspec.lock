@@ -39,7 +39,7 @@ packages:
   charcode:
     dependency: transitive
     description:
-      name: characters
+      name: charcode
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0-nullsafety.1"
@@ -53,14 +53,14 @@ packages:
   collection:
     dependency: transitive
     description:
-      name: charcode
+      name: collection
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.15.0-nullsafety.3"
   convert:
     dependency: transitive
     description:
-      name: clock
+      name: convert
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.1"
