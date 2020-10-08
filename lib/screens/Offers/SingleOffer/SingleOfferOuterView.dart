@@ -51,7 +51,7 @@ class SingleOfferOuterView extends StatelessWidget {
                 Stack(children: <Widget>[
 
             Container(
-              height:MediaQuery.of(context).size.width * 0.7,
+              height:250,
               width:MediaQuery.of(context).size.width,
               decoration:BoxDecoration(
                 borderRadius:BorderRadius.circular(30.0),
@@ -132,7 +132,11 @@ class SingleOfferOuterView extends StatelessWidget {
           ),
           
 
-       travellingClassWidget(context)
+       travellingClassWidget(context),
+
+       offerDetailsSecondCotainer(context),
+
+       travelDetailsContainer(context)
           
         ],
       ),
@@ -146,7 +150,7 @@ Widget travellingClassWidget(BuildContext context){
   return Padding(
     padding: const EdgeInsets.symmetric(vertical:8.0,horizontal:12.0),
     child: Container(
-      height:MediaQuery.of(context).size.width * 0.3,
+      height:110,
       width:MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
 
@@ -173,7 +177,7 @@ Widget travellingClassWidget(BuildContext context){
                                 text: TextSpan(
                                 text: 'ECONOMY ',
                                 style: TextStyle(
-                                  fontWeight: FontWeight.bold,
+                                  fontWeight: FontWeight.w900,
                                   fontSize:20,
                                   fontFamily: 'Oxygen',
                                 ),
@@ -201,10 +205,8 @@ Widget travellingClassWidget(BuildContext context){
                       
                       child: Column(
                         
-                        children: <Widget>[
-                         
-                          RaisedButton(
-                            
+                        children: <Widget>[                        
+                          RaisedButton(                           
                             onPressed: () {
                              Navigator.push(context,
                               MaterialPageRoute(
@@ -297,6 +299,287 @@ Widget travellingClassWidget(BuildContext context){
   );
 }
 
+
+Widget offerDetailsSecondCotainer(BuildContext context){
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical:0.0,horizontal:12.0),
+    child: Container(
+         height:155,
+         width:MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+
+                gradient: LinearGradient(
+                    colors: [Colors.blue,Colors.blue[400],Colors.blue[300]],
+                    end: Alignment.bottomRight,
+                    begin: Alignment.topLeft,
+                  ),
+                  borderRadius: BorderRadius.all(
+                      Radius.circular(20.0)
+                  )
+                ),
+
+
+
+
+          child: Column(
+            children: <Widget>[
+
+                Row(
+                  children: <Widget>[
+
+                    Padding(
+                      padding: const EdgeInsets.only(left:15.0),
+                      child: Icon(
+                        Icons.note,
+                        color: Colors.white,
+                        size:18
+                      ),
+                    ),
+
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical:8.0,horizontal:2.0),
+                      child: Text(
+                        'Travel Details',
+                        style:TextStyle(
+                          color:Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize:17
+                        )
+                      ),
+                    ),
+                   
+                  ],
+                ),
+
+
+
+                
+                Row(
+                  children: <Widget>[
+
+                    Padding(
+                      padding: const EdgeInsets.only(top:5.0,left:15.0),
+                      child: Icon(
+                        Icons.calendar_today,
+                        color: Colors.white,
+                        size:14
+                      ),
+                    ),
+
+
+                    Padding(
+                      padding: const EdgeInsets.only(top:5.0,left:2.0),
+                      child: Text(
+                        'Outbound Period',
+                        style:TextStyle(
+                          color:Colors.white,
+                          fontWeight: FontWeight.w400,
+                          fontSize:15
+                        )
+                      ),
+                    ),
+
+                  ],
+                ),
+
+                 Row(
+                  children: <Widget>[
+                     Padding(
+                      padding: const EdgeInsets.symmetric(horizontal:32.0),
+                      child: Text(
+                        '05 Aug 2020 - 10 Oct 2020',
+                        style:TextStyle(
+                          color:Colors.white70,
+                          fontWeight: FontWeight.w900,
+                          fontSize:13
+                        )
+                      ),
+                    ),
+                   ],
+                  ),
+
+
+
+
+                  Row(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(left:15.0,top:25.0),
+                      child: Icon(
+                        Icons.calendar_today,
+                        color: Colors.white,
+                        size:14
+                      ),
+                    ),
+
+                    
+                    Column(
+                      children: <Widget>[  
+                        Padding(
+                          padding: const EdgeInsets.only(top:25.0,left:2.0),
+                          child: Text(
+                            'Travel Compltion Date',
+                            style:TextStyle(
+                              color:Colors.white,
+                              fontWeight: FontWeight.w400,
+                              fontSize:15
+                            )
+                          ),
+                        ),
+                      ],
+                    ),
+
+
+                  Spacer(),
+
+                  Column(
+                  children: <Widget>[
+
+                    
+                  Row(
+                    
+                  children: <Widget>[
+                  Padding(
+                      padding: const EdgeInsets.only(top:25.0),
+                      child: Icon(
+                        Icons.calendar_today,
+                        color: Colors.white,
+                        size:14
+                      ),
+                    ),
+
+                    Padding(
+                      padding: const EdgeInsets.only(top:25.0,left:2.0,right:30.0),
+                      child: Text(
+                        'Book by',
+                        style:TextStyle(
+                          color:Colors.white,
+                          fontWeight: FontWeight.w400,
+                          fontSize:15
+                        )
+                      ),
+                    ),
+
+                  
+
+                  ],
+                ),
+                      ],
+                    )
+
+                  ],
+                ),
+
+                 Row(
+                  children: <Widget>[
+                     Column(
+                       children: <Widget>[
+                         Padding(
+                          padding: const EdgeInsets.only(left:32.0),
+                          child: Text(
+                            '21 Apr 2021, Friday',
+                            style:TextStyle(
+                              color:Colors.white70,
+                              fontWeight: FontWeight.w900,
+                              fontSize:13
+                            )
+                          ),
+                        ),
+                       ],
+                     ),
+                      Spacer(),
+
+
+                      Column(
+                       children: <Widget>[
+
+
+                         Row(
+                           children: <Widget>[
+                             Padding(
+                              padding: const EdgeInsets.only(right:15.0),
+                              child: Text(
+                                '05 Oct 2021',
+                                style:TextStyle(
+                                  color:Colors.white70,
+                                  fontWeight: FontWeight.w900,
+                                  fontSize:13
+                                )
+                              ),
+                            ),
+                           ],
+                         ),
+             
+                       ],
+                     ),
+                   ],
+                  )
+
+
+            ],
+          )
+
+
+
+    ),
+  );
+}
+
+
+
+Widget travelDetailsContainer(BuildContext context){
+
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical:8.0,horizontal:12.0),
+    child: Container(
+      height:155,
+      width:MediaQuery.of(context).size.width,
+      decoration: BoxDecoration(
+
+          gradient: LinearGradient(
+              colors: [Colors.blue,Colors.blue[400],Colors.blue[300]],
+              end: Alignment.bottomRight,
+              begin: Alignment.topLeft,
+          ),
+
+          borderRadius: BorderRadius.all(
+              Radius.circular(20.0)
+          )
+
+      ),
+
+      child:Column(
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+                   Padding(
+                      padding: const EdgeInsets.only(left:15.0),
+                      child: Icon(
+                        Icons.info_outline,
+                        color: Colors.white,
+                        size:18
+                      ),
+                    ),
+
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical:8.0,horizontal:2.0),
+                      child: Text(
+                        'Fare Conditions',
+                        style:TextStyle(
+                          color:Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize:17
+                        )
+                      ),
+                    ),
+            ],
+          )
+        ],
+      )
+    ),
+  );
+
+}
 
 
 }
