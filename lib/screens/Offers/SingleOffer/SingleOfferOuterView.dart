@@ -191,7 +191,7 @@ Widget travellingClassWidget(BuildContext context){
                         children: <Widget>[
                           RichText(
                                 text: TextSpan(
-                                text: 'ECONOMY ',
+                                text: offer.travelClass,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w900,
                                   fontSize:18,
@@ -200,7 +200,7 @@ Widget travellingClassWidget(BuildContext context){
                                 ),
                                 children: <TextSpan>[
                                   TextSpan(
-                                    text: 'CLASS', 
+                                    text: ' CLASS', 
                                     style: TextStyle(
                                       fontWeight: FontWeight.w600
                                     )
@@ -404,7 +404,7 @@ Widget offerDetailsSecondCotainer(BuildContext context){
                      Padding(
                       padding: const EdgeInsets.symmetric(horizontal:32.0),
                       child: Text(
-                        '05 Aug 2020 - 10 Oct 2020',
+                        '${offer.outBoundPeriod[0]} - ${offer.outBoundPeriod[1]}',
                         style:TextStyle(
                           color:Colors.white70,
                           fontWeight: FontWeight.w900,
@@ -494,7 +494,7 @@ Widget offerDetailsSecondCotainer(BuildContext context){
                          Padding(
                           padding: const EdgeInsets.only(left:32.0),
                           child: Text(
-                            '21 Apr 2021, Friday',
+                            offer.travelCompletionPeriod,
                             style:TextStyle(
                               color:Colors.white70,
                               fontWeight: FontWeight.w900,
@@ -516,7 +516,7 @@ Widget offerDetailsSecondCotainer(BuildContext context){
                              Padding(
                               padding: const EdgeInsets.only(right:15.0),
                               child: Text(
-                                '05 Oct 2021',
+                                offer.bookingDeadline,
                                 style:TextStyle(
                                   color:Colors.white70,
                                   fontWeight: FontWeight.w900,
@@ -644,7 +644,7 @@ Widget travelDetailsContainer(BuildContext context){
                       Padding(
                         padding: const EdgeInsets.only(right:15.0),
                           child: Text(
-                            'YES',
+                            offer.itineraryChange,
                               style:TextStyle(
                                 color:Colors.white70,
                                 fontWeight: FontWeight.w900,
@@ -680,7 +680,7 @@ Widget travelDetailsContainer(BuildContext context){
                       Padding(
                         padding: const EdgeInsets.only(right:15.0),
                           child: Text(
-                            'NO',
+                            offer.cancellation,
                               style:TextStyle(
                                 color:Colors.white70,
                                 fontWeight: FontWeight.w900,
@@ -715,7 +715,7 @@ Widget travelDetailsContainer(BuildContext context){
                       Padding(
                         padding: const EdgeInsets.only(right:15.0),
                           child: Text(
-                            '05 Days',
+                            offer.maxStay,
                               style:TextStyle(
                                 color:Colors.white70,
                                 fontWeight: FontWeight.w900,
@@ -749,7 +749,7 @@ Widget travelDetailsContainer(BuildContext context){
                       Padding(
                         padding: const EdgeInsets.only(right:15.0),
                           child: Text(
-                            '06 Months',
+                            offer.minStay,
                               style:TextStyle(
                                 color:Colors.white70,
                                 fontWeight: FontWeight.w900,
@@ -784,7 +784,7 @@ Widget travelDetailsContainer(BuildContext context){
                       Padding(
                         padding: const EdgeInsets.only(right:15.0),
                           child: Text(
-                            '03 Days',
+                            offer.advancePurchase,
                               style:TextStyle(
                                 color:Colors.white70,
                                 fontWeight: FontWeight.w900,
