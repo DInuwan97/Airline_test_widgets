@@ -44,101 +44,117 @@ class SingleOfferOuterView extends StatelessWidget {
       //   //backgroundColor: Colors.transparent,
       // ),
 
-      body:ListView(
-         padding: EdgeInsets.symmetric(horizontal: 0.0),
-        children: <Widget>[
+      body:Container(
+            decoration: BoxDecoration(
 
-                Stack(children: <Widget>[
+                    gradient: LinearGradient(
+                      colors: [Colors.blue[200],Colors.blue[100],Colors.white30],
+                      begin: Alignment.bottomLeft,
+                      end: Alignment.topRight,
+                    ),
+    
+                //  borderRadius: BorderRadius.only(
+                //    topLeft: Radius.circular(40.0),
+                //    topRight: Radius.circular(40.0)
+                //  )
 
-            Container(
-              height:250,
-              width:MediaQuery.of(context).size.width,
-              decoration:BoxDecoration(
-                borderRadius:BorderRadius.circular(30.0),
-                boxShadow:[BoxShadow(
-                  color:Colors.black26,
-                  offset:Offset(0.1,2.0),
-                  blurRadius : 6.0
-                )]
+            ),
+        child: ListView(
+           padding: EdgeInsets.symmetric(horizontal: 0.0),
+          children: <Widget>[
+
+                  Stack(children: <Widget>[
+
+              Container(
+                height:250,
+                width:MediaQuery.of(context).size.width,
+                decoration:BoxDecoration(
+                  borderRadius:BorderRadius.circular(70.0),
+                  boxShadow:[BoxShadow(
+                    color:Colors.black26,
+                    offset:Offset(0.1,2.0),
+                    blurRadius : 6.0
+                  )]
+                ),
+
+
+                child: Hero(
+                  tag:offer.imageUrl,
+                    child:ClipRRect(
+                      borderRadius: BorderRadius.only(bottomLeft: Radius.circular(60),bottomRight: Radius.circular(60)),
+                      child:Image(
+                        image:AssetImage(offer.imageUrl),
+                        fit:BoxFit.cover
+                      )
+                    )
+                )
+
+                
+               
               ),
 
 
-              child: Hero(
-                tag:offer.imageUrl,
-                  child:ClipRRect(
-                    borderRadius: BorderRadius.only(bottomLeft: Radius.circular(40),bottomRight: Radius.circular(40)),
-                    child:Image(
-                      image:AssetImage(offer.imageUrl),
-                      fit:BoxFit.cover
-                    )
-                  )
-              )
-
-              
-             
-            ),
 
 
+               Positioned(
+                                left: 20.0,
+                                bottom: 20.0,
 
-
-             Positioned(
-                              left: 20.0,
-                              bottom: 20.0,
-
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Text(
-                                    offer.city,
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 35.0,
-                                      fontWeight: FontWeight.w800,
-                                      fontFamily: 'Oxygen',
-
-                                      letterSpacing: 1.2,
-                                    ),
-                                  ),
-                                  Row(
-                                    children: <Widget>[
-                                      Icon(
-                                        FontAwesomeIcons.locationArrow,
-                                        size: 18.0,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Text(
+                                      offer.city,
+                                      style: TextStyle(
                                         color: Colors.white,
-                                        
+                                        fontSize: 35.0,
+                                        fontWeight: FontWeight.w800,
+                                        fontFamily: 'Oxygen',
+
+                                        letterSpacing: 1.2,
                                       ),
-                                      SizedBox(width: 5.0),
-                                      Text(
-                                        offer.country,
-                                        style: TextStyle(
+                                    ),
+                                    Row(
+                                      children: <Widget>[
+                                        Icon(
+                                          FontAwesomeIcons.locationArrow,
+                                          size: 18.0,
                                           color: Colors.white,
-                                          fontFamily: 'Oxygen',
-                                          fontWeight:FontWeight.bold,
-                                          fontSize:20.0
+                                          
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                                        SizedBox(width: 5.0),
+                                        Text(
+                                          offer.country,
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontFamily: 'Oxygen',
+                                            fontWeight:FontWeight.bold,
+                                            fontSize:20.0
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                
                               ),
-                              
-                            ),
 
 
-                           
+                             
 
 
+            ],
+            ),
+            
+
+         travellingClassWidget(context),
+
+         offerDetailsSecondCotainer(context),
+
+         travelDetailsContainer(context)
+            
           ],
-          ),
-          
-
-       travellingClassWidget(context),
-
-       offerDetailsSecondCotainer(context),
-
-       travelDetailsContainer(context)
-          
-        ],
+        ),
       ),
       
     );
@@ -155,9 +171,9 @@ Widget travellingClassWidget(BuildContext context){
           decoration: BoxDecoration(
 
               gradient: LinearGradient(
-                  colors: [Colors.blue,Colors.blue[400],Colors.blue[300]],
-                  end: Alignment.bottomRight,
-                  begin: Alignment.topLeft,
+                    colors: [Colors.lightBlue, Colors.blue[900]],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
                 ),
                 borderRadius: BorderRadius.all(
                     Radius.circular(20.0)
@@ -175,15 +191,16 @@ Widget travellingClassWidget(BuildContext context){
                         children: <Widget>[
                           RichText(
                                 text: TextSpan(
-                                text: 'ECONOMY ',
+                                text: offer.travelClass,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w900,
-                                  fontSize:20,
+                                  fontSize:18,
                                   fontFamily: 'Oxygen',
+                                  letterSpacing:1.7
                                 ),
                                 children: <TextSpan>[
                                   TextSpan(
-                                    text: 'CLASS', 
+                                    text: ' CLASS', 
                                     style: TextStyle(
                                       fontWeight: FontWeight.w600
                                     )
@@ -198,7 +215,7 @@ Widget travellingClassWidget(BuildContext context){
                     ),
 
 
-                    Spacer(),
+                    //Spacer(),
 
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical:2,horizontal:20),
@@ -309,9 +326,9 @@ Widget offerDetailsSecondCotainer(BuildContext context){
             decoration: BoxDecoration(
 
                 gradient: LinearGradient(
-                    colors: [Colors.blue,Colors.blue[400],Colors.blue[300]],
-                    end: Alignment.bottomRight,
-                    begin: Alignment.topLeft,
+                    colors: [Colors.lightBlue, Colors.blue[900]],
+                    end: Alignment.topCenter,
+                    begin: Alignment.bottomCenter,
                   ),
                   borderRadius: BorderRadius.all(
                       Radius.circular(20.0)
@@ -387,7 +404,7 @@ Widget offerDetailsSecondCotainer(BuildContext context){
                      Padding(
                       padding: const EdgeInsets.symmetric(horizontal:32.0),
                       child: Text(
-                        '05 Aug 2020 - 10 Oct 2020',
+                        '${offer.outBoundPeriod[0]} - ${offer.outBoundPeriod[1]}',
                         style:TextStyle(
                           color:Colors.white70,
                           fontWeight: FontWeight.w900,
@@ -477,7 +494,7 @@ Widget offerDetailsSecondCotainer(BuildContext context){
                          Padding(
                           padding: const EdgeInsets.only(left:32.0),
                           child: Text(
-                            '21 Apr 2021, Friday',
+                            offer.travelCompletionPeriod,
                             style:TextStyle(
                               color:Colors.white70,
                               fontWeight: FontWeight.w900,
@@ -499,7 +516,7 @@ Widget offerDetailsSecondCotainer(BuildContext context){
                              Padding(
                               padding: const EdgeInsets.only(right:15.0),
                               child: Text(
-                                '05 Oct 2021',
+                                offer.bookingDeadline,
                                 style:TextStyle(
                                   color:Colors.white70,
                                   fontWeight: FontWeight.w900,
@@ -532,14 +549,14 @@ Widget travelDetailsContainer(BuildContext context){
   return Padding(
     padding: const EdgeInsets.symmetric(vertical:8.0,horizontal:12.0),
     child: Container(
-      height:155,
+      height:180,
       width:MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
 
           gradient: LinearGradient(
-              colors: [Colors.blue,Colors.blue[400],Colors.blue[300]],
-              end: Alignment.bottomRight,
-              begin: Alignment.topLeft,
+                    colors: [Colors.lightBlue, Colors.blue[900]],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
           ),
 
           borderRadius: BorderRadius.all(
@@ -572,6 +589,212 @@ Widget travelDetailsContainer(BuildContext context){
                         )
                       ),
                     ),
+            ],
+          ),
+
+
+
+          Row(
+            children: <Widget>[
+
+                    Padding(
+                          padding: const EdgeInsets.only(top:9.0,left:15.0),
+                          child: Text(
+                            'Minimum Passengers',
+                            style:TextStyle(
+                              color:Colors.white,
+                              fontWeight: FontWeight.w400,
+                              fontSize:15
+                            )
+                          ),
+                    ),
+
+                    Spacer(),
+
+                     Padding(
+                      padding: const EdgeInsets.only(top:9.0,right:15.0),
+                      child: Icon(
+                        Icons.person,
+                        color: Colors.white,
+                        size:18
+                      ),
+                    ),
+
+            ],
+          ),
+
+
+          Row(
+            children: <Widget>[
+
+                    Padding(
+                          padding: const EdgeInsets.only(top:1.0,left:15.0),
+                          child: Text(
+                            'Itinerary Change',
+                            style:TextStyle(
+                              color:Colors.white,
+                              fontWeight: FontWeight.w400,
+                              fontSize:15
+                            )
+                          ),
+                    ),
+
+                    Spacer(),
+
+                      Padding(
+                        padding: const EdgeInsets.only(right:15.0),
+                          child: Text(
+                            offer.itineraryChange,
+                              style:TextStyle(
+                                color:Colors.white70,
+                                fontWeight: FontWeight.w900,
+                                fontSize:13,
+                                letterSpacing:1.0
+                              ),
+                              
+                          ),
+                      )
+                        
+            ],
+          ),
+
+
+
+          Row(
+            children: <Widget>[
+
+                    Padding(
+                          padding: const EdgeInsets.only(top:1.0,left:15.0),
+                          child: Text(
+                            'Cancellation / Refund',
+                            style:TextStyle(
+                              color:Colors.white,
+                              fontWeight: FontWeight.w400,
+                              fontSize:15
+                            )
+                          ),
+                    ),
+
+                    Spacer(),
+
+                      Padding(
+                        padding: const EdgeInsets.only(right:15.0),
+                          child: Text(
+                            offer.cancellation,
+                              style:TextStyle(
+                                color:Colors.white70,
+                                fontWeight: FontWeight.w900,
+                                fontSize:13,
+                                letterSpacing:1.0
+                              ),
+                              
+                          ),
+                      )
+                        
+            ],
+          ),
+
+
+            Row(
+            children: <Widget>[
+
+                    Padding(
+                          padding: const EdgeInsets.only(top:1.0,left:15.0),
+                          child: Text(
+                            'Maximum Stay',
+                            style:TextStyle(
+                              color:Colors.white,
+                              fontWeight: FontWeight.w400,
+                              fontSize:15
+                            )
+                          ),
+                    ),
+
+                    Spacer(),
+
+                      Padding(
+                        padding: const EdgeInsets.only(right:15.0),
+                          child: Text(
+                            offer.maxStay,
+                              style:TextStyle(
+                                color:Colors.white70,
+                                fontWeight: FontWeight.w900,
+                                fontSize:13,
+                                letterSpacing:1.0
+                              ),
+                              
+                          ),
+                      )
+                        
+            ],
+          ),
+
+                    Row(
+            children: <Widget>[
+
+                    Padding(
+                          padding: const EdgeInsets.only(top:1.0,left:15.0),
+                          child: Text(
+                            'Minimum Stay',
+                            style:TextStyle(
+                              color:Colors.white,
+                              fontWeight: FontWeight.w400,
+                              fontSize:15
+                            )
+                          ),
+                    ),
+
+                    Spacer(),
+
+                      Padding(
+                        padding: const EdgeInsets.only(right:15.0),
+                          child: Text(
+                            offer.minStay,
+                              style:TextStyle(
+                                color:Colors.white70,
+                                fontWeight: FontWeight.w900,
+                                fontSize:13,
+                                letterSpacing:1.0
+                              ),
+                              
+                          ),
+                      )
+                        
+            ],
+          ),
+
+
+                    Row(
+            children: <Widget>[
+
+                    Padding(
+                          padding: const EdgeInsets.only(top:1.0,left:15.0),
+                          child: Text(
+                            'Advance Purchase',
+                            style:TextStyle(
+                              color:Colors.white,
+                              fontWeight: FontWeight.w400,
+                              fontSize:15
+                            )
+                          ),
+                    ),
+
+                    Spacer(),
+
+                      Padding(
+                        padding: const EdgeInsets.only(right:15.0),
+                          child: Text(
+                            offer.advancePurchase,
+                              style:TextStyle(
+                                color:Colors.white70,
+                                fontWeight: FontWeight.w900,
+                                fontSize:13,
+                                letterSpacing:1.0
+                              ),
+                              
+                          ),
+                      )
+                        
             ],
           )
         ],
