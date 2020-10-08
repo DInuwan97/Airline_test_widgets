@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'Contact/ContactDataScreen.dart';
 import './localData/LocalDataScreen.dart';
+
+
+void main() {
+  runApp(MaterialApp(
+    title: 'Navigation Basics',
+    home: SideNavigationDrawer(),
+  ));
+}
 
 class SideNavigationDrawer extends StatelessWidget {
   @override
@@ -134,7 +143,13 @@ class SideNavigationDrawer extends StatelessWidget {
                       height: 1,
                     ),
                     ListTile(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => ContactDataScreen(),
+                          ),
+                        );
+                      },
                       leading: Icon(
                         Icons.account_balance,
                         color: Colors.white,
@@ -144,6 +159,7 @@ class SideNavigationDrawer extends StatelessWidget {
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
+					
                     Divider(
                       color: Colors.white,
                       thickness: 0.35,
@@ -271,3 +287,5 @@ class SideNavigationDrawer extends StatelessWidget {
     );
   }
 }
+
+

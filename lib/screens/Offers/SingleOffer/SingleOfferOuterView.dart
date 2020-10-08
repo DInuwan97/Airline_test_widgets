@@ -33,16 +33,16 @@ class SingleOfferOuterView extends StatelessWidget {
         (bodyHeight * 0.4 + 50 + windowHeight * 0.035 + windowHeight * 0.09);
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          offer.name,
-          style:TextStyle(
-            color:Colors.white
-          )
-        ),
-        elevation: 0.0,
-        //backgroundColor: Colors.transparent,
-      ),
+      // appBar: AppBar(
+      //   title: Text(
+      //     offer.name,
+      //     style:TextStyle(
+      //       color:Colors.white
+      //     )
+      //   ),
+      //   elevation: 0.0,
+      //   //backgroundColor: Colors.transparent,
+      // ),
 
       body:ListView(
          padding: EdgeInsets.symmetric(horizontal: 0.0),
@@ -51,7 +51,7 @@ class SingleOfferOuterView extends StatelessWidget {
                 Stack(children: <Widget>[
 
             Container(
-              height:MediaQuery.of(context).size.width * 0.5,
+              height:MediaQuery.of(context).size.width * 0.7,
               width:MediaQuery.of(context).size.width,
               decoration:BoxDecoration(
                 borderRadius:BorderRadius.circular(30.0),
@@ -66,7 +66,7 @@ class SingleOfferOuterView extends StatelessWidget {
               child: Hero(
                 tag:offer.imageUrl,
                   child:ClipRRect(
-                    borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30),bottomRight: Radius.circular(30)),
+                    borderRadius: BorderRadius.only(bottomLeft: Radius.circular(40),bottomRight: Radius.circular(40)),
                     child:Image(
                       image:AssetImage(offer.imageUrl),
                       fit:BoxFit.cover
@@ -151,107 +151,145 @@ Widget travellingClassWidget(BuildContext context){
           decoration: BoxDecoration(
 
               gradient: LinearGradient(
-                  colors: [Colors.blueAccent,Colors.blue],
-                  begin: Alignment.bottomCenter,
-                  end: Alignment.topCenter,
+                  colors: [Colors.blue,Colors.blue[400],Colors.blue[300]],
+                  end: Alignment.bottomRight,
+                  begin: Alignment.topLeft,
                 ),
                 borderRadius: BorderRadius.all(
                     Radius.circular(20.0)
                 )
               ),
 
-      child:Row(
+      child:Column(
         children: <Widget>[
+          Row(
+            children: <Widget>[
 
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical:25,horizontal:15),
-                  child: Column(
-                    children: <Widget>[
-                      RichText(
-                            text: TextSpan(
-                            text: 'ECONOMY ',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize:20,
-                              fontFamily: 'Oxygen',
-                            ),
-                            children: <TextSpan>[
-                              TextSpan(
-                                text: 'CLASS', 
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical:20,horizontal:15),
+                      child: Column(
+                        children: <Widget>[
+                          RichText(
+                                text: TextSpan(
+                                text: 'ECONOMY ',
                                 style: TextStyle(
-                                  fontWeight: FontWeight.w600
-                                )
+                                  fontWeight: FontWeight.bold,
+                                  fontSize:20,
+                                  fontFamily: 'Oxygen',
+                                ),
+                                children: <TextSpan>[
+                                  TextSpan(
+                                    text: 'CLASS', 
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w600
+                                    )
+                                  ),
+                                ],
                               ),
-                            ],
                           ),
+                        ],
                       ),
-                    ],
-                  ),
-                ),
 
-
-                Spacer(),
-
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical:15,horizontal:20),
-                  child: Column(
-                    children: <Widget>[
-                      RaisedButton(
-                        onPressed: () {
-                         Navigator.push(context,
-                          MaterialPageRoute(
-    	                                            
-                          )
-                         );
-                        },
-                        padding: EdgeInsets.symmetric(
-                        horizontal: MediaQuery.of(context).size.width * 0.01,vertical: 8),
-                        
-                          child: const Text('BOOK NOW',
-                              style: TextStyle(
-                                fontSize: 15,
-                              )
-                          ),
-
-                          elevation: 10.0,
-                          color: Colors.blue[900],
-                          splashColor: Colors.blue[200],
-                          animationDuration:
-                              Duration(seconds: 2),
-                              colorBrightness: Brightness.dark,
-                              shape: RoundedRectangleBorder(
-                              borderRadius:
-                                new BorderRadius.circular(10.0),
-                            side: BorderSide(
-                                color: Colors.white,
-                                                                      
-                            ),
-                           
-                          )
-                          ),
-                    ],
-
-                  ),
-
-                  
-                ),
-
-                Column(
-                  children: <Widget>[
-                      //      RichText(
-                      //       text: TextSpan(
-                      //       text: 'USD 210',
-                      //       style: TextStyle(
-                      //         fontWeight: FontWeight.bold,
-                      //         fontSize:20,
-                      //         fontFamily: 'Oxygen',
-                      //       )
                       
-                      //     ),
-                      // ),
-                  ]
-                )
-               
+                    ),
+
+
+                    Spacer(),
+
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical:2,horizontal:20),
+                      
+                      child: Column(
+                        
+                        children: <Widget>[
+                         
+                          RaisedButton(
+                            
+                            onPressed: () {
+                             Navigator.push(context,
+                              MaterialPageRoute(
+    	                                            
+                              )
+                             );
+                            },
+                            padding: EdgeInsets.symmetric(
+                            horizontal: MediaQuery.of(context).size.width * 0.01,vertical: 0),
+                            
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(horizontal:3.0),
+                                child: const Text('BOOK NOW',
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold
+                                    )
+                                ),
+                              ),
+
+                              elevation: 20.0,
+                              color: Colors.blue[900],
+                              splashColor: Colors.blue[200],
+                              animationDuration:
+                                  Duration(seconds: 2),
+                                  colorBrightness: Brightness.dark,
+                                  shape: RoundedRectangleBorder(
+                                  borderRadius:
+                                    new BorderRadius.circular(10.0),
+                                side: BorderSide(
+                                    color: Colors.white,
+                                                                          
+                                ),
+                               
+                              )
+                              ),
+                        ],
+
+                      ),
+
+                      
+                    ),
+
+                   
+
+            ],
+          ),
+
+
+
+
+          Row(
+            children: <Widget>[
+                             Padding(
+                               padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                               child: Container(
+                                  width:80.0,
+                                  height: 25,
+                                      decoration:BoxDecoration(
+                                          color:Colors.yellow[700],
+                                          borderRadius: BorderRadius.circular(40.0)
+                                      ),
+                                 child: Padding(
+                                   padding: const EdgeInsets.symmetric(vertical:3.0,horizontal:10.0),
+                                   child: RichText(
+                                      text: TextSpan(
+                                      text: 'USD 210',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize:15,
+                                        fontFamily: 'Oxygen',
+                                        color:Colors.white
+                                      )
+                          
+                                    ),
+                          ),
+                                 ),
+                               ),
+                             ),
+
+                          
+            ], 
+          )
+
+
 
         ],
       )
