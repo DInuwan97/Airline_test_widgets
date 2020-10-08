@@ -171,9 +171,9 @@ Widget travellingClassWidget(BuildContext context){
           decoration: BoxDecoration(
 
               gradient: LinearGradient(
-                    colors: [Colors.lightBlue, Colors.blue[900]],
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
+                     colors: [Colors.blueAccent,Colors.blue[600],Colors.blue[300]],
+                    //begin: Alignment.topCenter,
+                    //end: Alignment.bottomCenter,
                 ),
                 borderRadius: BorderRadius.all(
                     Radius.circular(20.0)
@@ -326,9 +326,9 @@ Widget offerDetailsSecondCotainer(BuildContext context){
             decoration: BoxDecoration(
 
                 gradient: LinearGradient(
-                    colors: [Colors.lightBlue, Colors.blue[900]],
-                    end: Alignment.topCenter,
-                    begin: Alignment.bottomCenter,
+                    colors: [Colors.blueAccent,Colors.blue[600],Colors.blue[300]],
+                    //end: Alignment.topCenter,
+                    //begin: Alignment.bottomCenter,
                   ),
                   borderRadius: BorderRadius.all(
                       Radius.circular(20.0)
@@ -554,9 +554,9 @@ Widget travelDetailsContainer(BuildContext context){
       decoration: BoxDecoration(
 
           gradient: LinearGradient(
-                    colors: [Colors.lightBlue, Colors.blue[900]],
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
+                     colors: [Colors.blueAccent,Colors.blue[600],Colors.blue[300]],
+                    //begin: Alignment.topCenter,
+                    //end: Alignment.bottomCenter,
           ),
 
           borderRadius: BorderRadius.all(
@@ -712,19 +712,18 @@ Widget travelDetailsContainer(BuildContext context){
 
                     Spacer(),
 
-                      Padding(
-                        padding: const EdgeInsets.only(right:15.0),
-                          child: Text(
-                            offer.maxStay,
+                    Padding(
+                      padding: const EdgeInsets.only(right:15.0),
+                        child: Text(
+                          offer.maxStay,
                               style:TextStyle(
-                                color:Colors.white70,
-                                fontWeight: FontWeight.w900,
-                                fontSize:13,
-                                letterSpacing:1.0
-                              ),
-                              
-                          ),
-                      )
+                              color:Colors.white70,
+                              fontWeight: FontWeight.w900,
+                              fontSize:13,
+                              letterSpacing:1.0
+                            ),                            
+                        ),
+                    )
                         
             ],
           ),
