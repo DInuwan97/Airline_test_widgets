@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:myapp1/models/flight_details.dart';
+import 'package:myapp1/screens/Payment/Payment.dart';
 import 'package:myapp1/screens/SeatBooking/flight_seat_booking.dart';
 import 'package:myapp1/screens/sheduled_flight_list.dart';
 import 'package:myapp1/screens/side_screen_drawer.dart';
@@ -230,7 +231,7 @@ class SingleTrip extends StatelessWidget {
                                               Navigator.push(
                                                 context,
                                                 MaterialPageRoute(
-    	                                            builder: (context) => SeatBookingScreen()
+    	                                            builder: (context) => Payment()
                                                 )
                                               );
                                           },

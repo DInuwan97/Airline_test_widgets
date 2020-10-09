@@ -78,9 +78,8 @@ class HomePage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-
-
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
@@ -95,19 +94,18 @@ class HomePage extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                                Text(
-                              'AIRLINES',
-                              style: TextStyle(
-                              fontSize: 30,
-                              fontFamily: 'Oxygen',
-                              fontWeight: FontWeight.bold,
-                              letterSpacing: 5,
-                              color: Colors.blue[900],
-                            ),
-                          ),
+                              Text(
+                                'AIRLINES',
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  fontFamily: 'Oxygen',
+                                  fontWeight: FontWeight.bold,
+                                  letterSpacing: 5,
+                                  color: Colors.blue[900],
+                                ),
+                              ),
                             ],
                           ),
-                          
                           SizedBox(
                             height: 8,
                           ),

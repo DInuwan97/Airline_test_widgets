@@ -8,7 +8,7 @@ class ContactAndMore extends StatefulWidget {
 }
 
 class _ContactAndMoreState extends State<ContactAndMore> {
-  final List<String> countryCodes = [
+  final List<String> _countryCodes = [
     'Afghanistan (+93)',
     'Albania (+355)',
     'Algeria (+213)',
@@ -26,7 +26,7 @@ class _ContactAndMoreState extends State<ContactAndMore> {
     'Hong Kong (+852)',
     'Sri Lanka (+94)'
   ];
-  final List<String> frePrograms = [
+  final List<String> _frePrograms = [
     'None',
     'Miles-Bonus',
     'Aeroplan',
@@ -36,10 +36,40 @@ class _ContactAndMoreState extends State<ContactAndMore> {
     'Phoenix Miles',
     'Connect Miles'
   ];
-  String selectedCountryCode = 'Sri Lanka (+94)';
-  String selectedFreProgram = 'Aeroplan';
+  String _selectedCountryCode = 'Sri Lanka (+94)';
+  String _selectedFreProgram = 'Aeroplan';
   final _form = GlobalKey<FormState>();
   bool isLoading = false;
+
+  // form styles
+  final OutlineInputBorder _enabledBorder = OutlineInputBorder(
+    borderSide: BorderSide(
+      color: Colors.white,
+      width: 1,
+    ),
+    borderRadius: BorderRadius.circular(20),
+  );
+  final OutlineInputBorder _focusedBorder = OutlineInputBorder(
+    borderSide: BorderSide(
+      color: Colors.blue[300],
+      width: 2,
+    ),
+    borderRadius: BorderRadius.circular(20),
+  );
+  final OutlineInputBorder _errorBorder = OutlineInputBorder(
+    borderSide: BorderSide(
+      color: Colors.red,
+      width: 2,
+    ),
+    borderRadius: BorderRadius.circular(20),
+  );
+  final OutlineInputBorder _focuseErrordBorder = OutlineInputBorder(
+    borderSide: BorderSide(
+      color: Colors.red,
+      width: 2,
+    ),
+    borderRadius: BorderRadius.circular(20),
+  );
 
   void _submitForm() async {
     final bool isFormValid = _form.currentState.validate();
@@ -48,7 +78,7 @@ class _ContactAndMoreState extends State<ContactAndMore> {
     setState(() {
       isLoading = true;
     });
-    var timer = new Timer(const Duration(seconds: 2), () {
+    new Timer(const Duration(seconds: 2), () {
       _form.currentState.save();
       setState(() {
         isLoading = false;
@@ -77,12 +107,12 @@ class _ContactAndMoreState extends State<ContactAndMore> {
         key: _form,
         child: ListView(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 8,
             ),
             Container(
               margin: EdgeInsets.only(left: 22, bottom: 2),
-              child: Text(
+              child: const Text(
                 'EMAIL',
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -118,44 +148,20 @@ class _ContactAndMoreState extends State<ContactAndMore> {
                     color: Colors.grey[450],
                     fontWeight: FontWeight.bold,
                   ),
-                  errorStyle: TextStyle(fontSize: 0, height: 0),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.white,
-                      width: 1,
-                    ),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.white,
-                      width: 1,
-                    ),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  errorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.red,
-                      width: 1,
-                    ),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  focusedErrorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.red,
-                      width: 1,
-                    ),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
+                  errorStyle: const TextStyle(fontSize: 0, height: 0),
+                  enabledBorder: _enabledBorder,
+                  focusedBorder: _focusedBorder,
+                  errorBorder: _errorBorder,
+                  focusedErrorBorder: _focuseErrordBorder,
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             Container(
               margin: EdgeInsets.only(left: 22, bottom: 2),
-              child: Text(
+              child: const Text(
                 'COUNTRY CODE',
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -172,11 +178,11 @@ class _ContactAndMoreState extends State<ContactAndMore> {
                   color: Colors.grey[800],
                   fontWeight: FontWeight.bold,
                 ),
-                value: selectedCountryCode,
+                value: _selectedCountryCode,
                 onChanged: (String value) =>
-                    setState(() => selectedCountryCode = value),
+                    setState(() => _selectedCountryCode = value),
                 selectedItemBuilder: (BuildContext context) {
-                  return countryCodes.map<Widget>((String t) {
+                  return _countryCodes.map<Widget>((String t) {
                     return Text(
                       t,
                       style: TextStyle(
@@ -185,7 +191,7 @@ class _ContactAndMoreState extends State<ContactAndMore> {
                     );
                   }).toList();
                 },
-                items: countryCodes.map((String t) {
+                items: _countryCodes.map((String t) {
                   return DropdownMenuItem<String>(
                     child: Text(
                       t,
@@ -201,30 +207,18 @@ class _ContactAndMoreState extends State<ContactAndMore> {
                       EdgeInsets.only(left: 22, top: 0, right: 10, bottom: 0),
                   fillColor: Colors.white,
                   filled: true,
-                  errorStyle: TextStyle(fontSize: 0, height: 0),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.white,
-                      width: 1,
-                    ),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.white,
-                      width: 1,
-                    ),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
+                  errorStyle: const TextStyle(fontSize: 0, height: 0),
+                  enabledBorder: _enabledBorder,
+                  focusedBorder: _focusedBorder,
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             Container(
               margin: EdgeInsets.only(left: 22, bottom: 2),
-              child: Text(
+              child: const Text(
                 'PHONE NUMBER',
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -264,44 +258,20 @@ class _ContactAndMoreState extends State<ContactAndMore> {
                     fontWeight: FontWeight.bold,
                     color: Colors.grey,
                   ),
-                  errorStyle: TextStyle(fontSize: 0, height: 0),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.white,
-                      width: 1,
-                    ),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.white,
-                      width: 1,
-                    ),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  errorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.red,
-                      width: 1,
-                    ),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  focusedErrorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.red,
-                      width: 1,
-                    ),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
+                  errorStyle: const TextStyle(fontSize: 0, height: 0),
+                  enabledBorder: _enabledBorder,
+                  focusedBorder: _focusedBorder,
+                  errorBorder: _errorBorder,
+                  focusedErrorBorder: _focuseErrordBorder,
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             Container(
               margin: EdgeInsets.only(left: 22, bottom: 2),
-              child: Text(
+              child: const Text(
                 'FREQUENT FLYER PROGRAM',
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -318,11 +288,11 @@ class _ContactAndMoreState extends State<ContactAndMore> {
                   color: Colors.grey[800],
                   fontWeight: FontWeight.bold,
                 ),
-                value: selectedFreProgram,
+                value: _selectedFreProgram,
                 onChanged: (String value) =>
-                    setState(() => selectedFreProgram = value),
+                    setState(() => _selectedFreProgram = value),
                 selectedItemBuilder: (BuildContext context) {
-                  return frePrograms.map<Widget>((String t) {
+                  return _frePrograms.map<Widget>((String t) {
                     return Text(
                       t,
                       style: TextStyle(
@@ -331,7 +301,7 @@ class _ContactAndMoreState extends State<ContactAndMore> {
                     );
                   }).toList();
                 },
-                items: frePrograms.map((String t) {
+                items: _frePrograms.map((String t) {
                   return DropdownMenuItem<String>(
                     child: Text(
                       t,
@@ -341,36 +311,24 @@ class _ContactAndMoreState extends State<ContactAndMore> {
                   );
                 }).toList(),
                 iconEnabledColor: Colors.black54,
-              //  dropdownColor: Colors.white,
+                //  dropdownColor: Colors.white,
                 decoration: InputDecoration(
                   contentPadding:
                       EdgeInsets.only(left: 22, top: 0, right: 10, bottom: 0),
                   fillColor: Colors.white,
                   filled: true,
-                  errorStyle: TextStyle(fontSize: 0, height: 0),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.white,
-                      width: 1,
-                    ),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.white,
-                      width: 1,
-                    ),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
+                  errorStyle: const TextStyle(fontSize: 0, height: 0),
+                  enabledBorder: _enabledBorder,
+                  focusedBorder: _focusedBorder,
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             Container(
               margin: EdgeInsets.only(left: 22, bottom: 2),
-              child: Text(
+              child: const Text(
                 'FREQUENT FLYER NUMBER',
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -403,39 +361,15 @@ class _ContactAndMoreState extends State<ContactAndMore> {
                     color: Colors.grey[450],
                     fontWeight: FontWeight.bold,
                   ),
-                  errorStyle: TextStyle(fontSize: 0, height: 0),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.white,
-                      width: 1,
-                    ),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.white,
-                      width: 1,
-                    ),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  errorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.red,
-                      width: 1,
-                    ),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  focusedErrorBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.red,
-                      width: 1,
-                    ),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
+                  errorStyle: const TextStyle(fontSize: 0, height: 0),
+                  enabledBorder: _enabledBorder,
+                  focusedBorder: _focusedBorder,
+                  errorBorder: _errorBorder,
+                  focusedErrorBorder: _focuseErrordBorder,
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 35,
             ),
             Material(
@@ -467,7 +401,7 @@ class _ContactAndMoreState extends State<ContactAndMore> {
                       ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
           ],
