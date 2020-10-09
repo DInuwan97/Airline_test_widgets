@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:myapp1/screens/ContryList/country_list.dart';
 
 import 'Contact/ContactDataScreen.dart';
 import './localData/LocalDataScreen.dart';
@@ -146,7 +147,7 @@ class SideNavigationDrawer extends StatelessWidget {
                       onTap: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (context) => ContactDataScreen(),
+                            builder: (context) => CountryList() ,
                           ),
                         );
                       },
