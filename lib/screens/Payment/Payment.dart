@@ -50,7 +50,7 @@ class _PaymentState extends State<Payment> {
                   themeColor: Colors.blue,
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
