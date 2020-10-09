@@ -2,11 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:myapp1/models/flight_details.dart';
-
 import 'package:myapp1/screens/Payment/Payment.dart';
-
 import 'package:myapp1/screens/SeatBooking/flight_seat_booking.dart';
-
 import 'package:myapp1/screens/sheduled_flight_list.dart';
 import 'package:myapp1/screens/side_screen_drawer.dart';
 import 'package:myapp1/shapes/custome_shape_clipper.dart';
@@ -27,21 +24,22 @@ class SingleTrip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
+
+          appBar: AppBar(
             title: Text(flight.originShort + " to " + flight.destinationShort,
-                style: TextStyle(fontSize: 18)),
+              style:TextStyle(
+                fontSize:18
+              )
+            ),
             elevation: 0.0,
             flexibleSpace: Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    Colors.blueAccent,
-                    Colors.blue[600],
-                    Colors.blue[300]
-                  ],
-                ),
-              ),
-            )),
+            decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.blueAccent,Colors.blue[600],Colors.blue[300]],
+            ),
+          ),
+            )
+          ),
         drawer: SideNavigationDrawer(),
         body: Provider<SheduledOnewayFlight>.value(
             value: flight,
@@ -62,16 +60,10 @@ class SingleTrip extends StatelessWidget {
                             height: 570.0,
                             decoration: BoxDecoration(
                                 gradient: LinearGradient(
-                                  colors: [
-                                    Colors.lightBlue,
-                                    Colors.blue[900],
-                                    Colors.blue[800],
-                                    Colors.blueAccent,
-                                    Colors.blue[500]
-                                  ],
-                                  begin: Alignment.bottomLeft,
-                                  end: Alignment.topLeft,
-                                  tileMode: TileMode.clamp,
+                                     colors: [Colors.lightBlue, Colors.blue[900],Colors.blue[800],Colors.blueAccent,Colors.blue[500]],
+                                    begin: Alignment.bottomLeft,
+                                    end: Alignment.topLeft,
+                                    tileMode: TileMode.clamp,
                                 ),
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(14))),
@@ -86,11 +78,11 @@ class SingleTrip extends StatelessWidget {
                                                 0.95,
                                         height: 170.0,
                                         decoration: BoxDecoration(
-                                            image: new DecorationImage(
-                                              image: new ExactAssetImage(
-                                                  'assets/images/cloud6.jpeg'),
-                                              fit: BoxFit.cover,
-                                            ),
+                                             image: new DecorationImage(
+                                                    image: new ExactAssetImage(
+                                                        'assets/images/cloud6.jpeg'),
+                                                        fit: BoxFit.cover,
+                                             ),
                                             borderRadius: BorderRadius.all(
                                                 Radius.circular(14))),
                                         child: Container(
@@ -153,25 +145,20 @@ class SingleTrip extends StatelessWidget {
                                         children: <Widget>[
                                           Container(
                                             alignment: Alignment.center,
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.95,
+                                            width: MediaQuery.of(context).size.width *0.95,
                                             height: 170.0,
                                             decoration: BoxDecoration(
-                                              gradient: LinearGradient(
-                                                colors: [
-                                                  Colors.white,
-                                                  Colors.white70,
-                                                  Colors.white60
-                                                ],
-                                                begin: Alignment.bottomCenter,
-                                                end: Alignment.topCenter,
-                                                tileMode: TileMode.clamp,
+                                                gradient: LinearGradient(
+                                                  colors: [Colors.white,Colors.white70,Colors.white60],
+                                                  begin: Alignment.bottomCenter,
+                                                  end: Alignment.topCenter,
+                                                  tileMode: TileMode.clamp,
+                                                ),
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(14)
+                                                ),
+                                                
                                               ),
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(14)),
-                                            ),
                                             child: Padding(
                                               padding:
                                                   const EdgeInsets.symmetric(
@@ -241,18 +228,12 @@ class SingleTrip extends StatelessWidget {
                                       SizedBox(height: 10.0),
                                       RaisedButton(
                                           onPressed: () {
-                                            Navigator.push(
+                                              Navigator.push(
                                                 context,
                                                 MaterialPageRoute(
-
-                                                  builder: (context) =>
-                                                      Payment(),
-                                                ));
-
-    
+    	                                            builder: (context) => Payment()
                                                 )
                                               );
-
                                           },
                                           padding: EdgeInsets.symmetric(
                                               horizontal: MediaQuery.of(context)
@@ -275,8 +256,11 @@ class SingleTrip extends StatelessWidget {
                                                 new BorderRadius.circular(10.0),
                                             side: BorderSide(
                                                 color: Colors.white,
-                                                width: 3.0),
-                                          )),
+                                                width:3.0                                               
+                                            ),
+                                           
+                                          )
+                                          ),
                                     ],
                                   ),
                                 )
