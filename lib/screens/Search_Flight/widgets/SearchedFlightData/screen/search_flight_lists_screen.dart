@@ -102,7 +102,9 @@ Widget createCategory() {
        
            
                    gradient: LinearGradient(
-                    colors: [Colors.white,Colors.white70],
+                     colors: [Colors.blue[200],Colors.blue[100],Colors.white70],
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.topCenter,
                     ),
     
                  borderRadius: BorderRadius.only(
