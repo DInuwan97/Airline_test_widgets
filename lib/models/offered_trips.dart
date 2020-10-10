@@ -17,6 +17,7 @@ class OfferedTrips{
   String minStay;
   String maxStay;
   String advancePurchase;
+  bool isFeatured;
 
   OfferedTrips({
     this.offerItemId,
@@ -36,7 +37,8 @@ class OfferedTrips{
     this.cancellation,
     this.minStay,
     this.maxStay,
-    this.advancePurchase
+    this.advancePurchase,
+    this.isFeatured
   });
 }
 
@@ -59,7 +61,8 @@ final offer_01 = OfferedTrips(
     cancellation:'NO',
     minStay:'O5 Days',
     maxStay:'06 Months',
-    advancePurchase:'03 Days'
+    advancePurchase:'03 Days',
+    isFeatured: true
 
 );
 
@@ -82,7 +85,8 @@ final offer_02 = OfferedTrips(
     cancellation:'YES',
     minStay:'O7 Days',
     maxStay:'03 Months',
-    advancePurchase:'05 Days'
+    advancePurchase:'05 Days',
+    isFeatured: false
 
 );
 
@@ -104,7 +108,8 @@ final offer_03 = OfferedTrips(
     cancellation:'YES',
     minStay:'04 Days',
     maxStay:'02 Months',
-    advancePurchase:'03 Days'
+    advancePurchase:'03 Days',
+    isFeatured: true
 );
 
 
@@ -126,7 +131,8 @@ final offer_04 = OfferedTrips(
     cancellation:'YES',
     minStay:'04 Days',
     maxStay:'02 Months',
-    advancePurchase:'03 Days'
+    advancePurchase:'03 Days',
+    isFeatured: true
 );
 
 final sheduledOffers = [

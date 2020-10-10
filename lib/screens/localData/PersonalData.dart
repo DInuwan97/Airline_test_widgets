@@ -15,11 +15,41 @@ class PersonalData extends StatefulWidget {
 }
 
 class _PersonalDataState extends State<PersonalData> {
-  final List<String> titles = <String>['Ms.', 'Mrs.'];
-  String selectedTitle = 'Mrs.';
+  final List<String> _titles = <String>['Ms.', 'Mrs.'];
+  String _selectedTitle = 'Mrs.';
   Gender _gender = Gender.Male;
   final _form = GlobalKey<FormState>();
   bool isLoading = false;
+
+  // form styles
+  final OutlineInputBorder _enabledBorder = OutlineInputBorder(
+    borderSide: BorderSide(
+      color: Colors.white,
+      width: 1,
+    ),
+    borderRadius: BorderRadius.circular(20),
+  );
+  final OutlineInputBorder _focusedBorder = OutlineInputBorder(
+    borderSide: BorderSide(
+      color: Colors.blue[300],
+      width: 2,
+    ),
+    borderRadius: BorderRadius.circular(20),
+  );
+  final OutlineInputBorder _errorBorder = OutlineInputBorder(
+    borderSide: BorderSide(
+      color: Colors.red,
+      width: 2,
+    ),
+    borderRadius: BorderRadius.circular(20),
+  );
+  final OutlineInputBorder _focuseErrordBorder = OutlineInputBorder(
+    borderSide: BorderSide(
+      color: Colors.red,
+      width: 2,
+    ),
+    borderRadius: BorderRadius.circular(20),
+  );
 
   void _submitForm() async {
     final bool isFormValid = _form.currentState.validate();
@@ -28,7 +58,7 @@ class _PersonalDataState extends State<PersonalData> {
     setState(() {
       isLoading = true;
     });
-    var timer = new Timer(const Duration(seconds: 2), () {
+    new Timer(const Duration(seconds: 2), () {
       _form.currentState.save();
       setState(() {
         isLoading = false;
@@ -61,12 +91,12 @@ class _PersonalDataState extends State<PersonalData> {
           key: _form,
           child: ListView(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 8,
               ),
               Container(
                 margin: EdgeInsets.only(left: 22, bottom: 2),
-                child: Text(
+                child: const Text(
                   'TITLE',
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -83,11 +113,11 @@ class _PersonalDataState extends State<PersonalData> {
                     color: Colors.grey[800],
                     fontWeight: FontWeight.bold,
                   ),
-                  value: selectedTitle,
+                  value: _selectedTitle,
                   onChanged: (String value) =>
-                      setState(() => selectedTitle = value),
+                      setState(() => _selectedTitle = value),
                   selectedItemBuilder: (BuildContext context) {
-                    return titles.map<Widget>((String t) {
+                    return _titles.map<Widget>((String t) {
                       return Text(
                         t,
                         style: TextStyle(
@@ -96,7 +126,7 @@ class _PersonalDataState extends State<PersonalData> {
                       );
                     }).toList();
                   },
-                  items: titles.map((String t) {
+                  items: _titles.map((String t) {
                     return DropdownMenuItem<String>(
                       child: Text(
                         t,
@@ -106,36 +136,24 @@ class _PersonalDataState extends State<PersonalData> {
                     );
                   }).toList(),
                   iconEnabledColor: Colors.black54,
-                 // dropdownColor: Colors.white,
+                  // dropdownColor: Colors.white,
                   decoration: InputDecoration(
                     contentPadding:
                         EdgeInsets.only(left: 22, top: 0, right: 10, bottom: 0),
                     fillColor: Colors.white,
                     filled: true,
-                    errorStyle: TextStyle(fontSize: 0, height: 0),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.white,
-                        width: 1,
-                      ),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.white,
-                        width: 1,
-                      ),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
+                    errorStyle: const TextStyle(fontSize: 0, height: 0),
+                    enabledBorder: _enabledBorder,
+                    focusedBorder: _focusedBorder,
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               Container(
                 margin: EdgeInsets.only(left: 22, bottom: 2),
-                child: Text(
+                child: const Text(
                   'FIRSTNAME',
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -168,44 +186,20 @@ class _PersonalDataState extends State<PersonalData> {
                       color: Colors.grey[450],
                       fontWeight: FontWeight.bold,
                     ),
-                    errorStyle: TextStyle(fontSize: 0, height: 0),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.white,
-                        width: 1,
-                      ),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.white,
-                        width: 1,
-                      ),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    errorBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.red,
-                        width: 1,
-                      ),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    focusedErrorBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.red,
-                        width: 1,
-                      ),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
+                    errorStyle: const TextStyle(fontSize: 0, height: 0),
+                    enabledBorder: _enabledBorder,
+                    focusedBorder: _focusedBorder,
+                    errorBorder: _errorBorder,
+                    focusedErrorBorder: _focuseErrordBorder,
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               Container(
                 margin: EdgeInsets.only(left: 22, bottom: 2),
-                child: Text(
+                child: const Text(
                   'LASTNAME',
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -238,44 +232,20 @@ class _PersonalDataState extends State<PersonalData> {
                       color: Colors.grey[450],
                       fontWeight: FontWeight.bold,
                     ),
-                    errorStyle: TextStyle(fontSize: 0, height: 0),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.white,
-                        width: 1,
-                      ),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.white,
-                        width: 1,
-                      ),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    errorBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.red,
-                        width: 1,
-                      ),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    focusedErrorBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.red,
-                        width: 1,
-                      ),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
+                    errorStyle: const TextStyle(fontSize: 0, height: 0),
+                    enabledBorder: _enabledBorder,
+                    focusedBorder: _focusedBorder,
+                    errorBorder: _errorBorder,
+                    focusedErrorBorder: _focuseErrordBorder,
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               Container(
                 margin: EdgeInsets.only(left: 22, bottom: 2),
-                child: Text(
+                child: const Text(
                   'DATE OF BIRTH',
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -320,39 +290,15 @@ class _PersonalDataState extends State<PersonalData> {
                       color: Colors.grey[450],
                       fontWeight: FontWeight.bold,
                     ),
-                    errorStyle: TextStyle(fontSize: 0, height: 0),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.white,
-                        width: 1,
-                      ),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.white,
-                        width: 1,
-                      ),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    errorBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.red,
-                        width: 1,
-                      ),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    focusedErrorBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.red,
-                        width: 1,
-                      ),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
+                    errorStyle: const TextStyle(fontSize: 0, height: 0),
+                    enabledBorder: _enabledBorder,
+                    focusedBorder: _focusedBorder,
+                    errorBorder: _errorBorder,
+                    focusedErrorBorder: _focuseErrordBorder,
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               Container(
@@ -400,7 +346,7 @@ class _PersonalDataState extends State<PersonalData> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Material(
@@ -435,7 +381,7 @@ class _PersonalDataState extends State<PersonalData> {
                         ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
             ],

@@ -6,7 +6,7 @@ import '../../Flight_Book/terms.dart';
 class SingleOfferOuterView extends StatelessWidget {
 
   final OfferedTrips offer;
-  const SingleOfferOuterView({Key key, this. offer}) : super(key: key);
+  const SingleOfferOuterView(this. offer);
 
   
 
