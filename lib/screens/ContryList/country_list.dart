@@ -34,7 +34,7 @@ class CountryList extends StatelessWidget {
                     subtitle: Text(
                       'A sufficiently long subtitle warrants three lines.'
                     ),
-                    onTap: () {
+                      onTap: () {
                           Navigator.of(context).push(
                           new MaterialPageRoute(
                             builder: (context) => SingleCountry(countries[index])
