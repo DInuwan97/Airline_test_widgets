@@ -226,12 +226,14 @@ class SingleTrip extends StatelessWidget {
                                               color: Colors.white,
                                               fontWeight: FontWeight.bold)),
                                       SizedBox(height: 10.0),
+
                                       RaisedButton(
                                           onPressed: () {
                                               Navigator.push(
                                                 context,
                                                 MaterialPageRoute(
     	                                            builder: (context) => TermsSelectionPage()
+                                                  //TermsSelectionPage()
                                                 )
                                               );
                                           },
@@ -261,6 +263,8 @@ class SingleTrip extends StatelessWidget {
                                            
                                           )
                                           ),
+
+
                                     ],
                                   ),
                                 )

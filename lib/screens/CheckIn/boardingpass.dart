@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp1/screens/Payment/Payment.dart';
 import '../side_screen_drawer.dart';
 import '../Search_Flight/widgets/PassengerClassSelection/constants.dart';
 import './DateConvertor.dart';
@@ -7,7 +8,7 @@ DateConversion dc = new DateConversion();
 
 class BoardingPass extends StatelessWidget {
 
-  BoardingPass({this.firstname,this.lastname});
+  BoardingPass(this.firstname,this.lastname);
 
   final String firstname;
   final String lastname;
@@ -208,9 +209,15 @@ class BoardingPass extends StatelessWidget {
                   child: RaisedButton(
                     elevation: 10.0,
                     onPressed: (){
-                      print('sending to email');
+                        Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+    	                                            builder: (context) => Payment()
+                                                  //TermsSelectionPage()
+                                                )
+                                              );
                     },
-                    child: Text('SEND TO EMAIL',
+                    child: Text('PAY',
                     style: TextStyle(
                       color: Colors.blue[900],
                       fontSize: 18.0,

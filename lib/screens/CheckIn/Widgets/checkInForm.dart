@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp1/screens/SeatBooking/flight_seat_booking.dart';
 import '../DateConvertor.dart';
 import '../../Search_Flight/widgets/PassengerClassSelection/reusable_widget.dart';
 import '../boardingpass.dart';
@@ -114,10 +115,14 @@ class _checkInFormWidgetState extends State<checkInFormWidget> {
                            print(firstName);
                            Navigator.push(context, MaterialPageRoute(
                              builder: (context){
-                               return BoardingPass(
-                                 firstname: firstName,
-                                 lastname: lastName,
-                               );
+                              //  return BoardingPass(
+                              //    firstname: firstName,
+                              //    lastname: lastName,
+                              //  );
+                              return SeatBookingScreen(
+                                  firstname: firstName,
+                                  lastname: lastName,
+                              );
                              }
                             )
                           );
