@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -40,6 +42,7 @@ class _CreditCardFormState extends State<CreditCardForm> {
   String cvvCode;
   bool isCvvFocused = false;
   Color themeColor;
+  bool isLoading = false;
 
   void Function(CreditCardModel) onCreditCardModelChange;
   CreditCardModel creditCardModel;
@@ -54,21 +57,37 @@ class _CreditCardFormState extends State<CreditCardForm> {
       MaskedTextController(mask: '0000');
 
   FocusNode cvvFocusNode = FocusNode();
+  final _form = GlobalKey<FormState>();
 
-  void textFieldFocusDidChange() {
-    creditCardModel.isCvvFocused = cvvFocusNode.hasFocus;
-    onCreditCardModelChange(creditCardModel);
-  }
-
-  void createCreditCardModel() {
-    cardNumber = widget.cardNumber ?? '';
-    expiryDate = widget.expiryDate ?? '';
-    cardHolderName = widget.cardHolderName ?? '';
-    cvvCode = widget.cvvCode ?? '';
-
-    creditCardModel = CreditCardModel(
-        cardNumber, expiryDate, cardHolderName, cvvCode, isCvvFocused);
-  }
+  // form styles
+  final OutlineInputBorder _enabledBorder = OutlineInputBorder(
+    borderSide: BorderSide(
+      color: Colors.white,
+      width: 1,
+    ),
+    borderRadius: BorderRadius.circular(20),
+  );
+  final OutlineInputBorder _focusedBorder = OutlineInputBorder(
+    borderSide: BorderSide(
+      color: Colors.blue[300],
+      width: 2,
+    ),
+    borderRadius: BorderRadius.circular(20),
+  );
+  final OutlineInputBorder _errorBorder = OutlineInputBorder(
+    borderSide: BorderSide(
+      color: Colors.red,
+      width: 2,
+    ),
+    borderRadius: BorderRadius.circular(20),
+  );
+  final OutlineInputBorder _focuseErrordBorder = OutlineInputBorder(
+    borderSide: BorderSide(
+      color: Colors.red,
+      width: 2,
+    ),
+    borderRadius: BorderRadius.circular(20),
+  );
 
   @override
   void initState() {
@@ -113,6 +132,46 @@ class _CreditCardFormState extends State<CreditCardForm> {
     });
   }
 
+  void _submitForm() {
+    final bool isFormValid = _form.currentState.validate();
+    if (!isFormValid) return;
+
+    setState(() {
+      isLoading = true;
+    });
+    new Timer(const Duration(seconds: 5), () {
+      _form.currentState.save();
+      setState(() {
+        isLoading = false;
+      });
+      final snackbar = SnackBar(
+        content: Text('Payment success', textAlign: TextAlign.center),
+        elevation: 3,
+        behavior: SnackBarBehavior.floating,
+        duration: Duration(seconds: 5),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+      );
+      Scaffold.of(context).showSnackBar(snackbar);
+    });
+  }
+
+  void textFieldFocusDidChange() {
+    creditCardModel.isCvvFocused = cvvFocusNode.hasFocus;
+    onCreditCardModelChange(creditCardModel);
+  }
+
+  void createCreditCardModel() {
+    cardNumber = widget.cardNumber ?? '';
+    expiryDate = widget.expiryDate ?? '';
+    cardHolderName = widget.cardHolderName ?? '';
+    cvvCode = widget.cvvCode ?? '';
+
+    creditCardModel = CreditCardModel(
+        cardNumber, expiryDate, cardHolderName, cvvCode, isCvvFocused);
+  }
+
   @override
   void didChangeDependencies() {
     themeColor = widget.themeColor ?? Theme.of(context).primaryColor;
@@ -126,90 +185,237 @@ class _CreditCardFormState extends State<CreditCardForm> {
         primaryColor: themeColor.withOpacity(0.8),
         primaryColorDark: themeColor,
       ),
-      child: Form(
-        child: Column(
-          children: <Widget>[
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              margin: const EdgeInsets.only(left: 16, top: 16, right: 16),
-              decoration: BoxDecoration(),
-              child: TextFormField(
-                controller: _cardNumberController,
-                cursorColor: widget.cursorColor ?? themeColor,
-                style: TextStyle(
-                  color: widget.textColor,
+      child: SingleChildScrollView(
+        child: Container(
+          margin: EdgeInsets.symmetric(horizontal: 16),
+          child: Form(
+            key: _form,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                const SizedBox(
+                  height: 30,
                 ),
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                  labelText: widget.localizedText.cardNumberLabel,
-                  hintText: widget.localizedText.cardNumberHint,
+                Container(
+                  alignment: Alignment.centerLeft,
+                  margin: EdgeInsets.only(left: 22, bottom: 2),
+                  child: const Text(
+                    'CARD NUMBER',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromRGBO(87, 87, 87, 0.7)),
+                  ),
                 ),
-                keyboardType: TextInputType.number,
-                textInputAction: TextInputAction.next,
-              ),
+                Material(
+                  elevation: 3,
+                  shadowColor: Colors.black38,
+                  borderRadius: BorderRadius.circular(20),
+                  child: TextFormField(
+                    controller: _cardNumberController,
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return "";
+                      }
+                      return null;
+                    },
+                    style: TextStyle(
+                      color: widget.textColor,
+                    ),
+                    decoration: InputDecoration(
+                      contentPadding: EdgeInsets.only(
+                          left: 22, top: 0, right: 10, bottom: 0),
+                      fillColor: Colors.white,
+                      filled: true,
+                      hintText: widget.localizedText.cardNumberHint,
+                      errorStyle: const TextStyle(fontSize: 0, height: 0),
+                      enabledBorder: _enabledBorder,
+                      focusedBorder: _focusedBorder,
+                      errorBorder: _errorBorder,
+                      focusedErrorBorder: _focuseErrordBorder,
+                    ),
+                    keyboardType: TextInputType.number,
+                    textInputAction: TextInputAction.next,
+                  ),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  margin: EdgeInsets.only(left: 22, bottom: 2),
+                  child: const Text(
+                    'EXPIRY DATE',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromRGBO(87, 87, 87, 0.7)),
+                  ),
+                ),
+                Material(
+                  elevation: 3,
+                  shadowColor: Colors.black38,
+                  borderRadius: BorderRadius.circular(20),
+                  child: TextFormField(
+                    controller: _expiryDateController,
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return "";
+                      }
+                      return null;
+                    },
+                    style: TextStyle(
+                      color: widget.textColor,
+                    ),
+                    decoration: InputDecoration(
+                      contentPadding: EdgeInsets.only(
+                          left: 22, top: 0, right: 10, bottom: 0),
+                      fillColor: Colors.white,
+                      filled: true,
+                      hintText: widget.localizedText.expiryDateHint,
+                      errorStyle: const TextStyle(fontSize: 0, height: 0),
+                      enabledBorder: _enabledBorder,
+                      focusedBorder: _focusedBorder,
+                      errorBorder: _errorBorder,
+                      focusedErrorBorder: _focuseErrordBorder,
+                    ),
+                    keyboardType: TextInputType.number,
+                    textInputAction: TextInputAction.next,
+                  ),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  margin: EdgeInsets.only(left: 22, bottom: 2),
+                  child: const Text(
+                    'CVV',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromRGBO(87, 87, 87, 0.7)),
+                  ),
+                ),
+                Material(
+                  elevation: 3,
+                  shadowColor: Colors.black38,
+                  borderRadius: BorderRadius.circular(20),
+                  child: TextFormField(
+                    focusNode: cvvFocusNode,
+                    controller: _cvvCodeController,
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return "";
+                      }
+                      return null;
+                    },
+                    style: TextStyle(
+                      color: widget.textColor,
+                    ),
+                    decoration: InputDecoration(
+                      contentPadding: EdgeInsets.only(
+                          left: 22, top: 0, right: 10, bottom: 0),
+                      fillColor: Colors.white,
+                      filled: true,
+                      hintText: widget.localizedText.cvvHint,
+                      errorStyle: const TextStyle(fontSize: 0, height: 0),
+                      enabledBorder: _enabledBorder,
+                      focusedBorder: _focusedBorder,
+                      errorBorder: _errorBorder,
+                      focusedErrorBorder: _focuseErrordBorder,
+                    ),
+                    keyboardType: TextInputType.number,
+                    textInputAction: TextInputAction.done,
+                    onChanged: (String text) {
+                      setState(() {
+                        cvvCode = text;
+                      });
+                    },
+                  ),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  margin: EdgeInsets.only(left: 22, bottom: 2),
+                  child: const Text(
+                    'CARD HOLDER',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromRGBO(87, 87, 87, 0.7)),
+                  ),
+                ),
+                Material(
+                  elevation: 3,
+                  shadowColor: Colors.black38,
+                  borderRadius: BorderRadius.circular(20),
+                  child: TextFormField(
+                    controller: _cardHolderNameController,
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return "";
+                      }
+                      return null;
+                    },
+                    style: TextStyle(
+                      color: widget.textColor,
+                    ),
+                    decoration: InputDecoration(
+                      contentPadding: EdgeInsets.only(
+                          left: 22, top: 0, right: 10, bottom: 0),
+                      fillColor: Colors.white,
+                      filled: true,
+                      hintText: widget.localizedText.cardHolderHint,
+                      errorStyle: const TextStyle(fontSize: 0, height: 0),
+                      enabledBorder: _enabledBorder,
+                      focusedBorder: _focusedBorder,
+                      errorBorder: _errorBorder,
+                      focusedErrorBorder: _focuseErrordBorder,
+                    ),
+                    keyboardType: TextInputType.text,
+                    textInputAction: TextInputAction.next,
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                Container(
+                  child: Material(
+                    elevation: 4,
+                    shadowColor: Colors.black87,
+                    borderRadius: BorderRadius.circular(20),
+                    child: FlatButton(
+                      onPressed: _submitForm,
+                      textColor: Colors.white,
+                      color: Colors.blue,
+                      padding:
+                          EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: isLoading
+                          ? Container(
+                              height: 20,
+                              width: 20,
+                              child: const Center(
+                                child: CircularProgressIndicator(
+                                  backgroundColor: Colors.white,
+                                  strokeWidth: 3,
+                                ),
+                              ),
+                            )
+                          : const Text(
+                              'PAY',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+              ],
             ),
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              margin: const EdgeInsets.only(left: 16, top: 8, right: 16),
-              child: TextFormField(
-                controller: _expiryDateController,
-                cursorColor: widget.cursorColor ?? themeColor,
-                style: TextStyle(
-                  color: widget.textColor,
-                ),
-                decoration: InputDecoration(
-                  border: const OutlineInputBorder(),
-                  labelText: widget.localizedText.expiryDateLabel,
-                  hintText: widget.localizedText.expiryDateHint,
-                ),
-                keyboardType: TextInputType.number,
-                textInputAction: TextInputAction.next,
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              margin: const EdgeInsets.only(left: 16, top: 8, right: 16),
-              child: TextField(
-                focusNode: cvvFocusNode,
-                controller: _cvvCodeController,
-                cursorColor: widget.cursorColor ?? themeColor,
-                style: TextStyle(
-                  color: widget.textColor,
-                ),
-                decoration: InputDecoration(
-                  border: const OutlineInputBorder(),
-                  labelText: widget.localizedText.cvvLabel,
-                  hintText: widget.localizedText.cvvHint,
-                ),
-                keyboardType: TextInputType.number,
-                textInputAction: TextInputAction.done,
-                onChanged: (String text) {
-                  setState(() {
-                    cvvCode = text;
-                  });
-                },
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              margin: const EdgeInsets.only(left: 16, top: 8, right: 16),
-              child: TextFormField(
-                controller: _cardHolderNameController,
-                cursorColor: widget.cursorColor ?? themeColor,
-                style: TextStyle(
-                  color: widget.textColor,
-                ),
-                decoration: InputDecoration(
-                  border: const OutlineInputBorder(),
-                  labelText: widget.localizedText.cardHolderLabel,
-                  hintText: widget.localizedText.cardHolderHint,
-                ),
-                keyboardType: TextInputType.text,
-                textInputAction: TextInputAction.next,
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );
