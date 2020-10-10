@@ -5,6 +5,8 @@ class SeatBookingScreen extends StatefulWidget {
   _SeatBookingScreenState createState() => _SeatBookingScreenState();
 }
 
+
+  int _selectedIndex = 0;
 class _SeatBookingScreenState extends State<SeatBookingScreen> {
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,7 @@ class _SeatBookingScreenState extends State<SeatBookingScreen> {
         decoration: BoxDecoration(
 
           gradient: LinearGradient(
-            colors: [Colors.blue[600],Colors.blue[400],Colors.white30],
+            colors: [Colors.blue[200],Colors.blue[100],Colors.blue[50]],
             begin: Alignment.bottomLeft,
             end: Alignment.topRight,
           ),
@@ -52,12 +54,12 @@ class _SeatBookingScreenState extends State<SeatBookingScreen> {
                   
                       //borderRadius: BorderRadius.only(bottomLeft: Radius.circular(60),bottomRight: Radius.circular(60)),
                       child:Container(
-                        margin: EdgeInsets.only(left:80),
-                        width:100,
-                        height:400,
+                        margin: EdgeInsets.only(left:MediaQuery.of(context).size.width * 0.35,top:60),
+                        width:60,
+                        height:100,
                         child: Image(
-                          image:AssetImage("assets/images/seat.png"),
-                          fit:BoxFit.cover
+                          image:AssetImage("assets/images/seats.png"),
+                          fit:BoxFit.fitHeight
                         ),
                       )
                     
@@ -65,36 +67,38 @@ class _SeatBookingScreenState extends State<SeatBookingScreen> {
                  ),
 
                   Positioned(
-                                left: MediaQuery.of(context).size.width * 0.4,
+                                left: MediaQuery.of(context).size.width * 0.47,
                                 bottom: 50.0,
 
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
-                                    Text(
-                                     'UK',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 35.0,
-                                        fontWeight: FontWeight.w800,
-                                        fontFamily: 'Oxygen',
-
-                                        letterSpacing: 1.2,
-                                      ),
-                                    ),
+                       
                                     Row(
                                       children: <Widget>[
-                                       
-                                        SizedBox(width: 5.0),
-                                        Text(
-                                          'London',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontFamily: 'Oxygen',
-                                            fontWeight:FontWeight.bold,
-                                            fontSize:20.0
+                                          Padding(
+                                            padding: const EdgeInsets.all(3.0),
+                                            child: GestureDetector(
+                                                onTap: (){
+                                                  setState(() {
+                                                    _selectedIndex = 1; 
+                                                  });
+                                                },
+                                                child: _selectedIndex == 1 ? freeSeatDesign(Colors.greenAccent) : freeSeatDesign(Colors.white),
+                                            ),
                                           ),
-                                        ),
+                                          Padding(
+                                            padding: const EdgeInsets.all(3.0),
+                                            child: allocatedSeatDesign(),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.all(3.0),
+                                            child: freeSeatDesign(Colors.greenAccent),
+                                          ),
+                                             Padding(
+                                            padding: const EdgeInsets.all(3.0),
+                                            child: freeSeatDesign(Colors.greenAccent),
+                                          ),
                                       ],
                                     ),
                                   ],
@@ -120,6 +124,41 @@ class _SeatBookingScreenState extends State<SeatBookingScreen> {
               "assets/images/seat.png",
               fit: BoxFit.cover,
            ),
+    );
+  }
+
+
+
+
+  Widget allocatedSeatDesign(){
+    return Container(
+          width:30,
+          height:30,
+           decoration: BoxDecoration(
+              color:Colors.red,
+              borderRadius: BorderRadius.only(
+                   topLeft: Radius.circular(5.0),
+                   topRight: Radius.circular(5.0),
+                   bottomLeft: Radius.circular(5.0),
+                   bottomRight: Radius.circular(5.0)
+             )
+        ),
+    );
+  }
+
+    Widget freeSeatDesign(Color colorTheme){
+    return Container(
+          width:30,
+          height:30,
+           decoration: BoxDecoration(
+              color:colorTheme,
+              borderRadius: BorderRadius.only(
+                   topLeft: Radius.circular(5.0),
+                   topRight: Radius.circular(5.0),
+                   bottomLeft: Radius.circular(5.0),
+                   bottomRight: Radius.circular(5.0)
+             )
+        ),
     );
   }
 }

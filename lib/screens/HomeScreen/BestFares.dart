@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:myapp1/app_state.dart';
+import 'package:myapp1/models/offered_trips.dart';
 import 'package:myapp1/screens/HomeScreen/FareItem.dart';
+import 'package:myapp1/screens/Offers/SingleOffer/SingleOfferOuterView.dart';
+import 'package:provider/provider.dart';
 
 class BestFares extends StatelessWidget {
   final double faresHeight;
@@ -42,7 +46,8 @@ class BestFares extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final itemH = faresHeight * 0.7;
+                                   
+            final itemH = faresHeight * 0.7;
 
     return Container(
       height: faresHeight,
@@ -80,22 +85,33 @@ class BestFares extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
-              height: itemH,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: fares.length,
-                itemBuilder: (context, index) => FareItem(
-                  isFeatured: fares[index].isFeatured,
-                  city: fares[index].city,
-                  fareClass: fares[index].fareClass,
-                  imagePath: fares[index].imagePath,
+         
+              Container(
+                height: itemH,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: sheduledOffers.length,
+                  itemBuilder: (context, index) => FareItem(
+                    isFeatured: sheduledOffers[index].isFeatured,
+                    city: sheduledOffers[index].city,
+                    fareClass: sheduledOffers[index].travelClass,
+                    imagePath: sheduledOffers[index].imageUrl,
+                    tripId: index,
+                  ),
                 ),
               ),
-            )
+            
           ],
         ),
       ),
-    );
+    );                      
+
+    
+  }
+
+
+
+  Widget offeredTrip(){
+
   }
 }
