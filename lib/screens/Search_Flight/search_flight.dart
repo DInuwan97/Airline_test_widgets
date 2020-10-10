@@ -10,6 +10,7 @@ import 'package:myapp1/screens/Search_Flight/search_flight_model/two_way_selecto
 import 'package:myapp1/screens/Search_Flight/widgets/CalenderPopup/calender_pop_up.dart';
 import 'package:myapp1/screens/Search_Flight/widgets/OneWay/ariport_selectore_dropdown.dart';
 import 'package:myapp1/screens/Search_Flight/widgets/PassengerClassSelection/PassengersClassSelection.dart';
+import 'package:myapp1/screens/Search_Flight/widgets/PassengerClassSelection/passengerRow.dart';
 import 'package:myapp1/screens/Search_Flight/widgets/SearchedFlightData/screen/search_flight_lists_screen.dart';
 import 'package:myapp1/screens/Search_Flight/widgets/search_flight_categories.dart';
 import 'package:provider/provider.dart';
@@ -24,12 +25,13 @@ import 'package:flutter_rounded_date_picker/rounded_picker.dart';
 import 'package:myapp1/screens/Search_Flight/search_flight_model/search_category.dart';
 
 class FlightSearch extends StatelessWidget {
-    
-
 
 final Category category;   
-const FlightSearch({Key key, this.category}) : super(key: key);
+FlightSearch({Key key, this.category}) : super(key: key);
 
+   String bookingType = 'Economy';
+   String bookingCount = '1';
+   String bookingPerson = 'Adult';
 
   @override
   Widget build(BuildContext context) {
@@ -276,7 +278,6 @@ Widget _bookingClassReservation(BuildContext context){
              // child:OneWayAirportSelector()
              child:PassengersClassSelection()
             )
-            
           ],
         )
               
@@ -550,3 +551,6 @@ Widget _resetButton(IconData iconName,context,String btnName){
 
                              );
 }
+
+
+

@@ -4,6 +4,7 @@ import 'package:myapp1/screens/HomeScreen/HomePage.dart';
 import 'package:myapp1/screens/Search_Flight/search_flight.dart';
 import 'package:myapp1/screens/sheduled_flight_list.dart';
 import 'package:myapp1/screens/Offers/AirlineOffers.dart';
+import 'package:myapp1/screens/CheckIn/checkIn.dart';
 
 class BottomNavBar extends StatefulWidget {
   @override
@@ -32,6 +33,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
     ),
     AirlineOffers(
       key: PageStorageKey('Page2'),
+    ),
+    CheckIn(
+      key: PageStorageKey('Page4'),
     ),
   ];
 
@@ -76,6 +80,12 @@ class _BottomNavBarState extends State<BottomNavBar> {
             BottomNavigationBarItem(
               icon: Icon(Icons.local_offer),
               title: Text('Offers',
+                  style:
+                      TextStyle(fontSize: 10.0, fontWeight: FontWeight.bold)),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.check),
+              title: Text('Check-In',
                   style:
                       TextStyle(fontSize: 10.0, fontWeight: FontWeight.bold)),
             ),
