@@ -7,6 +7,7 @@ import 'package:myapp1/screens/sheduled_flight_list.dart';
 import 'package:myapp1/screens/side_screen_drawer.dart';
 import 'package:myapp1/shapes/custome_shape_clipper.dart';
 import 'package:provider/provider.dart';
+import './Flight_Book/terms.dart';
 
 import 'Search_Flight/widgets/SearchedFlightData/screen/search_flight_lists_screen.dart';
 
@@ -230,7 +231,7 @@ class SingleTrip extends StatelessWidget {
                                               Navigator.push(
                                                 context,
                                                 MaterialPageRoute(
-    	                                            builder: (context) => SeatBookingScreen()
+    	                                            builder: (context) => TermsSelectionPage()
                                                 )
                                               );
                                           },

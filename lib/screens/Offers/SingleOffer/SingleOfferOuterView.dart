@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:myapp1/models/offered_trips.dart';
+import '../../Flight_Book/terms.dart';
 
 class SingleOfferOuterView extends StatelessWidget {
 
@@ -227,7 +228,9 @@ Widget travellingClassWidget(BuildContext context){
                             onPressed: () {
                              Navigator.push(context,
                               MaterialPageRoute(
-    	                                            
+                                builder: (context){
+                                  return TermsSelectionPage();
+                                }
                               )
                              );
                             },

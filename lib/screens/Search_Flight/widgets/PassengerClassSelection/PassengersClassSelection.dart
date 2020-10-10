@@ -1,8 +1,16 @@
 import 'package:select_dialog/select_dialog.dart';
 import 'package:fancy_alert_dialog/fancy_alert_dialog.dart';
 import 'package:flutter/material.dart';
+import '../../../Flight_Book/classSlelection.dart';
+
+
 
 class PassengersClassSelection extends StatefulWidget {
+  
+  String personType = 'Adult';
+  int count = 1;
+  String classtype = 'Economy';   
+
   @override
   _PassengersClassSelectionState createState() => _PassengersClassSelectionState();
 }
@@ -29,7 +37,8 @@ class _PassengersClassSelectionState extends State<PassengersClassSelection> {
                   children: <Widget>[
                     SizedBox(height:1.0),
                     Text( 
-                      '01 Adult in', 
+                      //widget.count.toString()+' '+widget.type+' in', 
+                      widget.count.toString()+' '+widget.personType+' in',
                       textAlign:TextAlign.center,
                       style: TextStyle(
                         fontSize: 17,
@@ -40,7 +49,8 @@ class _PassengersClassSelectionState extends State<PassengersClassSelection> {
                 SizedBox(height:7.0),
 
                 Text( 
-                      'BUSINESS CLASS', 
+                      //widget.classtype,
+                      widget.classtype, 
                       textAlign:TextAlign.center,
                       style: TextStyle(
                         fontSize: 20,
@@ -55,9 +65,14 @@ class _PassengersClassSelectionState extends State<PassengersClassSelection> {
         
               ),
                 onPressed:(){
-                  SelectDialog.showModal<String>(
-                    context
-                  );
+                  print("Class selection pressed");
+                  // SelectDialog.showModal<String>(
+                  //   context
+                  // );
+                  Navigator.push(context, MaterialPageRoute(builder: (context){
+                    ClassSelector cs = new ClassSelector();
+                    return cs;
+                  }));
                 }
 
              ),
