@@ -34,7 +34,7 @@ class _OfferWidgetState extends State<OfferWidget> {
                                   GestureDetector(
                                     onTap: (){
                                        Navigator.of(context).push(MaterialPageRoute(                               
-                                          builder:(context)=>SingleOfferOuterView(offer:offer)
+                                          builder:(context)=>SingleOfferOuterView(offer)
                                        ),
                                       );
                                     },

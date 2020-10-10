@@ -5,7 +5,7 @@ import 'package:myapp1/models/offered_trips.dart';
 class SingleOfferOuterView extends StatelessWidget {
 
   final OfferedTrips offer;
-  const SingleOfferOuterView({Key key, this. offer}) : super(key: key);
+  const SingleOfferOuterView(this. offer);
 
   
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp1/models/offered_trips.dart';
 import 'package:myapp1/screens/HomeScreen/FareItem.dart';
 
 class BestFares extends StatelessWidget {
@@ -84,12 +85,12 @@ class BestFares extends StatelessWidget {
               height: itemH,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: fares.length,
+                itemCount: sheduledOffers.length,
                 itemBuilder: (context, index) => FareItem(
-                  isFeatured: fares[index].isFeatured,
-                  city: fares[index].city,
-                  fareClass: fares[index].fareClass,
-                  imagePath: fares[index].imagePath,
+                  isFeatured: sheduledOffers[index].isFeatured,
+                  city: sheduledOffers[index].city,
+                  fareClass: sheduledOffers[index].travelClass,
+                  imagePath: sheduledOffers[index].imageUrl,
                 ),
               ),
             )
