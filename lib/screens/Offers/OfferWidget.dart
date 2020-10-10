@@ -41,11 +41,7 @@ class _OfferWidgetState extends State<OfferWidget> {
                                     child: OfferCard(
                                      offer:offer
                                     )
-                                  ) 
-                                
-                                
-                                
-                                  
+                                  )                                     
                               ],
                    )
                 )
