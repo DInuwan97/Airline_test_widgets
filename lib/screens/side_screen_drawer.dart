@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:myapp1/screens/ContryList/country_list.dart';
+import 'package:myapp1/screens/Inflight/InflightDataScreen.dart';
+import 'package:myapp1/screens/Passengers/PassengerDataScreen.dart';
 
 import 'Contact/ContactDataScreen.dart';
 import './localData/LocalDataScreen.dart';
@@ -105,7 +107,13 @@ class SideNavigationDrawer extends StatelessWidget {
                       height: 1,
                     ),
                     ListTile(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => PassengerDataScreen(),
+                          ),
+                        );
+                      },
                       leading: Icon(
                         Icons.airline_seat_recline_extra,
                         color: Colors.white,
@@ -121,11 +129,22 @@ class SideNavigationDrawer extends StatelessWidget {
                       height: 1,
                     ),
                     ListTile(
-                      onTap: () {},
+
+
+                      onTap: () {
+                         Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => InflightDataScreen(),
+                          ),
+                        );
+
+                      },
                       leading: Icon(
                         Icons.flight_takeoff,
                         color: Colors.white,
                       ),
+
+
                       title: Text(
                         "Inflight Services",
                         style: TextStyle(color: Colors.white),
