@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:myapp1/models/offered_trips.dart';
+import '../../Flight_Book/terms.dart';
 
 class SingleOfferOuterView extends StatelessWidget {
 
@@ -33,16 +34,16 @@ class SingleOfferOuterView extends StatelessWidget {
         (bodyHeight * 0.4 + 50 + windowHeight * 0.035 + windowHeight * 0.09);
 
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text(
-      //     offer.name,
-      //     style:TextStyle(
-      //       color:Colors.white
-      //     )
-      //   ),
-      //   elevation: 0.0,
-      //   //backgroundColor: Colors.transparent,
-      // ),
+      appBar: AppBar(
+        title: Text(
+          offer.name,
+          style:TextStyle(
+            color:Colors.white
+          )
+        ),
+        elevation: 0.0,
+        //backgroundColor: Colors.transparent,
+      ),
 
       body:Container(
             decoration: BoxDecoration(
@@ -67,7 +68,7 @@ class SingleOfferOuterView extends StatelessWidget {
 
               Container(
                 height:250,
-                width:MediaQuery.of(context).size.width,
+                width:MediaQuery.of(context).size.width * 1.15,
                 decoration:BoxDecoration(
                   borderRadius:BorderRadius.circular(70.0),
                   boxShadow:[BoxShadow(
@@ -227,7 +228,9 @@ Widget travellingClassWidget(BuildContext context){
                             onPressed: () {
                              Navigator.push(context,
                               MaterialPageRoute(
-    	                                            
+                                builder: (context){
+                                  return TermsSelectionPage();
+                                }
                               )
                              );
                             },

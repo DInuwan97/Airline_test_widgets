@@ -7,6 +7,7 @@ import 'package:myapp1/screens/sheduled_flight_list.dart';
 import 'package:myapp1/screens/side_screen_drawer.dart';
 import 'package:myapp1/shapes/custome_shape_clipper.dart';
 import 'package:provider/provider.dart';
+import './Flight_Book/terms.dart';
 
 import 'Search_Flight/widgets/SearchedFlightData/screen/search_flight_lists_screen.dart';
 
@@ -40,237 +41,254 @@ class SingleTrip extends StatelessWidget {
             )
           ),
         drawer: SideNavigationDrawer(),
-        body: Provider<SheduledOnewayFlight>.value(
-            value: flight,
-            child: Stack(
-              //fit:StackFit.expand,
-              children: <Widget>[
-                SafeArea(
-                    child: ListView(
-                  children: <Widget>[
-                    SizedBox(height: 20.0),
-                    Column(
-                      children: <Widget>[
-                        // ClipPath(
 
-                        Container(
-                            alignment: Alignment.topCenter,
-                            width: MediaQuery.of(context).size.width * 0.95,
-                            height: 570.0,
-                            decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                     colors: [Colors.lightBlue, Colors.blue[900],Colors.blue[800],Colors.blueAccent,Colors.blue[500]],
-                                    begin: Alignment.bottomLeft,
-                                    end: Alignment.topLeft,
-                                    tileMode: TileMode.clamp,
-                                ),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(14))),
-                            child: Column(
-                              children: <Widget>[
-                                ClipPath(
-                                    clipper: CustomeShapeClipper(),
-                                    child: Container(
-                                        alignment: Alignment.topCenter,
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.95,
-                                        height: 170.0,
-                                        decoration: BoxDecoration(
-                                             image: new DecorationImage(
-                                                    image: new ExactAssetImage(
-                                                        'assets/images/cloud6.jpeg'),
-                                                        fit: BoxFit.cover,
-                                             ),
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(14))),
-                                        child: Container(
-                                            margin: EdgeInsets.all(10),
-                                            alignment: Alignment.topCenter,
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.95,
-                                            height: 120.0,
-                                            decoration: BoxDecoration(
-                                                image: new DecorationImage(
-                                                    image: new ExactAssetImage(
-                                                        'assets/images/airline_horizontal.png'),
-                                                    fit: BoxFit.contain,
-                                                    alignment:
-                                                        Alignment.topCenter)),
-                                            child: Column(
-                                              //crossAxisAlignment:CrossAxisAlignment.stretch,
-                                              children: <Widget>[
-                                                Column(
-                                                  children: <Widget>[
-                                                    Container(
-                                                      alignment:
-                                                          Alignment.topRight,
-                                                      child: _oneWorldLogo(),
-                                                    )
-                                                  ],
-                                                )
-                                              ],
-                                            )))),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 12.0),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: <Widget>[
-                                      SizedBox(height: 1),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: <Widget>[
-                                          _airlineDetails(),
-                                          Spacer(),
 
-                                          // SizedBox(width:18.0),
-                                          _airlineLogos(),
-                                        ],
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: <Widget>[
-                                          _onSheduledBadge(),
-                                        ],
-                                      ),
-                                      SizedBox(height: 10.0),
-                                      Container(
-                                          child: Column(
-                                        children: <Widget>[
-                                          Container(
-                                            alignment: Alignment.center,
-                                            width: MediaQuery.of(context).size.width *0.95,
-                                            height: 170.0,
-                                            decoration: BoxDecoration(
-                                                gradient: LinearGradient(
-                                                  colors: [Colors.white,Colors.white70,Colors.white60],
-                                                  begin: Alignment.bottomCenter,
-                                                  end: Alignment.topCenter,
-                                                  tileMode: TileMode.clamp,
-                                                ),
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(14)
-                                                ),
-                                                
-                                              ),
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 8.0,
-                                                      vertical: 3.0),
-                                              child: Column(
-                                                children: <Widget>[
-                                                  Row(
-                                                    children: <Widget>[
-                                                      _origin(),
-                                                      Spacer(),
-                                                      _flightRouteConection(),
-                                                      Spacer(),
-                                                      _destination(),
-                                                    ],
-                                                  ),
-                                                  SizedBox(height: 10.0),
-                                                  Row(
-                                                    children: <Widget>[
-                                                      _sheduledTimeDate(
-                                                          flight.depatureTime,
-                                                          flight.departureDate,
-                                                          Icons.flight_takeoff),
-                                                      Spacer(),
-                                                      _sheduledTimeDate(
-                                                          flight.arrivalTime,
-                                                          flight.arrivalDate,
-                                                          Icons.flight_land)
-                                                    ],
-                                                  ),
-                                                  SizedBox(height: 8.0),
-                                                  Divider(
-                                                    color: Colors.blue[900],
-                                                    thickness: 3,
-                                                    //indent: 200,
-                                                  ),
-                                                  Row(
-                                                    children: <Widget>[
-                                                      _renderIcons(
-                                                          flight
-                                                              .depatureTerminal,
-                                                          flight.depatureGate),
-                                                      Spacer(),
-                                                      _renderIcons(
-                                                          flight
-                                                              .arrivalTerminal,
-                                                          flight.arrivalGate)
-                                                    ],
-                                                  ),
-                                                  Divider(
-                                                    color: Colors.blue[900],
-                                                    thickness: 3,
-                                                    // endIndent: 200,
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          )
-                                        ],
-                                      )),
-                                      SizedBox(height: 10.0),
-                                      Text('Book Flight Now',
-                                          style: TextStyle(
-                                              fontSize: 20.0,
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.bold)),
-                                      SizedBox(height: 10.0),
-                                      RaisedButton(
-                                          onPressed: () {
-                                              Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-    	                                            builder: (context) => SeatBookingScreen()
-                                                )
-                                              );
-                                          },
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: MediaQuery.of(context)
+        body: Container(
+          decoration: BoxDecoration(
+
+          gradient: LinearGradient(
+            colors: [Colors.blue[400],Colors.blue[200],Colors.blue[50]],
+            end: Alignment.bottomLeft,
+            begin: Alignment.topRight,
+          ),
+
+        ),
+          child: Provider<SheduledOnewayFlight>.value(
+              value: flight,
+              child: Stack(
+                //fit:StackFit.expand,
+                children: <Widget>[
+                  SafeArea(
+                      child: ListView(
+                    children: <Widget>[
+                      SizedBox(height: 20.0),
+                      Column(
+                        children: <Widget>[
+                          // ClipPath(
+
+                          Container(
+                              alignment: Alignment.topCenter,
+                              width: MediaQuery.of(context).size.width * 0.95,
+                              height: 570.0,
+                              decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                       colors: [Colors.lightBlue, Colors.blue[900],Colors.blue[800],Colors.blueAccent,Colors.blue[500]],
+                                      begin: Alignment.bottomLeft,
+                                      end: Alignment.topLeft,
+                                      tileMode: TileMode.clamp,
+                                  ),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(14))),
+                              child: Column(
+                                children: <Widget>[
+                                  ClipPath(
+                                      clipper: CustomeShapeClipper(),
+                                      child: Container(
+                                          alignment: Alignment.topCenter,
+                                          width:
+                                              MediaQuery.of(context).size.width *
+                                                  0.95,
+                                          height: 170.0,
+                                          decoration: BoxDecoration(
+                                               image: new DecorationImage(
+                                                      image: new ExactAssetImage(
+                                                          'assets/images/cloud6.jpeg'),
+                                                          fit: BoxFit.cover,
+                                               ),
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(14))),
+                                          child: Container(
+                                              margin: EdgeInsets.all(10),
+                                              alignment: Alignment.topCenter,
+                                              width: MediaQuery.of(context)
                                                       .size
                                                       .width *
-                                                  0.18,
-                                              vertical: 8),
-                                          child: const Text('LKR 97,500/=',
-                                              style: TextStyle(
-                                                fontSize: 30,
-                                              )),
-                                          elevation: 10.0,
-                                          color: Colors.blue[900],
-                                          splashColor: Colors.blue[200],
-                                          animationDuration:
-                                              Duration(seconds: 2),
-                                          colorBrightness: Brightness.dark,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                new BorderRadius.circular(10.0),
-                                            side: BorderSide(
+                                                  0.95,
+                                              height: 120.0,
+                                              decoration: BoxDecoration(
+                                                  image: new DecorationImage(
+                                                      image: new ExactAssetImage(
+                                                          'assets/images/airline_cr.png'),
+                                                      fit: BoxFit.contain,
+                                                      alignment:
+                                                          Alignment.topCenter)),
+                                              child: Column(
+                                                //crossAxisAlignment:CrossAxisAlignment.stretch,
+                                                children: <Widget>[
+                                                  Column(
+                                                    children: <Widget>[
+                                                      Container(
+                                                        alignment:
+                                                            Alignment.topRight,
+                                                        child: _oneWorldLogo(),
+                                                      )
+                                                    ],
+                                                  )
+                                                ],
+                                              )))),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 12.0),
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: <Widget>[
+                                        SizedBox(height: 1),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: <Widget>[
+                                            _airlineDetails(),
+                                            Spacer(),
+
+                                            // SizedBox(width:18.0),
+                                            _airlineLogos(),
+                                          ],
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: <Widget>[
+                                            _onSheduledBadge(),
+                                          ],
+                                        ),
+                                        SizedBox(height: 10.0),
+                                        Container(
+                                            child: Column(
+                                          children: <Widget>[
+                                            Container(
+                                              alignment: Alignment.center,
+                                              width: MediaQuery.of(context).size.width *0.95,
+                                              height: 170.0,
+                                              decoration: BoxDecoration(
+                                                  gradient: LinearGradient(
+                                                    colors: [Colors.white,Colors.white70,Colors.white60],
+                                                    begin: Alignment.bottomCenter,
+                                                    end: Alignment.topCenter,
+                                                    tileMode: TileMode.clamp,
+                                                  ),
+                                                  borderRadius: BorderRadius.all(
+                                                      Radius.circular(14)
+                                                  ),
+                                                  
+                                                ),
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 8.0,
+                                                        vertical: 3.0),
+                                                child: Column(
+                                                  children: <Widget>[
+                                                    Row(
+                                                      children: <Widget>[
+                                                        _origin(),
+                                                        Spacer(),
+                                                        _flightRouteConection(),
+                                                        Spacer(),
+                                                        _destination(),
+                                                      ],
+                                                    ),
+                                                    SizedBox(height: 10.0),
+                                                    Row(
+                                                      children: <Widget>[
+                                                        _sheduledTimeDate(
+                                                            flight.depatureTime,
+                                                            flight.departureDate,
+                                                            Icons.flight_takeoff),
+                                                        Spacer(),
+                                                        _sheduledTimeDate(
+                                                            flight.arrivalTime,
+                                                            flight.arrivalDate,
+                                                            Icons.flight_land)
+                                                      ],
+                                                    ),
+                                                    SizedBox(height: 8.0),
+                                                    Divider(
+                                                      color: Colors.blue[900],
+                                                      thickness: 3,
+                                                      //indent: 200,
+                                                    ),
+                                                    Row(
+                                                      children: <Widget>[
+                                                        _renderIcons(
+                                                            flight
+                                                                .depatureTerminal,
+                                                            flight.depatureGate),
+                                                        Spacer(),
+                                                        _renderIcons(
+                                                            flight
+                                                                .arrivalTerminal,
+                                                            flight.arrivalGate)
+                                                      ],
+                                                    ),
+                                                    Divider(
+                                                      color: Colors.blue[900],
+                                                      thickness: 3,
+                                                      // endIndent: 200,
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            )
+                                          ],
+                                        )),
+                                        SizedBox(height: 10.0),
+                                        Text('Book Flight Now',
+                                            style: TextStyle(
+                                                fontSize: 20.0,
                                                 color: Colors.white,
-                                                width:3.0                                               
+                                                fontWeight: FontWeight.bold)),
+                                        SizedBox(height: 10.0),
+
+                                        RaisedButton(
+                                            onPressed: () {
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+    	                                            builder: (context) => TermsSelectionPage()
+                                                    //TermsSelectionPage()
+                                                  )
+                                                );
+                                            },
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.18,
+                                                vertical: 8),
+                                            child: const Text('USD 270.50',
+                                                style: TextStyle(
+                                                  fontSize: 30,
+                                                )),
+                                            elevation: 10.0,
+                                            color: Colors.blue[900],
+                                            splashColor: Colors.blue[200],
+                                            animationDuration:
+                                                Duration(seconds: 2),
+                                            colorBrightness: Brightness.dark,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  new BorderRadius.circular(10.0),
+                                              side: BorderSide(
+                                                  color: Colors.white,
+                                                  width:3.0                                               
+                                              ),
+                                             
+                                            )
                                             ),
-                                           
-                                          )
-                                          ),
-                                    ],
-                                  ),
-                                )
-                              ],
-                            )),
-                      ],
-                    ),
-                  ],
-                ))
-              ],
-            )));
+
+
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              )),
+                        ],
+                      ),
+                    ],
+                  ))
+                ],
+              )),
+        ));
   }
 
   Widget _airlineDetails() {

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:myapp1/screens/ContryList/country_list.dart';
+import 'package:myapp1/screens/Inflight/InflightDataScreen.dart';
+import 'package:myapp1/screens/Passengers/PassengerDataScreen.dart';
 
 import 'Contact/ContactDataScreen.dart';
 import './localData/LocalDataScreen.dart';
@@ -19,13 +21,22 @@ class SideNavigationDrawer extends StatelessWidget {
     return LayoutBuilder(
       builder: (ctx, constraints) => Drawer(
         child: Container(
-          decoration: BoxDecoration(
+             decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [Colors.lightBlue, Colors.blue[900]],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              tileMode: TileMode.clamp,
+              colors: [Colors.blueAccent,Colors.blue[600],Colors.blue[300]],
             ),
+
+            //  image: DecorationImage(
+            //   image: AssetImage('./assets/images/cloud1.jpg'),
+            //   colorFilter: new ColorFilter.mode(
+            //       Colors.black.withOpacity(0.2), BlendMode.dstATop),
+            //   fit: BoxFit.cover,
+            //  )
+
+
+
+
+
           ),
           child: Padding(
             padding: EdgeInsets.only(top: 50, left: 20, right: 20),
@@ -96,7 +107,13 @@ class SideNavigationDrawer extends StatelessWidget {
                       height: 1,
                     ),
                     ListTile(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => PassengerDataScreen(),
+                          ),
+                        );
+                      },
                       leading: Icon(
                         Icons.airline_seat_recline_extra,
                         color: Colors.white,
@@ -112,11 +129,22 @@ class SideNavigationDrawer extends StatelessWidget {
                       height: 1,
                     ),
                     ListTile(
-                      onTap: () {},
+
+
+                      onTap: () {
+                         Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => InflightDataScreen(),
+                          ),
+                        );
+
+                      },
                       leading: Icon(
                         Icons.flight_takeoff,
                         color: Colors.white,
                       ),
+
+
                       title: Text(
                         "Inflight Services",
                         style: TextStyle(color: Colors.white),

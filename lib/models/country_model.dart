@@ -14,7 +14,7 @@ class Country {
 
 
 
-List<CityOffice>cityOffices_c1 = [
+List<CityOffice> cityOffices_c1 = [
   CityOffice(
     officeId:0,
     name:'San Fran Sico',
