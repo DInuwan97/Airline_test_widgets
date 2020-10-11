@@ -8,7 +8,7 @@ void main() => runApp(
   //  DevicePreview(
   //     builder: (context) => MyApp(),
   //  )
- MyApp()
+  MyApp()
   );
 
 class MyApp extends StatelessWidget {

@@ -19,13 +19,22 @@ class SideNavigationDrawer extends StatelessWidget {
     return LayoutBuilder(
       builder: (ctx, constraints) => Drawer(
         child: Container(
-          decoration: BoxDecoration(
+             decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [Colors.lightBlue, Colors.blue[900]],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              tileMode: TileMode.clamp,
+              colors: [Colors.blueAccent,Colors.blue[600],Colors.blue[300]],
             ),
+
+            //  image: DecorationImage(
+            //   image: AssetImage('./assets/images/cloud1.jpg'),
+            //   colorFilter: new ColorFilter.mode(
+            //       Colors.black.withOpacity(0.2), BlendMode.dstATop),
+            //   fit: BoxFit.cover,
+            //  )
+
+
+
+
+
           ),
           child: Padding(
             padding: EdgeInsets.only(top: 50, left: 20, right: 20),

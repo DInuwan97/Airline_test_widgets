@@ -255,7 +255,7 @@ class SingleTrip extends StatelessWidget {
                                                         .width *
                                                     0.18,
                                                 vertical: 8),
-                                            child: const Text('LKR 97,500/=',
+                                            child: const Text('USD 270.50',
                                                 style: TextStyle(
                                                   fontSize: 30,
                                                 )),

@@ -54,6 +54,9 @@ class FareItem extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+
+
+
             Container(
               child: isFeatured == true
                   ? Container(
@@ -88,6 +91,9 @@ class FareItem extends StatelessWidget {
                     )
                   : null,
             ),
+
+
+
             Container(
               alignment: Alignment.bottomLeft,
               child: Container(
@@ -127,6 +133,8 @@ class FareItem extends StatelessWidget {
           ],
         ),
       ),
+
+      
     );
   }
 }

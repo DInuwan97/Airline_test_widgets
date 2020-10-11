@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myapp1/screens/Flight_Book/flight_book.dart';
 import 'package:myapp1/screens/HomeScreen/HomePage.dart';
 import 'package:myapp1/screens/Search_Flight/search_flight.dart';
+import 'package:myapp1/screens/SecondHomeScreen/screens/main_home_scree.dart';
 import 'package:myapp1/screens/sheduled_flight_list.dart';
 import 'package:myapp1/screens/Offers/AirlineOffers.dart';
 import 'package:myapp1/screens/CheckIn/checkIn.dart';
@@ -22,20 +23,20 @@ class _BottomNavBarState extends State<BottomNavBar> {
   );
 
   final List<Widget> _widgetOptions = [
-    HomePage(
-      key: PageStorageKey('Homepage'),
+    MainHomeScreen(
+      key: PageStorageKey('Page1'),
     ),
     FlightSearch(
       key: PageStorageKey('Page1'),
     ),
-    SheduledFlightsList(
-      key: PageStorageKey('Page3'),
-    ),
+    // SheduledFlightsList(
+    //   key: PageStorageKey('Page3'),
+    // ),
     AirlineOffers(
       key: PageStorageKey('Page2'),
     ),
     CheckIn(
-      key: PageStorageKey('Page4'),
+      key: PageStorageKey('Page3'),
     ),
   ];
 
@@ -67,16 +68,16 @@ class _BottomNavBarState extends State<BottomNavBar> {
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.search),
-              title: Text('Seach Flights',
+              title: Text('Book Flights',
                   style:
                       TextStyle(fontSize: 10.0, fontWeight: FontWeight.bold)),
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.airplanemode_active),
-              title: Text('Flight Status',
-                  style:
-                      TextStyle(fontSize: 10.0, fontWeight: FontWeight.bold)),
-            ),
+            // BottomNavigationBarItem(
+            //   icon: Icon(Icons.airplanemode_active),
+            //   title: Text('Flight Status',
+            //       style:
+            //           TextStyle(fontSize: 10.0, fontWeight: FontWeight.bold)),
+            // ),
             BottomNavigationBarItem(
               icon: Icon(Icons.local_offer),
               title: Text('Offers',
