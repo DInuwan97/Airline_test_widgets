@@ -293,7 +293,7 @@ Widget travellingClassWidget(BuildContext context){
                                    padding: const EdgeInsets.symmetric(vertical:3.0,horizontal:10.0),
                                    child: RichText(
                                       text: TextSpan(
-                                      text: 'USD 210',
+                                      text: 'USD ${offer.price}',
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize:15,

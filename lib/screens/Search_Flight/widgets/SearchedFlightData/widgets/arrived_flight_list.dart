@@ -20,9 +20,9 @@ class ArrivedFlightList extends StatelessWidget {
               height: 190.0,
               decoration: BoxDecoration(
                    gradient: LinearGradient(
-                    colors: [Colors.lightBlue, Colors.blue[900]],
-                    end: Alignment.topCenter,
-                    begin: Alignment.bottomCenter,
+                                                colors: [Colors.blueAccent,Colors.blue[300]],
+                    begin: Alignment.topRight,
+                    end: Alignment.bottomCenter,
                     tileMode: TileMode.clamp,
                   ),
                   borderRadius: BorderRadius.all(Radius.circular(14))),

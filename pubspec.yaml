@@ -33,6 +33,7 @@ dependencies:
   flutter_rounded_date_picker: 1.0.0
   date_format: ^1.0.9
   square_in_app_payments: ^1.5.0
+  splashscreen: ^1.2.0
   
 
 

@@ -73,36 +73,10 @@ class OfferCard extends StatelessWidget {
                                         //     fontFamily:'Oxygen'
                                         //   )
                                         // )
-                                        Container(
-                    alignment: Alignment.topRight,
-                    child: Container(
-                      padding: EdgeInsets.symmetric(
-                        vertical: 3,
-                        horizontal: 15,
-                      ),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(20),
-                            bottomLeft: Radius.circular(20),
-                          ),
-                          gradient: LinearGradient(
-                            colors: [
-                              Colors.orange,
-                              Colors.red,
-                            ],
-                            begin: Alignment.centerLeft,
-                            end: Alignment.centerRight,
-                          )),
-                      child: Text(
-                        'FEATURED',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 11,
-                        ),
-                      ),
-                    ),
-                  )
+
+
+                                        offer.isFeatured ? isFeaturedBacge() : Container()
+          
 
                                       ],
                                   ),
@@ -201,5 +175,40 @@ class OfferCard extends StatelessWidget {
 
                      ]
                    );
+  }
+
+
+
+  Widget isFeaturedBacge(){
+    return Container(
+                    alignment: Alignment.topRight,
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                        vertical: 3,
+                        horizontal: 15,
+                      ),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(20),
+                            bottomLeft: Radius.circular(20),
+                          ),
+                          gradient: LinearGradient(
+                            colors: [
+                              Colors.orange,
+                              Colors.red,
+                            ],
+                            begin: Alignment.centerLeft,
+                            end: Alignment.centerRight,
+                          )),
+                      child: Text(
+                        'FEATURED',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 11,
+                        ),
+                      ),
+                    ),
+                  );
   }
 }

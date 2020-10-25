@@ -20,9 +20,9 @@ class FlightList extends StatelessWidget {
               height: 190.0,
               decoration: BoxDecoration(
                    gradient: LinearGradient(
-                    colors: [Colors.lightBlue, Colors.blue[900]],
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
+                                         colors: [Colors.blueAccent,Colors.blue[300]],
+                    end: Alignment.topRight,
+                    begin: Alignment.bottomCenter,
                     tileMode: TileMode.clamp,
                   ),
                   borderRadius: BorderRadius.all(Radius.circular(14))),
