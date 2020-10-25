@@ -34,26 +34,28 @@ class _CheckInState extends State<CheckIn> {
             )
       ),
       drawer: SideNavigationDrawer(),
-      body: Container(
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Colors.blueAccent,Colors.blue[600],Colors.blue[300]],
-            ),
-        ),
-        child: SingleChildScrollView(
-            child: Container(
-              height: 500.0,
-              child: Column(
-              children: [
-                Container(
-                  child: Image(
-                    image: AssetImage('assets/images/banner2.jpg'),
-                  ),
-                ),
-                checkInFormWidget()
-              ],
+      body: SingleChildScrollView(
+        child: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Colors.blueAccent,Colors.blue[600],Colors.blue[300]],
+              ),
           ),
+          child: SingleChildScrollView(
+              child: Container(
+                height: 500.0,
+                child: Column(
+                children: [
+                  Container(
+                    child: Image(
+                      image: AssetImage('assets/images/banner2.jpg'),
+                    ),
+                  ),
+                  checkInFormWidget()
+                ],
             ),
+              ),
+          ),
         ),
       ),
     );
