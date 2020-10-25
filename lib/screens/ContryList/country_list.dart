@@ -22,7 +22,6 @@ class CountryList extends StatelessWidget {
             children: <Widget>[
               Container(
                 
-    
                 child: Card(
                   color:Colors.blue[200],
                   child: ListTile(
