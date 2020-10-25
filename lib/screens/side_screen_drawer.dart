@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:myapp1/main.dart';
 import 'package:myapp1/screens/ContryList/country_list.dart';
 import 'package:myapp1/screens/Inflight/InflightDataScreen.dart';
 import 'package:myapp1/screens/Passengers/PassengerDataScreen.dart';
+import 'package:myapp1/screens/SecondHomeScreen/screens/main_home_scree.dart';
 
 import 'Contact/ContactDataScreen.dart';
 import './localData/LocalDataScreen.dart';
@@ -57,13 +59,19 @@ class SideNavigationDrawer extends StatelessWidget {
                       ),
                     ),
                     ListTile(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => AfterSplash(),
+                          ),
+                        );
+                      },
                       leading: Icon(
-                        Icons.airplanemode_active,
+                        Icons.home,
                         color: Colors.white,
                       ),
                       title: Text(
-                        "Book a Flight",
+                        "Home",
                         style: TextStyle(
                           color: Colors.white,
                         ),

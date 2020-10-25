@@ -21,8 +21,8 @@ class FlightList extends StatelessWidget {
               decoration: BoxDecoration(
                    gradient: LinearGradient(
                                          colors: [Colors.blueAccent,Colors.blue[300]],
-                    end: Alignment.topRight,
-                    begin: Alignment.bottomCenter,
+                    begin: Alignment.topRight,
+                    end: Alignment.bottomCenter,
                     tileMode: TileMode.clamp,
                   ),
                   borderRadius: BorderRadius.all(Radius.circular(14))),

@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:myapp1/main.dart';
+import 'package:myapp1/screens/SecondHomeScreen/screens/main_home_scree.dart';
 
 import 'credit_card_model.dart';
 import 'flutter_credit_card.dart';
@@ -153,7 +155,17 @@ class _CreditCardFormState extends State<CreditCardForm> {
           borderRadius: BorderRadius.circular(20),
         ),
       );
+       
       Scaffold.of(context).showSnackBar(snackbar);
+           new Timer(const Duration(seconds:2),(){
+                Scaffold.of(context).showSnackBar(snackbar);
+         Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => AfterSplash(),
+                          ),
+                        );
+      });
+
     });
   }
 
