@@ -44,26 +44,29 @@ class MainHomeScreen extends StatelessWidget {
         
         drawer: SideNavigationDrawer(),
      
-     body:Container(
-
-          decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      colors: [Colors.blue[200],Colors.blue[100],Colors.white30],
-                      end: Alignment.bottomLeft,
-                      begin: Alignment.topRight,
-                    ),
-            ),
-       child: Column(
+     body:SingleChildScrollView(
        
+       child: Container(
+
+            decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        colors: [Colors.blue[200],Colors.blue[100],Colors.white30],
+                        end: Alignment.bottomLeft,
+                        begin: Alignment.topRight,
+                      ),
+              ),
+         child: Column(
+         
     // child:ListView(
-          children: <Widget>[
-            TopHomeScreen(),
-           // bookBtn(context),
-            BottomHomeScreen(),
-          ]
+            children: <Widget>[
+              TopHomeScreen(),
+             // bookBtn(context),
+              BottomHomeScreen(),
+            ]
     // )
 
     ),
+       ),
      ),
     
     );
