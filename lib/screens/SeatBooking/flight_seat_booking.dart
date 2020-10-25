@@ -14,7 +14,7 @@ class SeatBookingScreen extends StatefulWidget {
 }
 
 
-  int _selectedIndex = 0;
+  int _selectedIndex = 0 ,  _selectedIndex1_1 = 0 ,  _selectedIndex1_2 = 0 , _selectedIndex1_5 = 5 , _selectedIndex1_7  = 0;
 class _SeatBookingScreenState extends State<SeatBookingScreen> {
 
 
@@ -54,6 +54,65 @@ class _SeatBookingScreenState extends State<SeatBookingScreen> {
           children: <Widget>[
             Stack(
               children: <Widget>[
+
+
+                Row(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(top:16.0,left:20),
+                      child: Column(
+                        children: <Widget>[
+                          Container(
+                            child:Text('SGN',
+                              style:TextStyle(
+                                fontSize:25,
+                                fontWeight: FontWeight.bold,
+                                color:Colors.blue[900]
+                              )
+                            )
+                          ),
+
+                           Container(
+                            child:Text('Changi,Singapore',
+                              style:TextStyle(
+                                fontSize:13,
+                                fontWeight: FontWeight.bold,
+                              )
+                            )
+                          )
+                        ],
+                      ),
+                    ),
+
+                    Spacer(),
+
+                    Padding(
+                           padding: const EdgeInsets.only(top:16.0,right:20),
+                      child: Column(
+                        children: <Widget>[
+                          Container(
+                            child:Text('CNB',
+                              style:TextStyle(
+                                fontSize:25,
+                                fontWeight: FontWeight.bold,
+                                color:Colors.blue[900]
+                              )
+                            )
+                          ),
+
+                          Container(
+                            child:Text('Canbera,Australia',
+                              style:TextStyle(
+                                fontSize:13,
+                                fontWeight: FontWeight.bold,
+                              )
+                            )
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                ),
                 
              
                  
@@ -79,7 +138,7 @@ class _SeatBookingScreenState extends State<SeatBookingScreen> {
                 
                  ),
 
-//detailsContainer(),
+                  //detailsContainer(),
                   Positioned(
                                 left: MediaQuery.of(context).size.width * 0.3,
                                 bottom: 20.0,
@@ -96,10 +155,10 @@ class _SeatBookingScreenState extends State<SeatBookingScreen> {
                                                 onTap: (){
                                                   setState(() {
 
-                                                    _selectedIndex == 0 ? _selectedIndex = 1 : _selectedIndex = 0 ; 
+                                                    _selectedIndex1_1 == 0 ? _selectedIndex1_1 = 1 : _selectedIndex1_1 = 0 ; 
                                                   });
                                                 },
-                                                child: _selectedIndex == 1 ? freeSeatDesign(Colors.greenAccent) : freeSeatDesign(Colors.white),
+                                                child: _selectedIndex1_1 == 1 ? freeSeatDesign(Colors.greenAccent) : freeSeatDesign(Colors.white),
                                             ),
                                           ),
                                           Padding(
@@ -108,11 +167,11 @@ class _SeatBookingScreenState extends State<SeatBookingScreen> {
                                           ),
                                           Padding(
                                             padding: const EdgeInsets.all(3.0),
-                                            child: freeSeatDesign(Colors.greenAccent),
+                                            child: freeSeatDesign(Colors.white),
                                           ),
                                              Padding(
                                             padding: const EdgeInsets.all(3.0),
-                                            child: freeSeatDesign(Colors.greenAccent),
+                                            child: allocatedSeatDesign(),
                                           ),
                                       ],
                                     ),
@@ -125,23 +184,23 @@ class _SeatBookingScreenState extends State<SeatBookingScreen> {
                                             child: GestureDetector(
                                                 onTap: (){
                                                   setState(() {
-                                                    _selectedIndex == 0 ? _selectedIndex = 1 : _selectedIndex = 0 ;  
+                                                    _selectedIndex1_2 == 0 ? _selectedIndex1_2 = 1 : _selectedIndex1_2 = 0 ;  
                                                   });
                                                 },
-                                                child: _selectedIndex == 1 ? freeSeatDesign(Colors.greenAccent) : freeSeatDesign(Colors.white),
+                                                child: _selectedIndex1_2 == 1 ? freeSeatDesign(Colors.greenAccent) : freeSeatDesign(Colors.white),
                                             ),
                                           ),
                                           Padding(
                                             padding: const EdgeInsets.all(3.0),
-                                            child: allocatedSeatDesign(),
+                                             child: freeSeatDesign(Colors.white),
                                           ),
                                           Padding(
                                             padding: const EdgeInsets.all(3.0),
-                                            child: freeSeatDesign(Colors.greenAccent),
+                                             child: freeSeatDesign(Colors.white),
                                           ),
                                              Padding(
                                             padding: const EdgeInsets.all(3.0),
-                                            child: freeSeatDesign(Colors.greenAccent),
+                                            child: allocatedSeatDesign(),
                                           ),
                                       ],
                                     ),
@@ -154,26 +213,20 @@ class _SeatBookingScreenState extends State<SeatBookingScreen> {
                                       children: <Widget>[
                                           Padding(
                                             padding: const EdgeInsets.all(3.0),
-                                            child: GestureDetector(
-                                                onTap: (){
-                                                  setState(() {
-                                                    _selectedIndex == 0 ? _selectedIndex = 1 : _selectedIndex = 0 ; 
-                                                  });
-                                                },
-                                                child: _selectedIndex == 1 ? freeSeatDesign(Colors.greenAccent) : freeSeatDesign(Colors.white),
-                                            ),
+
+                                            child: allocatedSeatDesign(),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.all(3.0),
+                                            child: freeSeatDesign(Colors.white),
                                           ),
                                           Padding(
                                             padding: const EdgeInsets.all(3.0),
                                             child: allocatedSeatDesign(),
                                           ),
-                                          Padding(
-                                            padding: const EdgeInsets.all(3.0),
-                                            child: freeSeatDesign(Colors.greenAccent),
-                                          ),
                                              Padding(
                                             padding: const EdgeInsets.all(3.0),
-                                            child: freeSeatDesign(Colors.greenAccent),
+                                            child: freeSeatDesign(Colors.white),
                                           ),
                                       ],
                                     ),
@@ -183,16 +236,9 @@ class _SeatBookingScreenState extends State<SeatBookingScreen> {
                                         //4
                                      Row(
                                       children: <Widget>[
-                                          Padding(
+                                           Padding(
                                             padding: const EdgeInsets.all(3.0),
-                                            child: GestureDetector(
-                                                onTap: (){
-                                                  setState(() {
-                                                    _selectedIndex == 0 ? _selectedIndex = 1 : _selectedIndex = 0 ; 
-                                                  });
-                                                },
-                                                child: _selectedIndex == 1 ? freeSeatDesign(Colors.greenAccent) : freeSeatDesign(Colors.white),
-                                            ),
+                                            child: allocatedSeatDesign(),
                                           ),
                                           Padding(
                                             padding: const EdgeInsets.all(3.0),
@@ -200,11 +246,11 @@ class _SeatBookingScreenState extends State<SeatBookingScreen> {
                                           ),
                                           Padding(
                                             padding: const EdgeInsets.all(3.0),
-                                            child: freeSeatDesign(Colors.greenAccent),
+                                             child: freeSeatDesign(Colors.white),
                                           ),
                                              Padding(
                                             padding: const EdgeInsets.all(3.0),
-                                            child: freeSeatDesign(Colors.greenAccent),
+                                           child: allocatedSeatDesign(),
                                           ),
                                       ],
                                     ),
@@ -219,10 +265,10 @@ class _SeatBookingScreenState extends State<SeatBookingScreen> {
                                             child: GestureDetector(
                                                 onTap: (){
                                                   setState(() {
-                                                    _selectedIndex == 0 ? _selectedIndex = 1 : _selectedIndex = 0 ; 
+                                                    _selectedIndex1_5 == 0 ? _selectedIndex1_5 = 1 : _selectedIndex1_5 = 0 ; 
                                                   });
                                                 },
-                                                child: _selectedIndex == 1 ? freeSeatDesign(Colors.greenAccent) : freeSeatDesign(Colors.white),
+                                                child: _selectedIndex1_5 == 1 ? freeSeatDesign(Colors.greenAccent) : freeSeatDesign(Colors.white),
                                             ),
                                           ),
                                           Padding(
@@ -231,11 +277,11 @@ class _SeatBookingScreenState extends State<SeatBookingScreen> {
                                           ),
                                           Padding(
                                             padding: const EdgeInsets.all(3.0),
-                                            child: freeSeatDesign(Colors.greenAccent),
+                                            child: freeSeatDesign(Colors.white),
                                           ),
                                              Padding(
                                             padding: const EdgeInsets.all(3.0),
-                                            child: freeSeatDesign(Colors.greenAccent),
+                                            child: allocatedSeatDesign(),
                                           ),
                                       ],
                                     ),
@@ -246,26 +292,20 @@ class _SeatBookingScreenState extends State<SeatBookingScreen> {
                                       children: <Widget>[
                                           Padding(
                                             padding: const EdgeInsets.all(3.0),
-                                            child: GestureDetector(
-                                                onTap: (){
-                                                  setState(() {
-                                                    _selectedIndex == 0 ? _selectedIndex = 1 : _selectedIndex = 0 ; 
-                                                  });
-                                                },
-                                                child: _selectedIndex == 1 ? freeSeatDesign(Colors.greenAccent) : freeSeatDesign(Colors.white),
-                                            ),
+                                            child: allocatedSeatDesign(),
                                           ),
+                                       
                                           Padding(
                                             padding: const EdgeInsets.all(3.0),
                                             child: allocatedSeatDesign(),
                                           ),
                                           Padding(
                                             padding: const EdgeInsets.all(3.0),
-                                            child: freeSeatDesign(Colors.greenAccent),
+                                     child: allocatedSeatDesign(),
                                           ),
                                              Padding(
                                             padding: const EdgeInsets.all(3.0),
-                                            child: freeSeatDesign(Colors.greenAccent),
+                                            child: allocatedSeatDesign(),
                                           ),
                                       ],
                                     ),
@@ -293,11 +333,11 @@ class _SeatBookingScreenState extends State<SeatBookingScreen> {
                                           ),
                                           Padding(
                                             padding: const EdgeInsets.all(3.0),
-                                            child: freeSeatDesign(Colors.greenAccent),
+                                           child: allocatedSeatDesign(),
                                           ),
                                              Padding(
                                             padding: const EdgeInsets.all(3.0),
-                                            child: freeSeatDesign(Colors.greenAccent),
+                                            child: allocatedSeatDesign(),
                                           ),
                                       ],
                                     ),
@@ -313,10 +353,10 @@ class _SeatBookingScreenState extends State<SeatBookingScreen> {
                                             child: GestureDetector(
                                                 onTap: (){
                                                   setState(() {
-                                                    _selectedIndex == 0 ? _selectedIndex = 1 : _selectedIndex = 0 ; 
+                                                    _selectedIndex1_7 == 0 ? _selectedIndex1_7 = 1 : _selectedIndex1_7 = 0 ; 
                                                   });
                                                 },
-                                                child: _selectedIndex == 1 ? freeSeatDesign(Colors.greenAccent) : freeSeatDesign(Colors.white),
+                                                child: _selectedIndex1_7 == 1 ? freeSeatDesign(Colors.greenAccent) : freeSeatDesign(Colors.white),
                                             ),
                                           ),
                                           Padding(
@@ -325,11 +365,11 @@ class _SeatBookingScreenState extends State<SeatBookingScreen> {
                                           ),
                                           Padding(
                                             padding: const EdgeInsets.only(top:3.0,left:3.0,right:3.0,bottom:40),
-                                            child: freeSeatDesign(Colors.greenAccent),
+                                            child: freeSeatDesign(Colors.white),
                                           ),
                                              Padding(
                                             padding: const EdgeInsets.only(top:3.0,left:3.0,right:3.0,bottom:40),
-                                            child: freeSeatDesign(Colors.greenAccent),
+                                            child: freeSeatDesign(Colors.white),
                                           ),
                                       ],
                                     ),

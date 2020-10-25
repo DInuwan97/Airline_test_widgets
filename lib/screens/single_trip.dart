@@ -160,6 +160,7 @@ class SingleTrip extends StatelessWidget {
                                               width: MediaQuery.of(context).size.width *0.95,
                                               height: 170.0,
                                               decoration: BoxDecoration(
+                                                
                                                   gradient: LinearGradient(
                                                     colors: [Colors.white,Colors.white70,Colors.white60],
                                                     begin: Alignment.bottomCenter,
