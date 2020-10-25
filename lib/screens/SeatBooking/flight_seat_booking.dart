@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:myapp1/screens/CheckIn/boardingpass.dart';
 
@@ -62,6 +64,18 @@ class _SeatBookingScreenState extends State<SeatBookingScreen> {
                       padding: const EdgeInsets.only(top:16.0,left:20),
                       child: Column(
                         children: <Widget>[
+
+
+                          Container(
+                            child:Text('From',
+                              style:TextStyle(
+                                fontSize:13,
+                                fontWeight: FontWeight.w900,
+                              )
+                            )
+                          ),
+
+
                           Container(
                             child:Text('SGN',
                               style:TextStyle(
@@ -79,17 +93,32 @@ class _SeatBookingScreenState extends State<SeatBookingScreen> {
                                 fontWeight: FontWeight.bold,
                               )
                             )
-                          )
+                          ),
+
+
+                  
                         ],
                       ),
                     ),
 
                     Spacer(),
+                    _flightRouteConection(),
+                            Spacer(),
 
                     Padding(
                            padding: const EdgeInsets.only(top:16.0,right:20),
                       child: Column(
                         children: <Widget>[
+
+
+                           Container(
+                            child:Text('To',
+                              style:TextStyle(
+                                fontSize:13,
+                                fontWeight: FontWeight.w900,
+                              )
+                            )
+                          ),
                           Container(
                             child:Text('CNB',
                               style:TextStyle(
@@ -107,7 +136,10 @@ class _SeatBookingScreenState extends State<SeatBookingScreen> {
                                 fontWeight: FontWeight.bold,
                               )
                             )
-                          )
+                          ),
+
+
+                 
                         ],
                       ),
                     )
@@ -146,6 +178,68 @@ class _SeatBookingScreenState extends State<SeatBookingScreen> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
+
+   Row(
+     children: <Widget>[
+       Container(
+
+         child: Image.asset(
+           "assets/images/banner3.png",
+           width:150,
+           height:70
+                                
+                              ),
+       ),
+     ],
+   ),
+
+
+                                    Row(
+                                      children: <Widget>[
+                                        Padding(
+                                          padding: const EdgeInsets.only(left:15.0),
+                                          child:Text(
+                                            '1',
+                                            style:TextStyle(
+                                              fontWeight: FontWeight.w900
+                                            )
+                                          )
+                                        ),
+
+
+                                         Padding(
+                                          padding: const EdgeInsets.only(left:30.0),
+                                          child:Text(
+                                            '2',
+                                            style:TextStyle(
+                                              fontWeight: FontWeight.w900
+                                            )
+                                          )
+                                        ),
+
+                                        Padding(
+                                          padding: const EdgeInsets.only(left:30.0),
+                                          child:Text(
+                                            '3',
+                                            style:TextStyle(
+                                              fontWeight: FontWeight.w900
+                                            )
+                                          )
+                                        ),
+
+                                              Padding(
+                                          padding: const EdgeInsets.only(left:25.0),
+                                          child:Text(
+                                            '4',
+                                            style:TextStyle(
+                                              fontWeight: FontWeight.w900
+                                            )
+                                          )
+                                        )
+                                      ],
+                                    ),
+
+
                                     //1
                                     Row(
                                       children: <Widget>[
@@ -349,7 +443,7 @@ class _SeatBookingScreenState extends State<SeatBookingScreen> {
                                      Row(
                                       children: <Widget>[
                                           Padding(
-                                            padding: const EdgeInsets.only(top:3.0,left:3.0,right:3.0,bottom:40),
+                                            padding: const EdgeInsets.only(top:3.0,left:3.0,right:3.0,bottom:20),
                                             child: GestureDetector(
                                                 onTap: (){
                                                   setState(() {
@@ -360,15 +454,15 @@ class _SeatBookingScreenState extends State<SeatBookingScreen> {
                                             ),
                                           ),
                                           Padding(
-                                            padding: const EdgeInsets.only(top:3.0,left:3.0,right:3.0,bottom:40),
+                                            padding: const EdgeInsets.only(top:3.0,left:3.0,right:3.0,bottom:20),
                                             child: allocatedSeatDesign(),
                                           ),
                                           Padding(
-                                            padding: const EdgeInsets.only(top:3.0,left:3.0,right:3.0,bottom:40),
+                                            padding: const EdgeInsets.only(top:3.0,left:3.0,right:3.0,bottom:20),
                                             child: freeSeatDesign(Colors.white),
                                           ),
                                              Padding(
-                                            padding: const EdgeInsets.only(top:3.0,left:3.0,right:3.0,bottom:40),
+                                            padding: const EdgeInsets.only(top:3.0,left:3.0,right:3.0,bottom:20),
                                             child: freeSeatDesign(Colors.white),
                                           ),
                                       ],
@@ -555,4 +649,22 @@ class _SeatBookingScreenState extends State<SeatBookingScreen> {
       
     
   }
+
+
+
+  Widget _flightRouteConection() {
+    return Column(
+//SizedBox(height:10.0),
+      children: <Widget>[
+        Transform.rotate(
+          angle: 90 * pi / 180,
+          child: IconButton(
+            icon: Icon(Icons.flight, color: Colors.blue[900], size: 35),
+            onPressed: null,
+          ),
+        ),
+      ],
+    );
+  }
+  
 }
