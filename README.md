@@ -1,4 +1,4 @@
-# myapp1
+# Croatia Airlines
 
 A new Flutter project.
 
